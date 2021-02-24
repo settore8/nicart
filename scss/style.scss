@@ -1,0 +1,390 @@
+/*
+Theme Name: Nicart
+Version: 1.0
+*/
+
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+@import "_googlefonts";
+@import "_settings";
+html,
+body {
+    background-color: $light;
+    color: $dark;
+    font-family: 'Oswald', sans-serif;
+    font-size: $font-size-default;
+    font-weight: 300;
+    overflow-x: hidden;
+    a {
+        color: $brand1;
+        @include transition(0.3s, ease);
+        &:hover,
+        &:focus,
+        &:active {
+            color: lighten($brand1, 8%);
+            text-decoration: none;
+            @include transition(0.3s, ease);
+        }
+    }
+    strong {
+        font-weight: 700 !important;
+    }
+}
+
+#site {
+    padding-top: 0px;
+}
+
+#slider {
+    max-height: 750px;
+    overflow: hidden;
+    background-color: $brand1;
+    display: none;
+}
+
+#slider.slick-initialized {
+    display: block;
+}
+
+.slide {
+    figure {
+        img {
+            margin: 0px auto;
+        }
+    }
+}
+
+main.container {
+    padding-top: 20px;
+    min-height: 650px;
+    padding-bottom: 40px;
+    background-color: $light;
+}
+
+h1#tagline {
+    text-align: center;
+    background: $brand1;
+    color: $light;
+    padding: 0.75em;
+    font-size: 1.5em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+section {
+    &.largepadding {
+        padding: 45px 0px;
+        @include breakpoint(xs) {
+            padding: 25px 0px;
+        }
+    }
+    .column {
+        margin: 15px auto;
+    }
+    &#aziendaSection {
+        &.largepadding {
+            margin-bottom: 0px !important;
+        }
+        position: relative;
+        color: $light;
+        a.btn {
+            margin: 20px 5px;
+        }
+        h1 {
+            font-size: $font-size-extra-large;
+            font-weight: 300;
+        }
+        h2 {
+            font-size: $font-size-large;
+            font-weight: 300;
+            margin-top: 5px;
+        }
+        //@include gradient($brand1, lighten($brand1, 10%));
+        background: $brand1 url($bg-rosso) no-repeat top center;
+        background-size: cover;
+    }
+    &#contentSection {
+        position: relative;
+        text-align: center;
+        padding-bottom: 100px;
+        color: $brand1;
+        background: white url($bg-bianco) no-repeat top center;
+        background-size: cover;
+        background-attachment: fixed;
+        .page & {
+            background-color: $brand1;
+        }
+        figure {
+            margin-top: 0px;
+            margin-bottom: 5px;
+            @include breakpoint(xs) {
+                margin-top: 15px;
+            }
+        }
+        h3 {
+            margin-top: 20px;
+            margin-bottom: 50px;
+            color: $neutro;
+            @include breakpoint(xs) {
+                font-size: 24px;
+                margin-top: 25px;
+            }
+        }
+        p {
+            font-size: 0.9em;
+        }
+        a {
+            display: block;
+            &:hover {
+                i {
+                    color: $brand1;
+                }
+            }
+        }
+    }
+    &#newsSection {
+        background: $brand2 url($bg-nero) no-repeat bottom center;
+        background-size: cover;
+        background-attachment: fixed;
+        text-align: center;
+        color: $brand1;
+        h3 {
+            margin-bottom: 30px;
+            color: white;
+            font-weight: 300;
+        }
+    }
+    &#contactSection {
+        background-color: $light;
+        text-align: center;
+        color: $brand2;
+        h3 {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+footer#footer {
+    padding: 30px 0px;
+    color: white;
+    background: $brand2 url($bg-nero) no-repeat center center;
+    border-top: 2px solid darken($brand2, 8%);
+    font-size: $font-size-small;
+    @include breakpoint(xs) {
+        .col-xs-12 {
+            text-align: center;
+        }
+    }
+    .footer-title {
+        font-size: 1.4em;
+        margin-top: 20px;
+        margin-bottom: 7px;
+        padding-bottom: 7px;
+        border-bottom: 1px solid lighten($brand2, 25%);
+    }
+    .social {
+        i {
+            font-size: 150%;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+    }
+    ul {
+        margin: 0px;
+        padding: 0px;
+        clear: none;
+        &.ul-inline {
+            li {
+                display: inline;
+                margin-right: 10px;
+            }
+        }
+        li {
+            list-style-type: none;
+        }
+    }
+    a {
+        color: $brand1;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+#login {
+    padding: 20px;
+    margin-top: 50px;
+    .form-control {
+        margin: 20px 0px;
+    }
+}
+
+.credits {
+    margin-top: 40px;
+    padding-top: 30px;
+}
+
+label {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+}
+
+.parallax-window {
+    min-height: 400px;
+    max-height: 400px;
+    background-color: lighten($brand3, 5%);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: touchevents;
+    position: relative;
+    border-bottom: 3px solid lighten($brand3, 8%);
+    .no-touch & {
+        background-attachment: fixed;
+        background-size: cover !important;
+    }
+    .container {
+        position: relative;
+        z-index: 2;
+        margin-top: 100px;
+    }
+    .testata-wrapper {
+        position: absolute;
+        background: rgba(0, 0, 0, .2);
+        z-index: 1;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+    }
+    .testata-lead {
+        .panel {
+            width: 100%;
+            padding: 10px;
+            @include box-shadow(2px, 0px, rgba(0, 0, 0, .4));
+            #contactButton {
+                margin-top: 10px;
+            }
+        }
+    }
+    .testata-content {
+        padding-right: 10%;
+        h1 {
+            font-size: 4em;
+            color: white;
+            margin-top: 0px;
+            font-weight: 700;
+            @include text-shadow(3px, rgba(0, 0, 0, .7));
+            @include breakpoint(xs) {
+                font-size: 2.6em;
+                text-align: center;
+            }
+            i {
+                font-size: 1.5em;
+                margin-right: 0px;
+                @include breakpoint(xs) {
+                    display: block;
+                    float: none;
+                    margin: 10px auto;
+                }
+            }
+        }
+        p {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: white;
+            @include text-shadow(2px, rgba(0, 0, 0, .7));
+            @include breakpoint(xs) {
+                font-size: 1.2em;
+                text-align: center;
+            }
+        }
+    }
+    .flexbox & {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .container {
+            margin-top: 0;
+        }
+        .testata-content {}
+    }
+}
+
+.parallax-window-small {
+    min-height: 260px;
+    border-bottom: 0px;
+}
+
+.small,
+small {
+    font-size: $font-size-extra-small;
+    font-weight: 300;
+}
+
+.new_product {
+    background-color: yellow;
+    color: $dark;
+    @include border-radius(50%);
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    display: block;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 9;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.banner-container {
+    text-align: center;
+    padding: 2em;
+    clear: both;
+    display: block;
+    margin-top: 2em;
+    .banner {
+        @include border-radius(4px);
+        background-color: $brand1;
+        color: $light;
+        padding: 1em;
+        font-size: 1.5em;
+        &:hover {
+            background-color: lighten($brand1, 7%);
+        }
+    }
+}
+
+.made_italy {
+    position: absolute;
+    left: 1em;
+    z-index: 2;
+    top: -10px;
+}
+
+@import "_animations";
+@import "_customGrid";
+@import "_navbar";
+@import "_content";
+@import "_archive";
+@import "_gallery";
+@import "_sidebar";
+@import "_slick";
+@import "_slick-theme";
+@import "_swipebox";
+@import "_forms";
+@import "_fonts";
+@import "_icons";
+@import "_maps";
+@import "_responsive";
+@import "_animate";
+@import "_button";
+@import "_woocommerce";
+@import "_breadcrumbs";
+@import "_socialize";
+@import "_cookie";

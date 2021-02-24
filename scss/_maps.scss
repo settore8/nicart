@@ -1,0 +1,20 @@
+
+.acf-map {
+	height: 460px;
+	margin-top: 0;
+	padding: 0px;
+}
+
+/* fixes potential theme css conflict */
+.acf-map img {
+   //max-width: inherit !important;
+}
+
+
+.gm-style-iw {
+
+	img {
+		max-width: 100% !important;
+	}
+
+}

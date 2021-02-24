@@ -1,0 +1,25 @@
+#breadcrumbs {
+    color: $light;
+    background: $brand1;
+    margin-left: -15px;
+    margin-right: -15px;
+    height: 62px;
+    line-height: 62px;
+    text-align: center;
+    margin-bottom: 10px;
+    >* {
+        font-size: $font-size-small;
+        font-weight: normal;
+    }
+    a {
+        color: $light;
+        font-weight: bold;
+    }
+    @include breakpoint(xs) {
+        height: 30px;
+        line-height: 30px;
+        .breadcrumb_last {
+            // display: none;
+        }
+    }
+}

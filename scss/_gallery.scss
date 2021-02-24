@@ -1,0 +1,40 @@
+@import "_settings";
+
+.gallery {
+	background-color: lighten($light, 5%);
+	padding: 0px;
+	display: block;
+	margin-top: 30px !important;
+	margin-bottom: 30px !important;
+
+
+	dl.gallery-item {
+		padding:0px;
+		margin: 0px !important;
+
+		dt.gallery-icon {
+			margin: 0px;
+
+				a {
+						img {
+							border: 0px !important;
+							max-width: 100%;
+							height: auto;
+						}
+				}
+
+		}
+
+		dd.wp-caption-text {
+			display: none;
+		}
+
+	}
+
+
+	&.gallery-columns-4 {
+
+	}
+
+
+}

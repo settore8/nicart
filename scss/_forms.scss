@@ -1,0 +1,62 @@
+@import "_settings";
+.wpcf7 {
+    .wpcf7-not-valid-tip {
+        color: $error;
+        font-weight: normal;
+    }
+    .entry-content & {
+        background-color: $brand2;
+        padding: 2em 1.5em;
+        color: $light;
+        @include border-radius(4px);
+        margin-top: 1.5em;
+    }
+    .form-control {
+        @include border-radius(3px);
+        background-color: $light;
+        color: $brand1;
+        font-weight: normal;
+        margin-bottom: 14px;
+        &:placehodler {
+            color: $brand2;
+            opacity: 1;
+        }
+        &:focus {
+            border-color: $brand2;
+            outline: 0;
+            background-color: white;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(darken($brand2, 40%), 0.6);
+        }
+    }
+    label {
+        font-weight: 300;
+    }
+    .wpcf7-not-valid {
+        border-color: $error;
+    }
+    .wpcf7-not-valid-tip {
+        position: absolute;
+        background: $error;
+        color: white !important;
+        right: 15px;
+        z-index: 2;
+        top: 0px;
+        font-size: 0.65em;
+        padding: 3px;
+        border-radius: 0 3px 0 3px;
+    }
+    .wpcf7-response-output {
+        padding: 10px;
+        &.wpcf7-validation-errors {
+            background-color: $error;
+            color: white;
+        }
+        &.wpcf7-mail-sent-ok {
+            background-color: $success;
+            color: white;
+        }
+    }
+    .screen-reader-response {
+        display: none;
+    }
+}

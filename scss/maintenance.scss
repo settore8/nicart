@@ -1,0 +1,75 @@
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+@import "_googlefonts";
+@import "_settings";
+html,
+body {
+    background: $brand1 url('images/bg-maintenance.png') no-repeat center center;
+    background-size: cover;
+    height: 100%;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: $font-size-default;
+    font-weight: 300;
+    overflow-x: hidden;
+}
+
+section {
+    position: absolute;
+    color: $dark;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    width: 640px;
+    min-height: 360px;
+    margin: 10px auto;
+    margin-left: -320px;
+    margin-top: -240px;
+    text-align: center;
+    @include border-radius(5px);
+    @include box-shadow(8px,
+    15px,
+    darken($brand1, 16%));
+    img {
+        margin: 10px auto;
+        max-width: 300px;
+    }
+    h1 {
+        font-size: 3em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    section {
+        position: relative;
+        max-width: 86%;
+        top: 0px;
+        left: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        img {
+            max-width: 180px;
+        }
+    }
+}
+
+.btn {
+    color: white;
+    font-weight: bold;
+    background-color: $brand1;
+    padding: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    &:hover {
+        color: white;
+        background-color: lighten($brand1, 5%);
+    }
+}
+
+address {
+    padding: 0.5em;
+    strong {
+        display: block;
+    }
+}

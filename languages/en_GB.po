@@ -1,0 +1,140 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Beta Packaging\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-05 11:14+0100\n"
+"PO-Revision-Date: 2016-09-05 11:16+0100\n"
+"Last-Translator: Andrea <effe@settore8.it>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Language: english\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../bpack/footer.php:10
+msgid "Sede legale"
+msgstr "Registered office"
+
+#: ../bpack/footer.php:13
+msgid "P. Iva"
+msgstr "VAT"
+
+#: ../bpack/footer.php:16
+msgid "Sede operativa"
+msgstr "Operational headquarters"
+
+#: ../bpack/footer.php:19
+msgid "Tel."
+msgstr "Phone:"
+
+#: ../bpack/footer.php:25
+msgid "Cosa possiamo produrre"
+msgstr ""
+
+#: ../bpack/footer.php:27
+msgid "Tipologie di imballaggio"
+msgstr ""
+
+#: ../bpack/footer.php:36
+msgid "Servizi"
+msgstr "Services"
+
+#: ../bpack/footer.php:38
+msgid "Servizi settore imballaggio"
+msgstr ""
+
+#: ../bpack/footer.php:48
+msgid "I settori di intervento"
+msgstr ""
+
+#: ../bpack/footer.php:50
+msgid "Produzione imballaggi per vari settori industriali"
+msgstr ""
+
+#: ../bpack/header.php:87
+msgid "Admin"
+msgstr "Admin"
+
+#: ../bpack/header.php:90
+msgid "Esci"
+msgstr "Logout"
+
+#: ../bpack/header.php:105
+msgid "Ritorna alla homepage di Beta Packaging"
+msgstr "Return to Homepage"
+
+#: ../bpack/index.php:24
+msgid "Beta Packaging"
+msgstr "Beta Packaging"
+
+#: ../bpack/index.php:25
+msgid "Progettazione e produzione imballaggi"
+msgstr ""
+
+#: ../bpack/index.php:36
+msgid "Scopri Beta Packaging"
+msgstr ""
+
+#: ../bpack/index.php:59
+msgid "Produzione imballaggi"
+msgstr ""
+
+#: ../bpack/index.php:63
+#: ../bpack/index.php:74
+#: ../bpack/index.php:85
+#: ../bpack/assets/pagePreview.php:2
+msgid "Scopri"
+msgstr "Read"
+
+#: ../bpack/index.php:70
+msgid "Servizi a 360°"
+msgstr ""
+
+#: ../bpack/index.php:81
+msgid "Progetti"
+msgstr "projects"
+
+#: ../bpack/index.php:96
+msgid "Richiedi un preventivo in 48h"
+msgstr ""
+
+#: ../bpack/page-area-riservata.php:61
+msgid "Nome utente"
+msgstr "Username"
+
+#: ../bpack/page-area-riservata.php:64
+msgid "Password"
+msgstr "Password"
+
+#: ../bpack/page-area-riservata.php:67
+msgid "Entra"
+msgstr "Enter"
+
+#: ../bpack/sidebar.php:60
+msgid "I settori"
+msgstr ""
+
+#: ../bpack/assets/contactForm.php:8
+msgid "richiedi informazioni"
+msgstr "information request"
+
+#: ../bpack/assets/sidebarBlog.php:4
+msgid "Ultime news"
+msgstr "Last news"
+
+#: ../bpack/assets/sidebarBlog.php:39
+msgid "Ultimi post"
+msgstr "Last posts"
+
+#: ../bpack/assets/testata.php:19
+msgid "Preventivi in 48h"
+msgstr ""
+
+#: ../bpack/assets/testata.php:20
+msgid "Contattaci!"
+msgstr "Contact Us"
+

@@ -1,0 +1,172 @@
+#archiveHeader {
+    min-height: 250px;
+    max-height: 350px;
+    overflow: hidden;
+    position: relative;
+    background-color: $brand1;
+    picture {
+        position: absolute;
+        img {
+            width: 100% !important;
+        }
+    }
+    #archiveHeaderTxt {
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        h1 {
+            color: white;
+            @include text-shadow(3px, $brand2);
+        }
+        p {
+            margin: 10px auto;
+            width: 100%;
+            max-width: 1120px;
+            background-color: rgba(250, 250, 250, 0.8);
+            padding: 1em;
+            font-size: 0.75em;
+        }
+        @include breakpoint(sm) {
+            h1 {
+                font-size: 3.2em;
+                &:before {
+                    content: '';
+                    display: block;
+                    margin: 20px auto;
+                    width: 100%;
+                    height: 10px;
+                    top: -20px;
+                }
+            }
+            p {
+                font-size: 1em;
+            }
+        }
+        #breadcrumbs {
+            background-color: transparent;
+            height: 40px;
+        }
+    }
+}
+
+.descrizione-categoria {
+    h2 {
+        color: $brand1;
+        font-size: 2.6em;
+    }
+    ul {
+        margin-left: 0px;
+        padding-left: 0px;
+        li {
+            margin-left: 0px;
+            margin-top: 0.75em;
+            list-style-type: none;
+            padding-top: 0.75em;
+            border-top: 1px solid $dark;
+            &:first-child {
+                border-top: 0px;
+            }
+            &:before {
+                content: '\e801';
+                font-family: 'custom';
+                margin-right: 0.25em;
+                color: $brand1;
+                font-size: 150%;
+            }
+        }
+    }
+}
+
+.galleria-categoria {
+    margin-top: 2em;
+    img {
+        margin-bottom: 0.5em;
+    }
+    h2 {
+        height: 60px;
+        margin-bottom: 0.5em;
+        font-size: 1.2em;
+        text-align: center;
+    }
+}
+
+
+/* rivenditori */
+
+.post-type-archive-retailer {
+    #archiveHeader {
+        min-height: 350x;
+        height: 350px !important;
+    }
+}
+
+#mappaRivenditori {
+    width: 100%;
+    height: 350px;
+}
+
+#lista_regioni_container {
+    background-color: $brand1;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-height: 30px;
+    padding: 1em 0.5em;
+    z-index: 100;
+    text-align: right;
+    font-weight: bold;
+    &.fixed {
+        background-color: $brand1;
+        select {
+            color: black !important;
+        }
+    }
+    #breadcrumb {
+        display: inline;
+    }
+    h1 {
+        display: inline;
+        float: left;
+        font-size: 1.4em;
+        color: white;
+        margin: 0px;
+    }
+    span {
+        color: white;
+    }
+}
+
+.titolo_regione {
+    font-size: 1.3em;
+    padding: 0.5em 0.5em 0em 0.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $brand1;
+}
+
+.section_rivenditori {
+    border-bottom: 1px solid $brand2;
+    padding-bottom: 20px;
+    padding: 0.5em 1em 2em 0.5em;
+    .rivenditore {
+        font-size: 0.85em;
+        h4 {
+            font-weight: bold;
+            font-size: 1.6em;
+            margin-bottom: 0em;
+        }
+        .citta {
+            font-weight: bold;
+        }
+        .actions {
+            font-size: 1.3em;
+            .www {
+                margin-left: 13px;
+            }
+            .tel {
+                margin-left: 13px;
+            }
+        }
+    }
+}

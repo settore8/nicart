@@ -1,0 +1,147 @@
+// COLORS
+$brand1: #E1001A;
+$brand2: #000000;
+$brand3: #eb6851;
+$light: #ffffff;
+$dark: #000000;
+$neutro: #cec9c6;
+$info: #e8e1dd;
+$success: #5cc544;
+$error: #f52e00;
+$font-size-extra-large: 50px;
+$font-size-large: 24px;
+$font-size-default: 16px;
+$font-size-small: 0.8em;
+$font-size-extra-small: 0.7em;
+$bg-rosso: 'images/bg-nicart1.png';
+$bg-nero: 'images/bg-nicart2.png';
+$bg-bianco: 'images/bg-nicart3.jpg';
+$bg-verde: 'images/bg-nicart-testata.jpg';
+// MIXINS
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-shadow($dist, $b, $color) {
+    -webkit-box-shadow: 0px $dist $b 0px $color;
+    -moz-box-shadow: 0px $dist $b 0px $color;
+    box-shadow: 0px $dist $b 0px $color;
+}
+
+@mixin text-shadow($dist, $color) {
+    text-shadow: 0px $dist 0px $color;
+}
+
+@mixin rotate2d($gradi) {
+    -ms-transform: rotate($gradi);
+    /* IE 9 */
+    -webkit-transform: rotate($gradi);
+    /* Safari */
+    transform: rotate($gradi);
+}
+
+@mixin scale($x, $y) {
+    -ms-transform: scale($x, $y);
+    /* IE 9 */
+    -webkit-transform: scale($x, $y);
+    /* Safari */
+    transform: scale($x, $y);
+    /* Standard syntax */
+}
+
+@mixin gradient($color1, $color2) {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/$color1+1,39bbb8+100 */
+    background: $color1;
+    /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzOWJiYjgiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, $color1 1%, $color2 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, $color1), color-stop(100%, $color2));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, $color1 1%, $color2 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, $color1 1%, $color2 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, $color1 1%, $color2 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, $color1 1%, $color2 100%);
+    /* W3C */
+}
+
+@mixin sfumatura($color1, $color2) {
+    background: $color1;
+    background: -moz-linear-gradient(-45deg, $color1 0%, $color1 14%, $color2 88%, $color2 99%, $color2 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, $color1), color-stop(14%, $color1), color-stop(88%, $color2), color-stop(99%, $color2), color-stop(100%, $color2));
+    background: -webkit-linear-gradient(-45deg, $color1 0%, $color1 14%, $color2 88%, $color2 99%, $color2 100%);
+    background: -o-linear-gradient(-45deg, $color1 0%, $color1 14%, $color2 88%, $color2 99%, $color2 100%);
+    background: -ms-linear-gradient(-45deg, $color1 0%, $color1 14%, $color2 88%, $color2 99%, $color2 100%);
+    background: linear-gradient(135deg, $color1 0%, $color1 14%, $color2 88%, $color2 99%, $color2 100%);
+}
+
+@mixin breakpoint($point) {
+    @if $point==xl {
+        @media (min-width: 1140px) {
+            @content ;
+        }
+    }
+    @else if $point==lg {
+        @media (min-width: 992px) {
+            @content ;
+        }
+    }
+    @else if $point==md {
+        @media (min-width: 768px) {
+            @content ;
+        }
+    }
+    @else if $point==sm {
+        @media (min-width: 544px) {
+            @content ;
+        }
+    }
+    @else if $point==xs {
+        @media (max-width: 543px) {
+            @content ;
+        }
+    }
+}
+
+@mixin animation($time, $delay, $count) {
+    -webkit-animation-duration: $time;
+    animation-duration: $time;
+    -webkit-animation-delay: $delay;
+    animation-delay: $delay;
+    -webkit-animation-iteration-count: $count;
+    animation-iteration-count: $count;
+}
+
+@mixin transition($time, $effect) {
+    -webkit-transition: all $time $effect;
+    -moz-transition: all $time $effect;
+    -o-transition: all $time $effect;
+    transition: all $time $effect;
+}
+
+.margin-top-xs {
+    margin-top: 5px;
+}
+
+.margin-top-sm {
+    margin-top: 10px;
+}
+
+.margin-top-md {
+    margin-top: 30px;
+}
+
+.margin-top-lg {
+    margin-top: 45px;
+}
+
+.margin-top-xl {
+    margin-top: 60px;
+}

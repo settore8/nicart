@@ -1,0 +1,302 @@
+body.woocommerce-page {
+    h1 {
+        text-align: center;
+    }
+    .page-description {
+        text-align: center;
+    }
+    .woocommerce-result-count,
+    .woocommerce-ordering {
+        display: none;
+    }
+}
+
+.woocommerce ul.products {
+    padding: 0px;
+    margin: 30px 0px;
+    li.product {
+        background-color: lighten($light, 5%);
+        padding: 11px !important;
+        text-align: center;
+        list-style-type: none;
+        margin-bottom: 15px;
+        a {
+            color: $brand2;
+            h3 {
+                margin-bottom: 10px;
+            }
+            span.onsale {
+                right: 5px;
+                top: 5px;
+                background-color: $error;
+                @include border-radius(0);
+            }
+            .price {
+                .amount {
+                    margin: 5px auto;
+                    color: lighten($brand1, 15%);
+                    font-size: 17px;
+                }
+            }
+            .price {
+                text-align: center;
+                margin-bottom: 10px;
+                del {
+                    color: $brand1;
+                    .amount {
+                        font-size: 17px;
+                        color: $brand1;
+                    }
+                }
+                ins {
+                    color: transparent;
+                    padding: 12px;
+                    .amount {
+                        font-size: 20px;
+                        padding: 0px;
+                        color: $error;
+                    }
+                }
+            }
+        }
+        .add_to_cart_button {
+            background-color: $brand2;
+            color: $brand1;
+            display: block;
+            text-align: center;
+            &:hover {
+                background-color: lighten($light, 8%);
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.woocommerce #respond input#submit.alt,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt {
+    background-color: $brand2;
+    color: $brand1;
+    &:hover {
+        background-color: lighten($brand2, 8%);
+        color: lighten($brand1, 8%);
+    }
+}
+
+body.single-product {
+    main {
+        #breadcrumbs {
+            margin-top: 20px;
+        }
+        .product {
+            margin-top: 30px;
+            .onsale {
+                background-color: $error;
+                @include border-radius(0);
+                left: 10px;
+                top: 10px;
+            }
+            .entry-summary {
+                padding-top: 10px;
+                h1.product_title {
+                    font-weight: normal;
+                    text-align: left;
+                }
+                .price {
+                    text-align: left;
+                    margin-bottom: 10px;
+                    .amount {
+                        font-size: 35px;
+                        color: lighten($brand1, 15%);
+                    }
+                }
+                .price {
+                    text-align: left;
+                    margin-bottom: 10px;
+                    del {
+                        color: $brand1;
+                        .amount {
+                            font-size: 20px;
+                            color: $brand1;
+                        }
+                    }
+                    ins {
+                        color: transparent;
+                        padding: 12px;
+                        .amount {
+                            font-size: 35px;
+                            padding: 0px;
+                            color: $error;
+                        }
+                    }
+                }
+                p {
+                    margin-top: 15px;
+                }
+                .cart {
+                    padding: 15px 0px;
+                    .quantity {
+                        margin: 0px;
+                        padding: 0px;
+                        width: 20%;
+                        float: left;
+                        input {
+                            height: 50px;
+                            line-height: 50px;
+                            font-size: 20px;
+                            padding: 0px 6px;
+                            border: 0px;
+                            background-color: $light;
+                            color: $brand2;
+                            background-color: lighten($light, 8%);
+                            @include border-radius(4px);
+                            &:focus {
+                                background-color: $brand2;
+                                color: $brand1;
+                            }
+                        }
+                    }
+                    .button {
+                        width: 75%;
+                        float: right;
+                        height: 50px;
+                        line-height: 50px;
+                        font-size: 20px;
+                        margin: 0px;
+                        padding: 0px 8px;
+                    }
+                }
+            }
+        }
+    }
+    .woocommerce-tabs {
+        display: none;
+    }
+}
+
+.woocommerce {
+    a {
+        color: $brand2;
+    }
+    .shop_table {
+        background-color: lighten($light, 15%);
+    }
+    .woocommerce-error,
+    .woocommerce-info,
+    .woocommerce-message {
+        border-top: 0px;
+    }
+    .woocommerce-message {
+        background-color: $success;
+        .button {
+            background-color: $light;
+            color: $brand1;
+            &:hover {
+                background-color: lighten($light, 8%);
+            }
+        }
+    }
+    .woocommerce-error {
+        background-color: $error;
+    }
+    .woocommerce-info {
+        background-color: $info;
+    }
+    .related {
+        background-color: darken($light, 8%);
+        clear: both;
+        padding: 20px;
+        margin-top: 20px;
+        h2 {
+            text-align: center;
+            font-weight: normal;
+            font-size: 20px;
+        }
+    }
+}
+
+.products {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    /* this */
+    .product {
+        flex: 25%;
+        border: 1px $neutro solid;
+        text-align: center;
+        margin: 5px;
+        max-width: 25% !important;
+        /* and that, will result in a 10px gap */
+    }
+}
+
+.product {
+    background-color: $light;
+    list-style-type: none;
+    border-radius: 3px;
+    width: 100%;
+    padding-bottom: 5px;
+    .woocommerce-loop-product__link {
+        color: $dark;
+        min-height: 60px;
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 3px 3px 0 0;
+        }
+        h2.woocommerce-loop-product__title {
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+        .price {}
+    }
+    .button {
+        background-color: $brand1;
+        color: $light;
+        padding: 0.5rem;
+        display: block;
+        max-width: 80%;
+        margin: 0.5rem auto;
+        &.product_type_simple {}
+        &.product_type_variable {
+            background-color: $brand1;
+            color: $light;
+        }
+        &.add_to_cart_button {}
+        &.ajax_add_to_cart {}
+    }
+}
+
+.single-product {
+    .product {
+        position: relative;
+        display: flex;
+        .woocommerce-product-gallery {
+            width: 50%;
+            background-color: fuchsia;
+            border: 1px solid $neutro;
+            .wp-post-image {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .summary {
+            width: 50%;
+            padding: 1rem;
+            .product_meta {
+                font-size: small;
+                a {
+                    color: $brand1;
+                }
+            }
+        }
+    }
+}
+
+.related {
+    h2 {
+        width: 100%;
+        text-align: center;
+    }
+}

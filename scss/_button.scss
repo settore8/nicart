@@ -1,0 +1,43 @@
+@import "_settings";
+.btn {
+    i {
+        font-size: 1.2em;
+    }
+    &.btn-primary {
+        background-color: $brand2;
+        border-color: $brand2;
+        &:hover {
+            background-color: lighten($brand2, 6%);
+            border-color: lighten($brand2, 6%);
+        }
+    }
+    &.btn-default {
+        background-color: $light;
+        border-color: $light;
+        &:hover {
+            background-color: lighten($light, 6%);
+            border-color: lighten($light, 6%);
+        }
+    }
+    &.btn-danger {
+        background-color: $brand1;
+        border-color: $brand1;
+        &:hover {
+            background-color: lighten($brand1, 6%);
+            border-color: lighten($brand1, 6%);
+        }
+    }
+    .btn-warning {
+        background-color: lighten($brand1, 3%);
+        border: 0px;
+        &:hover {
+            background-color: lighten($brand1, 5%);
+        }
+        &:focus {
+            background-color: lighten($dark, 1%) !important;
+        }
+    }
+    &:hover {
+        animation: btnhover 0.2s linear forwards 2;
+    }
+}

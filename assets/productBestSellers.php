@@ -16,7 +16,9 @@
             <?php while ( $the_query->have_posts() ) {
                 $the_query->the_post(); ?>
                 <div class="col-xs-6 col-sm-4 col-md-3">
+                    <ul class="products">
                     <?php  wc_get_template_part( 'content', 'product' ); ?>
+                    </ul>
                 </div>
             <?php } ?>
         </div>

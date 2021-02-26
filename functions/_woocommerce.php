@@ -88,8 +88,6 @@ function prodotto_new() {
 /**
  * Aggiungo made in italy nella pagina del prodotto
 */
-
-
 add_action( 'woocommerce_product_thumbnails', 'made_in_italy', 1 );
 function made_in_italy() {
 	global $product;
@@ -97,5 +95,9 @@ function made_in_italy() {
 	if(!empty($madeitaly)) :
 		echo '<span class="made_italy"><img src="'.get_template_directory_uri().'/images/made_italy.png'.'" alt="Made in Italy"></span>';
 	endif;
-}
+};
+
+/**
+ * Aggiungo made in italy nella pagina del prodotto
+*/
 

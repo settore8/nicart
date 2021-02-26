@@ -14,12 +14,17 @@ body.woocommerce-page {
 .woocommerce ul.products {
     padding: 0px;
     margin: 30px 0px;
-    li.product {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    >li.product {
         background-color: lighten($light, 5%);
         padding: 11px !important;
         text-align: center;
         list-style-type: none;
         margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
         a {
             color: $brand2;
             h3 {
@@ -67,6 +72,18 @@ body.woocommerce-page {
             &:hover {
                 background-color: lighten($light, 8%);
                 text-decoration: none;
+            }
+        }
+    }
+    &.columns-4 {
+        >li.product {
+            flex: 25%;
+            text-align: center;
+            border: 1px $neutro solid;
+            margin: 1%;
+            max-width: 23% !important;
+            @media screen and(max-width: 768px) {
+                max-width: 48% !important;
             }
         }
     }
@@ -216,21 +233,6 @@ body.single-product {
     }
 }
 
-.products {
-    display: flex;
-    flex-direction: row;
-    padding: 5px;
-    /* this */
-    .product {
-        flex: 25%;
-        border: 1px $neutro solid;
-        text-align: center;
-        margin: 5px;
-        max-width: 25% !important;
-        /* and that, will result in a 10px gap */
-    }
-}
-
 .product {
     background-color: $light;
     list-style-type: none;
@@ -269,12 +271,12 @@ body.single-product {
 }
 
 .single-product {
-    .product {
+    .type-product.product {
         position: relative;
         display: flex;
         .woocommerce-product-gallery {
             width: 50%;
-            background-color: fuchsia;
+            //background-color: fuchsia;
             border: 1px solid $neutro;
             .wp-post-image {
                 width: 100%;
@@ -283,7 +285,7 @@ body.single-product {
         }
         .summary {
             width: 50%;
-            padding: 1rem;
+            padding: 1rem 2.5rem;
             .product_meta {
                 font-size: small;
                 a {
@@ -299,4 +301,51 @@ body.single-product {
         width: 100%;
         text-align: center;
     }
+}
+
+.single_variation_wrap {
+    margin-top: 1rem;
+    .woocommerce-variation-price {
+        text-align: right;
+    }
+}
+
+.variations {
+    width: 100%;
+    background-color: darken($light, 8%);
+    border-radius: 3px;
+    .label {
+        padding: 1rem;
+        color: $dark;
+        text-align: left;
+    }
+    .value {
+        padding: 1rem;
+        .reset_variations {
+            color: $error;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 0.25rem;
+            text-transform: uppercase;
+            float: right;
+        }
+    }
+}
+
+.screen-reader-text {
+    display: none;
+}
+
+.quantity {
+    .qty {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        background-color: darken($light, 8%) !important;
+    }
+}
+
+.single_add_to_cart_button {
+    border: 0px;
+    border-radius: 3px;
 }

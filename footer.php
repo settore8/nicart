@@ -10,6 +10,13 @@
 	</div>
 </section>
 
+<section id="contactSection" class="row largepadding">
+	<div class="container">
+		<?php get_template_part('assets/ecommerceinfo'); ?>
+	</div>
+</section>
+
+
 <footer id="footer" class="row">
 	<div class="container">
 	<div class="row">

@@ -4,15 +4,23 @@
        $terms = get_terms( array(
         'taxonomy' => 'product_cat',
         'hide_empty' => false,
-        'meta_key' => 'custom_order',
-        'orderby' => 'custom_order'
         ));
     ?>
 
         <?php 
             if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
                 $categorie = [];
-                foreach ( $terms as $term) {  ?>
+                $newterms = array(); 
+
+                foreach ( $terms as $term) { 
+                    $order = get_field('custom_order', $term);
+                    $newterms[$order] = $term;
+                    ?>
+                <?php }
+
+                ksort( $newterms, SORT_NUMERIC );
+
+                foreach ( $newterms as $term) {  ?>   
                     <article class="preview-prodotto col-xs-6 col-sm-3">
                         <a href="<?php echo esc_url( get_term_link( $term ) ); ?>" title="<?php echo $term->name; ?>">
                         <?php if (get_field('anteprima_categoria', $term)) { 
@@ -30,7 +38,8 @@
                         </div>
                         </a>
                     </article>
-                <?php }
+                <?php 
+                }
             }
             ?>
   </div>

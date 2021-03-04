@@ -349,3 +349,14 @@ body.single-product {
     border: 0px;
     border-radius: 3px;
 }
+
+
+/*
+** My Account 
+*/
+
+.woocommerce-account {
+    .woocommerce {
+        background-color: $info;
+    }
+}

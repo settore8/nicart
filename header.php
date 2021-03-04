@@ -79,10 +79,8 @@ exit;
 			else { ?>
 				<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title=""  class="user"><svg><use xlink:href="#user" width="30" height="30"/></svg> Login / Register</a>
 			<?php } ?>
-
 			<a class="cart" href="<?php echo wc_get_cart_url(); ?>" title="">
 			<svg><use xlink:href="#cart" width="30" height="30"/></svg><span class="cart--counter"><?php echo WC()->cart->get_cart_contents_count(); ?></span><?php echo WC()->cart->get_cart_total(); ?></a>
-
 			</div>
 		</div>
 

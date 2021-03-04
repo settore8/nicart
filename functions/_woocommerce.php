@@ -93,11 +93,75 @@ function made_in_italy() {
 	global $product;
 	$madeitaly = get_field('made_italy', $product->get_id());
 	if(!empty($madeitaly)) :
-		echo '<span class="made_italy"><img src="'.get_template_directory_uri().'/images/made_italy.png'.'" alt="Made in Italy"></span>';
+		echo '<span class="made"><img src="'.get_template_directory_uri().'/images/made_italy.svg'.'" alt="Made in Italy"></span>';
 	endif;
 };
+
+/**
+ * Aggiungo made in USA nella pagina del prodotto
+*/
+add_action( 'woocommerce_product_thumbnails', 'made_in_usa', 1 );
+function made_in_usa() {
+	global $product;
+	$madeUsa = get_field('made_usa', $product->get_id());
+	if(!empty($madeUsa)) :
+		echo '<span class="made"><img src="'.get_template_directory_uri().'/images/made_usa.svg'.'" alt="Made in Usa"></span>';
+	endif;
+};
+
+/**
+ * Aggiungo made in Japan nella pagina del prodotto
+*/
+add_action( 'woocommerce_product_thumbnails', 'made_in_japan', 1 );
+function made_in_japan() {
+	global $product;
+	$madeUsa = get_field('made_japan', $product->get_id());
+	if(!empty($madeUsa)) :
+		echo '<span class="made"><img src="'.get_template_directory_uri().'/images/made_japan.svg'.'" alt="Made in Japan"></span>';
+	endif;
+};
+
+/**
+ * Aggiungo made in Germany nella pagina del prodotto
+*/
+add_action( 'woocommerce_product_thumbnails', 'made_in_germany', 1 );
+function made_in_germany() {
+	global $product;
+	$madeUsa = get_field('made_germany', $product->get_id());
+	if(!empty($madeUsa)) :
+		echo '<span class="made"><img src="'.get_template_directory_uri().'/images/made_germany.svg'.'" alt="Made in Germany"></span>';
+	endif;
+};
+
+
+/**
+ * Modifico placeholder 
+ */
+
+add_filter( 'woocommerce_placeholder_img_src', 'filter_woocommerce_placeholder_img_src', 10, 1);
+function filter_woocommerce_placeholder_img_src( $image_url )
+ {
+	$image_url = get_template_directory_uri().'/images/placeholder.png'; 
+    return $image_url;
+ }
+
 
 /**
  * Aggiungo made in italy nella pagina del prodotto
 */
 
+
+/**
+ * Template pagina Account
+*/
+
+
+/**
+ * Disabilito voci di menù nella pagina My Account
+*/
+
+function custom_my_account_menu_items( $items ) {
+    unset($items['downloads']);
+    return $items;
+}
+add_filter( 'woocommerce_account_menu_items', 'custom_my_account_menu_items' );

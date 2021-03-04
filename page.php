@@ -42,6 +42,7 @@ if ( have_posts() ) {
 					<?php endif; ?>
 					
 					<header class="col-sm-7">
+
 					<h1><?php the_title(); ?></h1>
 					<?php the_content(); 
 					$galleries = get_field('galleria');
@@ -68,6 +69,7 @@ if ( have_posts() ) {
 
 						<?php endforeach; ?>
 					<?php endif; ?>
+					
 					</header>
 				<footer>
 				<?php

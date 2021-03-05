@@ -73,27 +73,43 @@ exit;
 		<div id="topmenu">
 			<div class="contenitore">
 			<span class="topmessage">Spedizione gratuita per tutti gli ordini sopra i 49€</span>
+			<span class="topcontact"><svg><use xlink:href="#tel" width="24" height="24"/></svg> 055 9172783</span>
 			<?php if ( is_user_logged_in() ) { ?>
-				<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="" class="user"><svg><use xlink:href="#user" width="30" height="30"/></svg> Account</a>
+				<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="" class="user">Account</a>
 			<?php } 
 			else { ?>
-				<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title=""  class="user"><svg><use xlink:href="#user" width="30" height="30"/></svg> Login / Register</a>
+				<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title=""  class="user">Login / Registrati</a>
 			<?php } ?>
 			<a class="cart" href="<?php echo wc_get_cart_url(); ?>" title="">
-			<svg><use xlink:href="#cart" width="30" height="30"/></svg><span class="cart--counter"><?php echo WC()->cart->get_cart_contents_count(); ?></span><?php echo WC()->cart->get_cart_total(); ?></a>
+			<svg><use xlink:href="#cart" width="24" height="24"/></svg><span class="cart--counter"><?php echo WC()->cart->get_cart_contents_count(); ?></span><?php echo WC()->cart->get_cart_total(); ?></a>
 			</div>
 		</div>
+
+		<form id="searchform" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+			<div class="container">
+				<div class="row">
+				<input type="text" class="search-field" name="s" placeholder="Search" value="<?php echo get_search_query(); ?>">
+				<input type="submit" value="Cerca">
+				</div>
+			</div>
+		</form>
 
 		<nav id="navigazione" class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header">
+
+				<button type="button" id="searchtoggle" aria-expanded="false">
+		        <svg><use xlink:href="#cerca" width="26" height="26"/></svg>
+		     	</button>
+			
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu" aria-expanded="false">
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		     	</button>
 
-		     	<a class="navbar-brand"  href="<?php echo home_url(); ?>" title="Ritorna alla homepage di Nicart, accessori e ricambi per giardinaggio"><img src="<?php bloginfo("template_url"); ?>/images/logo-nicart.svg" alt="Logo Nicart" onerror="this.onerror=null; this.src='<?php bloginfo("template_url"); ?>/images/logo-nicart.png'" class="img-responsive"></a>
+		     	<a class="navbar-brand"  href="<?php echo home_url(); ?>" title="Ritorna alla homepage di Nicart, accessori e ricambi per giardinaggio"><img src="<?php bloginfo("template_url"); ?>/images/logo-nicart.svg" alt="Logo Nicart" class="img-responsive"></a>
+
 		     	</div>
 			    <div class="collapse navbar-collapse" id="menu">
 			      <ul class="nav navbar-nav navbar-right">
@@ -111,4 +127,5 @@ exit;
 				
 		    </div>
 		</nav>
+		
 	</header>

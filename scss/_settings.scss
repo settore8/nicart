@@ -4,7 +4,7 @@ $brand2: #000000;
 $brand3: #eb6851;
 $light: #ffffff;
 $dark: #000000;
-$neutro: #cec9c6;
+$neutro:  darken($light, 8%);
 $info: #e8e1dd;
 $success: #5cc544;
 $error: #f52e00;
@@ -105,6 +105,11 @@ $bg-verde: 'images/bg-nicart-testata.jpg';
     }
     @else if $point==xs {
         @media (max-width: 543px) {
+            @content ;
+        }
+    }
+    @else if $point==maxmd {
+        @media (max-width: 768px) {
             @content ;
         }
     }

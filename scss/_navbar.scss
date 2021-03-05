@@ -3,60 +3,111 @@
     background-color: $dark;
     display: block;
     color: $light;
-    padding: 0.5rem 0;
-    svg {
-        width: 26px;
-        height: 26px;
-        display: inline-block;
-        margin-right: 3px;
-        use {
-            fill: $light;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+
+    @include breakpoint(maxmd) {
+        padding: 0 0 0.5rem 0;
+        .topmessage {
+            background-color: $brand1;
+            padding: 0.25rem;
+            width: 100%;
+            text-align: center;
+            font-size: 0.7rem;
+            margin-bottom: 0.5rem;
         }
     }
-    a {
-        color: $light;
-    }
-    .contenitore {
-        width: 1170px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-    }
-    .user {
+
+    .topcontact {
         margin-left: auto;
         display: flex;
         align-items: center;
+        font-weight: bold;
+        margin-right: 0.5rem;
+
+        @include breakpoint(maxmd) {
+            margin-right: auto;
+            margin-left: 0.5rem;
+        }
+    }
+
+    .user {
+        display: flex;
+        align-items: center;
+        margin-right: 0.5rem;
+        @include breakpoint(maxmd) {
+            margin-left: auto;
+        }
+
     }
     .cart {
         display: flex;
         align-items: center;
         position: relative;
-        margin-left: 20px;
+        margin-left: 0.5rem;
+        @include breakpoint(maxmd) {
+            margin-right: 0.5rem;
+        }
         .cart--counter {
             position: absolute;
-            left: -6px;
-            top: -2px;
+            left: -8px;
+            top: -4px;
             border-radius: 50%;
             display: block;
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             text-align: center;
-            line-height: 18px;
+            line-height: 16px;
             background-color: $brand1;
             color: $light;
+            font-size: 0.7rem;
+        }
+
+        svg {
+            transform: scale(-1, 1);
         }
     }
+
+    svg {
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        margin-right: 4px;
+        use {
+            fill: $light;
+        }
+    }
+  
+    a {
+        color: $light;
+    }
+    .contenitore {
+        width: 100%;
+        max-width: 1170px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    
 }
 
 header {
     margin: 0px;
     .navbar-brand {
+        height: auto;
         max-height: 100px;
         margin-left: 0px !important;
         padding: 0px;
         img {
             max-height: 100px;
             width: auto;
+        }
+        @include breakpoint(maxmd) {
+            max-height: 80px;
+            img {
+                max-height: 80px;
+            }
         }
     }
     &#header {
@@ -117,11 +168,10 @@ header {
     .single & {
         @include box-shadow(2px, 2px, darken($brand1, 7%));
     }
-    @include breakpoint(xs) {}
     ul.nav {
         margin-top: 1em;
         margin-bottom: 0px;
-        @include breakpoint(xs) {
+        @include breakpoint(maxmd) {
             margin-top: 0px;
         }
         li {
@@ -161,13 +211,24 @@ header {
                 }
             }
             &.menu-item-has-children {
+
+                @include breakpoint(md) {
                 position: relative;
-                &:hover {
-                    background-color: $brand1;
-                    a {
-                        color: $light;
+                    &:hover {
+                        background-color: $brand1;
+                        a {
+                            color: $light;
+                        }
+                        .sub-menu {
+                            display: block;
+                        }
                     }
+                }
+
+                @include breakpoint(maxmd) {
                     .sub-menu {
+                        width: 100%;
+                        position: relative;
                         display: block;
                     }
                 }
@@ -192,7 +253,7 @@ header {
             a {
                 height: 80px;
                 line-height: 80px;
-                padding: 0px 15px;
+                padding: 0px 10px;
                 @include transition(0.5s, fade);
                 @media screen and (max-width: 768px) {
                     border-left: 0px;
@@ -213,7 +274,6 @@ header {
             &:first-child {
                 a {
                     border-left: 0px;
-                    @include breakpoint(xs) {}
                 }
             }
             &:last-child {
@@ -244,7 +304,7 @@ header {
     }
 }
 
-@include breakpoint(xs) {
+@include breakpoint(maxmd) {
     #navigazione .navbar-collapse {
         background-color: $brand2;
         border: 0px;
@@ -255,5 +315,27 @@ header {
         ul.nav li.current-menu-item a {
             color: white;
         }
+    }
+}
+
+#searchtoggle {
+    background: none;
+    border: 0px;
+    margin-left: auto;
+    width: 26px;
+    height: 26px;
+    svg {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+#searchform {
+    display: none;
+    background: $neutro;
+
+    &.open {
+        display: block;
+        padding: 1rem;
     }
 }

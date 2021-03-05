@@ -10,17 +10,15 @@
 
     if ( $the_query->have_posts($args) ) { ?>
       
-      <div class="container">
         <div class="row customsection group">
-          <h3>I prodotti Nicart più venduti</h3>            
+          <h3>I prodotti Nicart più venduti</h3>  
+            <ul class="products columns-4">          
             <?php while ( $the_query->have_posts() ) {
                 $the_query->the_post(); ?>
-                <div class="col-xs-6 col-sm-4 col-md-3">
-                    <ul class="products">
+                <!--<div class="col-xs-6 col-sm-4 col-md-3">-->
                     <?php  wc_get_template_part( 'content', 'product' ); ?>
-                    </ul>
-                </div>
+               <!-- </div>-->
             <?php } ?>
+            </ul>
         </div>
-    </div>
 <?php } wp_reset_query(); ?>

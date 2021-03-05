@@ -10,9 +10,11 @@ body.woocommerce-page {
         display: none;
     }
 }
+.products {
+    padding: 0;
+}
 
-.woocommerce ul.products {
-    padding: 0px;
+ul.products {
     margin: 30px 0px;
     display: flex;
     flex-wrap: wrap;
@@ -25,6 +27,13 @@ body.woocommerce-page {
         margin-bottom: 15px;
         display: flex;
         flex-direction: column;
+        position: relative !important;
+        transition: all 0.2s linear;
+
+        &:hover {
+            transform: scale(1.05);
+            transition: all 0.2s linear;
+        }
         a {
             color: $brand2;
             h3 {
@@ -65,25 +74,43 @@ body.woocommerce-page {
             }
         }
         .add_to_cart_button {
-            background-color: $brand2;
-            color: $brand1;
+            background-color: $brand1;
+            color: $light;
+            font-weight: bold;
             display: block;
             text-align: center;
+            margin-top: auto !important;
             &:hover {
-                background-color: lighten($light, 8%);
+                background-color: lighten($brand1, 12%);
                 text-decoration: none;
+                transform: scale(1.05);
+                transition: all 0.2s linear;
             }
         }
     }
     &.columns-4 {
         >li.product {
-            flex: 25%;
             text-align: center;
             border: 1px $neutro solid;
             margin: 1%;
             max-width: 23% !important;
+            display: flex;
+            flex-direction: column;
+
+            .add_to_cart_button {
+                margin-top: auto;
+            }
             @media screen and(max-width: 768px) {
                 max-width: 48% !important;
+            }
+
+            .woocommerce-loop-product__link {
+                display: flex;
+                flex-direction: column;
+
+                .price {
+                    margin-top: auto;
+                }
             }
         }
     }
@@ -93,11 +120,10 @@ body.woocommerce-page {
 .woocommerce a.button.alt,
 .woocommerce button.button.alt,
 .woocommerce input.button.alt {
-    background-color: $brand2;
-    color: $brand1;
+    background-color: $brand1;
+    color: $light;
     &:hover {
-        background-color: lighten($brand2, 8%);
-        color: lighten($brand1, 8%);
+        background-color: lighten($brand1, 12%);
     }
 }
 
@@ -164,7 +190,6 @@ body.single-product {
                             font-size: 20px;
                             padding: 0px 6px;
                             border: 0px;
-                            background-color: $light;
                             color: $brand2;
                             background-color: lighten($light, 8%);
                             @include border-radius(4px);
@@ -185,6 +210,17 @@ body.single-product {
                     }
                 }
             }
+        }
+
+        .video_prodotto {
+            background-color: darken($light, 8%);
+            margin: 1.5rem 0;
+
+            h2 {
+                color: $dark;
+                margin: 0 0 1rem 0;
+            }
+
         }
     }
     .woocommerce-tabs {
@@ -258,8 +294,7 @@ body.single-product {
         color: $light;
         padding: 0.5rem;
         display: block;
-        max-width: 80%;
-        margin: 0.5rem auto;
+        max-width: 100%;
         &.product_type_simple {}
         &.product_type_variable {
             background-color: $brand1;
@@ -274,10 +309,12 @@ body.single-product {
     .type-product.product {
         position: relative;
         display: flex;
+        flex-wrap:wrap;
         .woocommerce-product-gallery {
             width: 50%;
-            //background-color: fuchsia;
-            border: 1px solid $neutro;
+            .woocommerce-product-gallery__wrapper {
+                border: 1px solid $neutro;
+            }
             .wp-post-image {
                 width: 100%;
                 height: auto;
@@ -285,12 +322,35 @@ body.single-product {
         }
         .summary {
             width: 50%;
-            padding: 1rem 2.5rem;
+            padding: 1rem 0 1rem 2.5rem;
             .product_meta {
                 font-size: small;
                 a {
                     color: $brand1;
                 }
+            }
+        }
+
+        .upsells {
+            width: 100%;
+            background-color: $neutro;
+            flex: 1;
+            padding: 20px;
+            margin-top: 1.5rem;
+            h2 {
+                text-align: center;
+                font-weight: normal;
+                font-size: 20px;
+            }
+        }
+        @media screen and(max-width: 768px) {
+            flex-direction: column;
+            .woocommerce-product-gallery {
+                width: 100%;
+            }
+            .summary {
+                width: 100%;
+                padding: 1rem  0 0 0;
             }
         }
     }
@@ -348,6 +408,8 @@ body.single-product {
 .single_add_to_cart_button {
     border: 0px;
     border-radius: 3px;
+    background-color: $brand1;
+    color: $light;
 }
 
 

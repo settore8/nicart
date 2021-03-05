@@ -121,9 +121,9 @@ section {
             }
         }
         h3 {
-            margin-top: 20px;
-            margin-bottom: 50px;
-            color: $neutro;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            color: $dark;
             @include breakpoint(xs) {
                 font-size: 24px;
                 margin-top: 25px;
@@ -360,7 +360,7 @@ small {
     }
 }
 
-.made_italy {
+.made {
     position: absolute;
     left: 1em;
     z-index: 2;
@@ -388,11 +388,33 @@ small {
 @import "_breadcrumbs";
 @import "_socialize";
 @import "_cookie";
+
+
 .blocco-icon {
-    background-color: yellow;
-    display: block;
+    display: flex;
     text-align: center;
-    svg {
-        max-height: 60px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    h3 {
+        margin: 0.5rem !important;
+        padding: 0.5rem 0.75rem;
+        color: $brand1;
+        border-radius: 2rem;
     }
+
+    p {
+        margin: 0;
+        color: $brand2;
+    }
+    svg {
+        height: 70px;
+        width: 70px;
+    }
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    padding-left: 5px;
+    padding-right: 5px;
 }

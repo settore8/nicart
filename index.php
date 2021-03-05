@@ -4,9 +4,7 @@
 
 <section id="contentSection" class="row largepadding">
 	<?php get_template_part('assets/categorieProdotti'); ?>
-
 	<?php get_template_part('assets/shopPreview'); ?>
-	
 </section>
 
 <section id="aziendaSection" class="row largepadding">
@@ -28,15 +26,6 @@
 		</div>
 	</div>
 </section>
-
-
-<?php 
-/*
-<section id="newsSection" class="row largepadding">
-	<?php get_template_part('assets/productNew'); ?>
-</section>
-*/
-?>
 
 
 <?php get_footer(); ?>

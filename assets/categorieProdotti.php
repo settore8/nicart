@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row customsection group">
+  <div class="row customsection">
     <?php
        $terms = get_terms( array(
         'taxonomy' => 'product_cat',

@@ -11,6 +11,10 @@ $(document).ready(function() {
         }, 500);
     });
 
+    $('#searchtoggle').click(function() {
+        $('#searchform').toggleClass('open');
+    });
+
 
     $('.slide').slick({
         autoplay: true,
@@ -37,11 +41,6 @@ $(document).ready(function() {
                 dots: false,
             }
         }]
-    });
-
-
-    $('#socializeToggle').on('click', function() {
-        $('#socialize').slideToggle();
     });
 
 

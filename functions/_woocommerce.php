@@ -31,6 +31,7 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 3
 */
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
+
 /**
  * Disabilita gallery zoom
 */
@@ -47,16 +48,31 @@ add_filter('woocommerce_placeholder_img_src', 'custom_woocommerce_placeholder_im
 
 function custom_woocommerce_placeholder_img_src( $src ) {
 	$src = get_stylesheet_directory_uri() . '/images/placeholder.svg';
-	 
 	return $src;
 }
 
 /**
  * Aggiungo il video nella pagina del prodotto
 */
+add_action('woocommerce_after_single_product', 'video_prodotto', 28);
+
 function video_prodotto() {
 	global $product;
 	$video = get_field('video', $product->get_id());
+
+	if( $video ): 
+		foreach( $video as $post ) {
+				setup_postdata( $post);
+				echo '<div class="video_prodotto">';
+				$vid = get_field('video_youtube', $post->ID);
+				//echo '<h2>'.get_the_title().'</h2>';
+				echo '<div class="embed-container">';
+				echo $vid;
+				echo '</div>';
+				echo '</div>';
+				wp_reset_postdata();
+			} 
+	endif;
 }
 
 /**
@@ -74,7 +90,7 @@ function scheda_prodotto() {
 /**
  * Aggiungo la scheda pdf nella pagina del prodotto
 */
-
+add_action( 'woocommerce_after_shop_loop_item', 'prodotto_new', 9 );
 add_action('woocommerce_before_single_product_summary', 'prodotto_new', 1);
 function prodotto_new() {
 	global $product;
@@ -88,12 +104,13 @@ function prodotto_new() {
 /**
  * Aggiungo made in italy nella pagina del prodotto
 */
+add_action( 'woocommerce_after_shop_loop_item', 'made_in_italy', 9 );
 add_action( 'woocommerce_product_thumbnails', 'made_in_italy', 1 );
 function made_in_italy() {
 	global $product;
 	$madeitaly = get_field('made_italy', $product->get_id());
 	if(!empty($madeitaly)) :
-		echo '<span class="made"><img src="'.get_template_directory_uri().'/images/made_italy.svg'.'" alt="Made in Italy"></span>';
+		echo '<span class="made"><img src="'.get_template_directory_uri().'/images/made_italy.png'.'" alt="Made in Italy"></span>';
 	endif;
 };
 
@@ -165,3 +182,19 @@ function custom_my_account_menu_items( $items ) {
     return $items;
 }
 add_filter( 'woocommerce_account_menu_items', 'custom_my_account_menu_items' );
+
+
+/*
+** variazioni
+*/
+
+add_filter( 'woocommerce_dropdown_variation_attribute_options_html', 'wc_product_variation_attributes', 10, 2);
+function wc_product_variation_attributes($html, $args) {
+return $html;
+}
+
+
+function e12_remove_product_image_link( $html, $post_id ) {
+    return preg_replace( "!<(a|/a).*?>!", '', $html );
+}
+add_filter( 'woocommerce_single_product_image_thumbnail_html', 'e12_remove_product_image_link', 10, 2 );

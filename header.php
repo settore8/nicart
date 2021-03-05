@@ -73,7 +73,7 @@ exit;
 		<div id="topmenu">
 			<div class="contenitore">
 			<span class="topmessage">Spedizione gratuita per tutti gli ordini sopra i 49€</span>
-			<span class="topcontact"><svg><use xlink:href="#tel" width="24" height="24"/></svg> 055 9172783</span>
+			<span class="topcontact"><svg><use xlink:href="#tel" width="24" height="24"/></svg> 346 0902888</span>
 			<?php if ( is_user_logged_in() ) { ?>
 				<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="" class="user">Account</a>
 			<?php } 

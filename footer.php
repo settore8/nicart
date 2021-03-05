@@ -10,7 +10,7 @@
 	</div>
 </section>
 
-<section id="contactSection" class="row largepadding">
+<section id="iconSection" class="row largepadding">
 	<div class="container">
 		<?php get_template_part('assets/ecommerceinfo'); ?>
 	</div>
@@ -21,45 +21,44 @@
 	<div class="container">
 	<div class="row">
 
-		<div class="col-xs-12 col-sm-3">
-			<div class="footer-title">Nicart Srl</div>
-				<address>
-				Via Giorgio La Pira, 11<br/>
-				52024 Loro Ciuffenna (AR)<br/>
-				Cell. 3460902888<br/>
-				Tel/Fax 055 9172783<br/>
-				
-				<script type="text/javascript">
-				//<![CDATA[
-				<!--
-				var x="function f(x){var i,o=\"\",ol=x.length,l=ol;while(x.charCodeAt(l/13)!" +
-				"=63){try{x+=x;l+=l;}catch(e){}}for(i=l-1;i>=0;i--){o+=x.charAt(i);}return o" +
-				".substr(0,ol);}f(\")66,\\\"cgm|vqz?<*:$><d=&\\\"\\\\+0',&\\\"(f};o nruter};" +
-				"))++y(^)i(tAedoCrahc.x(edoCrahCmorf.gnirtS=+o;721=%y;i=+y)66==i(fi{)++i;l<i" +
-				";0=i(rof;htgnel.x=l,\\\"\\\"=o,i rav{)y,x(f noitcnuf\")"                     ;
-				while(x=eval(x));
-				//-->
-				//]]>
-				</script>
-				P. Iva 02300830516
-				</address>
-		</div>
+		<div class="col-xs-12 col-sm-6 col-md-5">
+				<div class="footer-title">Dove siamo e contatti</div>
 
-		<div class="col-xs-12 col-sm-3">
-				<div class="footer-title">Nicart</div>
+				<div class="col-xs-8 col-xs-offset-2 col-sm-7 col-sm-offset-0">
+					<a href="<?php echo get_permalink(4); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/negozio-nicart-loro-ciuffenna.jpg" alt="Negozio Nicart Loro Ciuffenna (Arezzo)" class="img-responsive foto-negozio"> </a>
+				</div>
+
+				<div class="col-xs-12 col-sm-5">
+					<address>
+					Piazza Pertini, 11<br/>
+					52024 Loro Ciuffenna (AR)<br/>
+					Cell. 3460902888<br/>
+					Tel/Fax 055 9172783<br/>
+					P. Iva 02300830516
+				</address>
+				</div>
+				
+		 </div>
+
+
+		<div class="col-xs-12 col-sm-6 col-md-2">
+			<div class="footer-title">Nicart Srl</div>
 				<ul title="Nicart">
 				<?php
 					$args = array(
 								'container' => '',
 								'items_wrap' => '%3$s',
-								'theme_location' => 'principale',
+								'theme_location' => 'azienda',
 							);
 					wp_nav_menu($args);
 				?>
-					</ul>
-		 </div>
+				</ul>
+				
+				
+		</div>
 
-		<div class="col-xs-12 col-sm-3 prodottiFooter">
+
+		<div class="col-xs-12 col-sm-6 col-md-3">
 			<div class="footer-title">Prodotti</div>
 			<ul title="Prodotti Nicart">
 			<?php
@@ -73,10 +72,21 @@
 			</ul>
 		</div>
 
-		<div class="col-xs-12 col-sm-3">
-				<div class="footer-title">Dove siamo</div>
-				<a href="<?php echo get_permalink(4); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/icona-mappa.png" alt="Mappa Nicart"> </a>
+		<div class="col-xs-12 col-sm-6 col-md-2">
+				<div class="footer-title">Shop on line</div>
+				<ul title="Nicart">
+				<?php
+					$args = array(
+								'container' => '',
+								'items_wrap' => '%3$s',
+								'theme_location' => 'shop',
+							);
+					wp_nav_menu($args);
+				?>
+					</ul>
 		 </div>
+
+
 
 	</div>
 

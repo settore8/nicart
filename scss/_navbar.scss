@@ -5,7 +5,6 @@
     color: $light;
     padding: 0.5rem;
     font-size: 0.8rem;
-
     @include breakpoint(maxmd) {
         padding: 0 0 0.5rem 0;
         .topmessage {
@@ -17,20 +16,17 @@
             margin-bottom: 0.5rem;
         }
     }
-
     .topcontact {
         margin-left: auto;
         display: flex;
         align-items: center;
         font-weight: bold;
         margin-right: 0.5rem;
-
         @include breakpoint(maxmd) {
             margin-right: auto;
             margin-left: 0.5rem;
         }
     }
-
     .user {
         display: flex;
         align-items: center;
@@ -38,7 +34,6 @@
         @include breakpoint(maxmd) {
             margin-left: auto;
         }
-
     }
     .cart {
         display: flex;
@@ -62,12 +57,10 @@
             color: $light;
             font-size: 0.7rem;
         }
-
         svg {
             transform: scale(-1, 1);
         }
     }
-
     svg {
         width: 24px;
         height: 24px;
@@ -77,7 +70,6 @@
             fill: $light;
         }
     }
-  
     a {
         color: $light;
     }
@@ -89,7 +81,6 @@
         flex-wrap: wrap;
         align-items: center;
     }
-    
 }
 
 header {
@@ -211,9 +202,8 @@ header {
                 }
             }
             &.menu-item-has-children {
-
                 @include breakpoint(md) {
-                position: relative;
+                    position: relative;
                     &:hover {
                         background-color: $brand1;
                         a {
@@ -224,7 +214,6 @@ header {
                         }
                     }
                 }
-
                 @include breakpoint(maxmd) {
                     .sub-menu {
                         width: 100%;
@@ -260,7 +249,7 @@ header {
                     border-right: 0px;
                     height: 60px;
                     line-height: 60px;
-                    border-top: 1px solid $info;
+                    border-top: 1px solid $neutro;
                 }
                 color: $brand1;
                 &:hover {
@@ -333,7 +322,6 @@ header {
 #searchform {
     display: none;
     background: $neutro;
-
     &.open {
         display: block;
         padding: 1rem;

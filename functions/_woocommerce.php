@@ -15,6 +15,20 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
 remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
 
 
+
+/**
+ * Disabilita pulsante add to cart
+ */
+//remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart');
+
+
+
+add_filter( 'woocommerce_loop_add_to_cart_link', 'replace_default_button' );
+function replace_default_button(){
+    return '<a href="'.get_the_permalink().'" class="button product_type_variable add_to_cart_button" title="Acquista">Acquista</a>';
+}
+
+
 /**
  * Sposto i prodotti correlati
 */

@@ -4,6 +4,7 @@
        $terms = get_terms( array(
         'taxonomy' => 'product_cat',
         'hide_empty' => false,
+        'parent' => 0
         ));
     ?>
 

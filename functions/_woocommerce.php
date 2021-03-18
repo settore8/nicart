@@ -61,11 +61,14 @@ add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 /**
  * Disabilita gallery zoom
 */
+
 function remove_image_zoom_support() {
     remove_theme_support( 'wc-product-gallery-zoom' );
     remove_theme_support( 'wc-product-gallery-lightbox' );
 }
 add_action( 'wp', 'remove_image_zoom_support', 100 );
+
+
 
 /**
  * Change the placeholder image
@@ -148,7 +151,7 @@ function prodotto_new() {
  * Aggiungo made in italy nella pagina del prodotto
 */
 add_action( 'woocommerce_after_shop_loop_item', 'made_in_italy', 9 );
-add_action( 'woocommerce_product_thumbnails', 'made_in_italy', 1 );
+add_action( 'woocommerce_product_thumbnails', 'made_in_italy', 2 );
 function made_in_italy() {
 	global $product;
 	$madeitaly = get_field('made_italy', $product->get_id());
@@ -160,7 +163,8 @@ function made_in_italy() {
 /**
  * Aggiungo made in USA nella pagina del prodotto
 */
-add_action( 'woocommerce_product_thumbnails', 'made_in_usa', 1 );
+add_action( 'woocommerce_after_shop_loop_item', 'made_in_usa', 9 );
+add_action( 'woocommerce_product_thumbnails', 'made_in_usa', 2 );
 function made_in_usa() {
 	global $product;
 	$madeUsa = get_field('made_usa', $product->get_id());
@@ -172,7 +176,8 @@ function made_in_usa() {
 /**
  * Aggiungo made in Japan nella pagina del prodotto
 */
-add_action( 'woocommerce_product_thumbnails', 'made_in_japan', 1 );
+add_action( 'woocommerce_after_shop_loop_item', 'made_in_japan', 9 );
+add_action( 'woocommerce_product_thumbnails', 'made_in_japan', 2 );
 function made_in_japan() {
 	global $product;
 	$madeUsa = get_field('made_japan', $product->get_id());
@@ -184,7 +189,8 @@ function made_in_japan() {
 /**
  * Aggiungo made in Germany nella pagina del prodotto
 */
-add_action( 'woocommerce_product_thumbnails', 'made_in_germany', 1 );
+add_action( 'woocommerce_after_shop_loop_item', 'made_in_germany', 9 );
+add_action( 'woocommerce_product_thumbnails', 'made_in_germany', 2 );
 function made_in_germany() {
 	global $product;
 	$madeUsa = get_field('made_germany', $product->get_id());
@@ -245,12 +251,14 @@ function bt_dropdown_choice( $args ){
 	return $args;    
 }
 
-
+/*
+** Rimuove link nella galleruia
 function e12_remove_product_image_link( $html, $post_id ) {
     return preg_replace( "!<(a|/a).*?>!", '', $html );
 }
 add_filter( 'woocommerce_single_product_image_thumbnail_html', 'e12_remove_product_image_link', 10, 2 );
 
+*/
 
 /*
 ** Registrazione

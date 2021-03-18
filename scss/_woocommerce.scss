@@ -308,6 +308,10 @@ body.single-product {
             width: 50%;
             .woocommerce-product-gallery__wrapper {
                 border: 1px solid $neutro;
+                .woocommerce-product-gallery__image {
+                    background-color: lime;
+                    display: inline-block;
+                }
             }
             .wp-post-image {
                 width: 100%;

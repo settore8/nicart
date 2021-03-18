@@ -10,10 +10,22 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wr
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 
 /**
+ * Rimuovo i prodotti cross sells
+ */
+remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+
+
+/**
  * Sposto i prodotti correlati
 */
 remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
-add_action('woocommerce_after_single_product', 'woocommerce_output_related_products', 30);
+//add_action('woocommerce_after_single_product', 'woocommerce_output_related_products', 30);
+
+
+/* cambio titolo prodotti correlati */
+add_filter('woocommerce_product_related_products_heading',function(){
+	return 'Ti potrebbe interessare';
+});
 
 /**
  * Sposto i meta nella pagina singola del prodotto
@@ -61,6 +73,7 @@ function video_prodotto() {
 	$video = get_field('video', $product->get_id());
 
 	if( $video ): 
+		echo '<div id="video">';
 		foreach( $video as $post ) {
 				setup_postdata( $post);
 				echo '<div class="video_prodotto">';
@@ -72,8 +85,24 @@ function video_prodotto() {
 				echo '</div>';
 				wp_reset_postdata();
 			} 
+		echo '</div>';
 	endif;
 }
+
+
+/**
+ * Aggiungo il pulsante video dopo il titolo
+*/
+add_action( 'woocommerce_single_product_summary', 'custom_action_after_single_product_title', 6 );
+function custom_action_after_single_product_title() { 
+    global $product; 
+	$video = get_field('video', $product->get_id());
+	if( $video ): 
+		echo '<a href="#video" class="btn btn-video">Guarda il video!</a>';
+	endif;
+   
+}
+
 
 /**
  * Aggiungo la scheda pdf nella pagina del prodotto
@@ -164,11 +193,6 @@ function filter_woocommerce_placeholder_img_src( $image_url )
 
 
 /**
- * Aggiungo made in italy nella pagina del prodotto
-*/
-
-
-/**
  * Template pagina Account
 */
 
@@ -191,6 +215,20 @@ add_filter( 'woocommerce_account_menu_items', 'custom_my_account_menu_items' );
 add_filter( 'woocommerce_dropdown_variation_attribute_options_html', 'wc_product_variation_attributes', 10, 2);
 function wc_product_variation_attributes($html, $args) {
 return $html;
+}
+
+/*
+** cambio label variazioni
+*/
+
+add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'bt_dropdown_choice' );
+
+function bt_dropdown_choice( $args ){
+	// product_cat 26 è l'ID della categoria fili e decespugliatori
+	if( is_product() && has_term(26, 'product_cat') ) {
+			$args['show_option_none'] = "Scegli sezione e diametro"; // Change your text here
+	}  
+	return $args;    
 }
 
 

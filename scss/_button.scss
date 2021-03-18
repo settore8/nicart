@@ -1,4 +1,3 @@
-@import "_settings";
 .btn {
     i {
         font-size: 1.2em;
@@ -28,7 +27,7 @@
         }
     }
     .btn-warning {
-        background-color: lighten($brand1, 3%);
+        background-color: lighten($brand1, 3%) !important;
         border: 0px;
         &:hover {
             background-color: lighten($brand1, 5%);

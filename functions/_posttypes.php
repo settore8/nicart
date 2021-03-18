@@ -1,44 +1,5 @@
 <?php
 
-add_action( 'init', 'codex_prodotto_init' );
-
-function codex_prodotto_init() {
-	$labels = array(
-		'name'               => _x( 'Prodotti', 'post type general name', 'your-plugin-textdomain' ),
-		'singular_name'      => _x( 'Prodotto', 'post type singular name', 'your-plugin-textdomain' ),
-		'menu_name'          => _x( 'Prodotti', 'admin menu', 'your-plugin-textdomain' ),
-		'name_admin_bar'     => _x( 'Prodotti', 'add new on admin bar', 'your-plugin-textdomain' ),
-		'add_new'            => _x( 'Aggiungi prodotto', 'privati', 'your-plugin-textdomain' ),
-		'add_new_item'       => __( 'Aggiungi nuova prodotto', 'your-plugin-textdomain' ),
-		'new_item'           => __( 'Nuova prodotto', 'your-plugin-textdomain' ),
-		'edit_item'          => __( 'Modifica prodotto', 'your-plugin-textdomain' ),
-		'view_item'          => __( 'Vedi pi i prodotti', 'your-plugin-textdomain' ),
-		'search_items'       => __( 'Cerca prodotti', 'your-plugin-textdomain' ),
-		'parent_item_colon'  => __( 'Parent prodotto:', 'your-plugin-textdomain' ),
-		'not_found'          => __( 'Nessuna prodotto troavta.', 'your-plugin-textdomain' ),
-		'not_found_in_trash' => __( 'Nessuna prodotto trovata nel cestino.', 'your-plugin-textdomain' )
-	);
-
-	$args = array(
-		'labels'             => $labels,
-    'description'        => __( 'Description.', 'your-plugin-textdomain' ),
-		'public'             => true,
-		'publicly_queryable' => true,
-		'show_ui'            => true,
-		'show_in_menu'       => true,
-		'query_var'          => true,
-		'rewrite' => array(
-	    'slug' => 'prodotti/%cat%',
-	    'with_front' => true ),
-   		'has_archive'        => false,
-		'capability_type'    => 'post',
-		'hierarchical'       => false,
-		'supports'           => array( 'title', 'editor', 'thumbnail', 'page-attributes')
-	);
-
-	register_post_type( 'prodotto', $args );
-}
-
 add_action( 'init', 'codex_video_init' );
 
 function codex_video_init() {

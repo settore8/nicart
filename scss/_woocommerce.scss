@@ -309,7 +309,6 @@ body.single-product {
             .woocommerce-product-gallery__wrapper {
                 border: 1px solid $neutro;
                 .woocommerce-product-gallery__image {
-                    background-color: lime;
                     display: inline-block;
                 }
             }
@@ -566,6 +565,40 @@ body.single-product {
         }
         .input-text {
             width: 100%;
+        }
+    }
+}
+
+.page-numbers {
+    margin: 1rem 0;
+    padding: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        a.page-numbers {
+            margin: 0 0.25rem;
+            line-height: 30px;
+            width: 30px;
+            height: 30px;
+            background-color: $brand1;
+            color: $light;
+            border-radius: 50%;
+            &:hover {
+                background-color: lighten($brand1, 8%) !important;
+            }
+            &.next,
+            &.prev {
+                background: transparent;
+                color: $dark;
+            }
+        }
+        .current {
+            margin: 0 0.25rem;
+            line-height: 30px;
         }
     }
 }

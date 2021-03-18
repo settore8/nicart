@@ -156,7 +156,7 @@ function made_in_italy() {
 	global $product;
 	$madeitaly = get_field('made_italy', $product->get_id());
 	if(!empty($madeitaly)) :
-		echo '<span class="made"><img src="'.get_template_directory_uri().'/images/made_italy.png'.'" alt="Made in Italy"></span>';
+		echo '<span class="made"><img src="'.get_template_directory_uri().'/images/made_italy.svg'.'" alt="Made in Italy"></span>';
 	endif;
 };
 

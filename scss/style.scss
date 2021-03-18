@@ -376,7 +376,9 @@ small {
     position: absolute;
     left: 1em;
     z-index: 2;
-    top: -10px;
+    top: -8px;
+    width: 50px;
+    height: 80px;
 }
 
 @import "_animations";

@@ -77,14 +77,28 @@ ul.products {
             background-color: $brand1;
             color: $light;
             font-weight: bold;
-            display: block;
+            display: flex;
+            align-items: center;
             text-align: center;
             margin-top: auto !important;
+            cursor: pointer;
             &:hover {
                 background-color: lighten($brand1, 12%);
                 text-decoration: none;
                 transform: scale(1.05);
                 transition: all 0.2s linear;
+            }
+            span {
+                margin-left: auto;
+            }
+            svg {
+                width: 37px;
+                height: 24px;
+                margin-right: auto;
+                margin-left: 10px;
+                use {
+                    fill: $light;
+                }
             }
         }
     }
@@ -386,6 +400,23 @@ body.single-product {
             float: right;
         }
     }
+}
+
+.free_shipping_label {
+    font-weight: bold;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin: 0.25rem auto;
+    background-color: $success;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    color: $dark;
+}
+
+.free_shipping_text {
+    font-weight: bold;
+    display: block;
+    color: $success;
 }
 
 .screen-reader-text {

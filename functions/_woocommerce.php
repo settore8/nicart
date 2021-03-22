@@ -25,7 +25,7 @@ remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' 
 
 add_filter( 'woocommerce_loop_add_to_cart_link', 'replace_default_button' );
 function replace_default_button(){
-    return '<a href="'.get_the_permalink().'" class="button product_type_variable add_to_cart_button" title="Acquista">Acquista</a>';
+    return '<a href="'.get_the_permalink().'" class="button product_type_variable add_to_cart_button" title="Acquista"><span>Vedi</span> <svg><use xlink:href="#arrowcart" width="37" height="24"/></svg></a>';
 }
 
 
@@ -94,10 +94,13 @@ function video_prodotto() {
 		foreach( $video as $post ) {
 				setup_postdata( $post);
 				echo '<div class="video_prodotto">';
-				$vid = get_field('video_youtube', $post->ID);
-				//echo '<h2>'.get_the_title().'</h2>';
+				//$vid = get_field('video_youtube', $post->ID);
+				$youtube_video_url = get_field('video_youtube',  $post->ID, false, false);
+				$codice = str_replace('https://youtu.be/', '', $youtube_video_url);
+
 				echo '<div class="embed-container">';
-				echo $vid;
+				echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/'.$codice.'?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+				//echo $vid;
 				echo '</div>';
 				echo '</div>';
 				wp_reset_postdata();
@@ -119,6 +122,31 @@ function custom_action_after_single_product_title() {
 	endif;
    
 }
+
+
+/**
+ * Aggiungo messaggio spedizione gratuita su prodotti sopra o uguale a 35€
+*/
+add_action( 'woocommerce_after_shop_loop_item', 'label_spedizione_gratuita', 9 );
+function label_spedizione_gratuita() { 
+    global $product; 
+
+	if( $product->get_price() >= 35.00 ): 
+		echo '<span class="free_shipping_label">Spedizione gratuita!</span>';
+	endif;
+   
+}
+
+add_action( 'woocommerce_single_product_summary', 'messaggio_spedizione_gratuita', 10 );
+function messaggio_spedizione_gratuita() { 
+    global $product; 
+
+	if( $product->get_price() >= 35.00 ): 
+		echo '<span class="free_shipping_text">Questo prodotto beneficia della spedizione gratuita!</span>';
+	endif;
+   
+}
+
 
 
 /**
@@ -193,7 +221,7 @@ add_action( 'woocommerce_after_shop_loop_item', 'made_in_germany', 9 );
 add_action( 'woocommerce_product_thumbnails', 'made_in_germany', 2 );
 function made_in_germany() {
 	global $product;
-	$madeUsa = get_field('made_germany', $product->get_id());
+	$madeUsa = get_field('made_in_germany', $product->get_id());
 	if(!empty($madeUsa)) :
 		echo '<span class="made"><img src="'.get_template_directory_uri().'/images/made_germany.svg'.'" alt="Made in Germany"></span>';
 	endif;

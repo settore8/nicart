@@ -77,7 +77,7 @@ ul.products {
             background-color: $brand1;
             color: $light;
             font-weight: bold;
-            display: flex;
+            display: flex !important;
             align-items: center;
             text-align: center;
             margin-top: auto !important;

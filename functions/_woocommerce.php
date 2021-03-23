@@ -319,3 +319,14 @@ if ( ! is_checkout() ) {
 }
 return $errors;
 }
+
+
+/* Moodifica dicitura disponibile in N giorni */
+function so_42345940_backorder_message( $text, $product ){
+    //if ( $product->managing_stock() && $product->is_on_backorder( 1 ) ) {
+	if ( $product->is_on_backorder( 1 ) ) {
+        $text = 'Prodotto disponibile in 7-10 giorni';
+    }
+    return $text;
+}
+add_filter( 'woocommerce_get_availability_text', 'so_42345940_backorder_message', 10, 2 );

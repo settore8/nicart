@@ -330,3 +330,56 @@ function so_42345940_backorder_message( $text, $product ){
     return $text;
 }
 add_filter( 'woocommerce_get_availability_text', 'so_42345940_backorder_message', 10, 2 );
+
+
+
+add_filter('woocommerce_checkout_fields', 'unrequire_address_2_checkout_fields' );
+function unrequire_address_2_checkout_fields( $fields ) {
+	unset($fields['billing']['billing_address_2']);
+	return $fields;
+}
+
+
+// Add a custom fee (fixed or based cart subtotal percentage) by payment
+add_action( 'woocommerce_cart_calculate_fees', 'custom_handling_fee' );
+function custom_handling_fee ( $cart ) {
+    if ( is_admin() && ! defined( 'DOING_AJAX' ) )
+        return;
+
+    $chosen_payment_id = WC()->session->get('chosen_payment_method');
+
+    if ( empty( $chosen_payment_id ) )
+        return;
+
+    $subtotal = $cart->subtotal;
+
+    // SETTINGS: Here set in the array the (payment Id) / (fee cost) pairs
+    $targeted_payment_ids = array(
+        'cod' => 5, // Fixed fee
+        //'paypal' => 5 * $subtotal / 100, // Percentage fee
+    );
+
+    // Loop through defined payment Ids array
+    foreach ( $targeted_payment_ids as $payment_id => $fee_cost ) {
+        if ( $chosen_payment_id === $payment_id ) {
+            $cart->add_fee( __('Pagamento alla consegna ', 'woocommerce'), $fee_cost, true );
+        }
+    }
+}
+
+
+// jQuery - Update checkout on payment method change
+add_action( 'wp_footer', 'custom_checkout_jquery_script' );
+function custom_checkout_jquery_script() {
+    if ( is_checkout() && ! is_wc_endpoint_url() ) :
+    ?>
+    <script type="text/javascript">
+    jQuery( function($){
+        $('form.checkout').on('change', 'input[name="payment_method"]', function(){
+            $(document.body).trigger('update_checkout');
+        });
+    });
+    </script>
+    <?php
+    endif;
+}

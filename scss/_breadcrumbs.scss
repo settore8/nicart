@@ -18,8 +18,12 @@
     @include breakpoint(xs) {
         height: 30px;
         line-height: 30px;
+        white-space: nowrap;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
         .breadcrumb_last {
             // display: none;
         }
     }
+
 }

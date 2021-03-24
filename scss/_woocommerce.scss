@@ -188,12 +188,8 @@ body.single-product {
                 p {
                     margin-top: 15px;
                 }
-
-
-                
                 .cart {
                     padding: 15px 0px;
-
                     .quantity {
                         .qty {
                             font-size: 1.5rem;
@@ -202,7 +198,6 @@ body.single-product {
                             background-color: darken($light, 8%) !important;
                         }
                     }
-
                     .quantity {
                         margin: 0px;
                         padding: 0px;
@@ -266,7 +261,7 @@ body.single-product {
         .button {
             background-color: $light;
             color: $brand1;
-            padding:0.25rem  0.5rem;
+            padding: 0.25rem 0.5rem;
             border-radius: 4px;
             &:hover {
                 background-color: lighten($light, 8%);
@@ -416,21 +411,17 @@ body.single-product {
             float: right;
         }
     }
-
     @include breakpoint(xs) {
         .label {
             text-align: center;
             padding: 0;
-
             label {
                 padding: 0.5rem;
                 align-self: center;
             }
         }
-
         .value {
             padding: 0;
-
             select {
                 margin: 0.5rem;
             }
@@ -458,8 +449,6 @@ body.single-product {
 .screen-reader-text {
     display: none;
 }
-
-
 
 .single_add_to_cart_button {
     border: 0px;
@@ -508,7 +497,6 @@ body.single-product {
     border: 1px solid $neutro;
     .shop_table {
         width: 100%;
-
         thead {
             .product-thumbnail,
             .product-price,
@@ -517,7 +505,6 @@ body.single-product {
                 text-align: center;
             }
         }
-
     }
     .woocommerce-cart-form__cart-item {
         .product-remove {
@@ -548,16 +535,13 @@ body.single-product {
         background-color: $light;
         border-top: 1px solid $neutro;
         padding: 1rem;
-
         .coupon {
-
             .button {
                 background-color: $light;
                 border: 1px solid $dark;
                 border-radius: 5px;
             }
         }
-
         >.button {
             float: right;
             background-color: $brand2;
@@ -570,7 +554,6 @@ body.single-product {
         }
     }
 }
-
 
 .cart-collaterals {
     display: flex;
@@ -606,7 +589,6 @@ body.single-product {
     }
 }
 
-
 .checkout-button {
     font-size: 1.5rem;
     padding: 0.5rem 1rem;
@@ -618,7 +600,6 @@ body.single-product {
     }
 }
 
-
 .woocommerce-form-login-toggle {
     text-align: center;
     padding: 0.5rem;
@@ -629,18 +610,17 @@ body.single-product {
     padding: 0.5rem;
 }
 
-.woocommerce-checkout {
+.woocommerce-checkout .woocommerce-checkout {
     display: flex;
     flex-wrap: wrap;
-
     #order_review_heading {
         display: none;
     }
-    #customer_details, #order_review {
+    #customer_details,
+    #order_review {
         flex: 1;
         padding: 1rem;
     }
-
 }
 
 #customer_details {
@@ -726,60 +706,47 @@ body.single-product {
 }
 
 .woocommerce-notices-wrapper {
-    
     .woocommerce-message {
         padding: 0.5rem;
     }
 }
 
-
-
-
-#shipping_method, #payment {
+#shipping_method,
+#payment {
     li {
-
-       &:before {
-           display: none;
-       }
-
-       .shipping_method {
-           display: none;
-           
-           &+ {
-               
-               label {
-                display: block;
-                color: $brand2;
-                border: 1px solid $neutro;
-                background: $neutro;
-                padding: 0.5rem;
-                border-radius: 2rem;
-                opacity: 0.6;
-                &:hover {
-                    cursor: pointer;
-                }
-
-               }
-           }
-
-           &:checked {
-            
+        &:before {
+            display: none;
+        }
+        .shipping_method {
+            display: none;
             &+ {
-                
                 label {
-                    opacity: 1;
-                    color: $light;
-                    background: $brand2;
-                    border-color: $brand2;
+                    display: block;
+                    color: $brand2;
+                    border: 1px solid $neutro;
+                    background: $neutro;
+                    padding: 0.5rem;
+                    border-radius: 2rem;
+                    opacity: 0.6;
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
             }
-            
-         }
-       }
-
-       .wc_payment_method {
-           background: $neutro;
-       }
+            &:checked {
+                &+ {
+                    label {
+                        opacity: 1;
+                        color: $light;
+                        background: $brand2;
+                        border-color: $brand2;
+                    }
+                }
+            }
+        }
+        .wc_payment_method {
+            background: $neutro;
+        }
     }
 }
 
@@ -790,15 +757,12 @@ body.single-product {
 }
 
 #order_review {
-
     tbody {
         border-bottom: 1px solid $neutro;
         .cart_item {
-
             .product-name {
                 padding: 0.5rem;
             }
-    
             .product-total {
                 padding: 0.5rem;
                 text-align: right;
@@ -806,30 +770,27 @@ body.single-product {
         }
     }
     tfoot {
-        .cart-subtotal, .fee, .shipping, .order-total {
+        .cart-subtotal,
+        .fee,
+        .shipping,
+        .order-total {
             th {
                 padding: 0.5rem;
             }
-    
             td {
                 padding: 0.5rem;
                 text-align: right;
             }
         }
-        
         .order-total {
             td {
                 font-size: 1.5rem;
             }
         }
-
         #shipping_method {
             padding: 0;
         }
     }
-    
-
-
     .place-order {
         padding: 1rem;
         text-align: right;

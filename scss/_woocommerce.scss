@@ -1,6 +1,7 @@
 body.woocommerce-page {
     h1 {
         text-align: center;
+        font-size: 2rem;
     }
     .page-description {
         text-align: center;
@@ -38,12 +39,6 @@ ul.products {
             color: $brand2;
             h3 {
                 margin-bottom: 10px;
-            }
-            span.onsale {
-                right: 5px;
-                top: 5px;
-                background-color: $error;
-                @include border-radius(0);
             }
             .price {
                 .amount {
@@ -144,12 +139,22 @@ body.single-product {
             margin-top: 20px;
         }
         .product {
-            margin-top: 30px;
+            margin-top: 1rem;
+            @include breakpoint(sm) {
+                margin-top: 2rem;
+            }
             .onsale {
-                background-color: $error;
+                position: absolute;
+                background-color: $brand1;
+                color: $light;
                 @include border-radius(0);
-                left: 10px;
-                top: 10px;
+                left: 0;
+                top: 10%;
+                height: 40px;
+                line-height: 40px;
+                padding: 0 1rem;
+                border-radius: 3px;
+                text-align: center;
             }
             .entry-summary {
                 padding-top: 10px;
@@ -226,6 +231,11 @@ body.single-product {
                         font-size: 20px;
                         margin: 0px;
                         padding: 0px 8px;
+                        &.disabled {
+                            background-color: $neutro !important;
+                            cursor: not-allowed;
+                            color: darken($neutro, 20%);
+                        }
                     }
                 }
             }
@@ -560,22 +570,30 @@ body.single-product {
     flex-wrap: wrap;
     margin-top: 1rem;
     .cart_totals {
-        background-color: $neutro;
-        width: 50%;
+        border: 1px solid $neutro;
         padding: 1rem;
         margin-left: auto;
+        width: 100%;
         h2 {
-            margin: 0;
+            margin: 0 0 1rem 0;
         }
         .shop_table {
+            .cart-subtotal,
+            .woocommerce-shipping-totals,
+            .order-total {
+                border-bottom: 1px solid $neutro;
+            }
             width: 100%;
             th {
-                text-align: right;
+                text-align: left;
             }
             td {
                 text-align: right;
                 padding: 0.5rem;
             }
+        }
+        @include breakpoint(sm) {
+            width: 50%;
         }
     }
     .order-total {
@@ -713,6 +731,8 @@ body.single-product {
 
 #shipping_method,
 #payment {
+    margin: 0 !important;
+    padding: 0 !important;
     li {
         &:before {
             display: none;
@@ -721,13 +741,12 @@ body.single-product {
             display: none;
             &+ {
                 label {
-                    display: block;
+                    display: inline-block;
                     color: $brand2;
-                    border: 1px solid $neutro;
-                    background: $neutro;
+                    border: 1px solid transparent;
                     padding: 0.5rem;
-                    border-radius: 2rem;
-                    opacity: 0.6;
+                    border-radius: 3px;
+                    opacity: 0.4;
                     &:hover {
                         cursor: pointer;
                     }
@@ -737,9 +756,8 @@ body.single-product {
                 &+ {
                     label {
                         opacity: 1;
-                        color: $light;
-                        background: $brand2;
-                        border-color: $brand2;
+                        color: $success;
+                        border-color: $success;
                     }
                 }
             }
@@ -800,4 +818,44 @@ body.single-product {
             border-color: $brand1;
         }
     }
+}
+
+.woocommerce-variation-availability {
+    padding: 0.25rem 0;
+    margin-bottom: 1rem;
+    .available-on-backorder {
+        font-weight: bold;
+        color: $brand3;
+    }
+    .out-of-stock {
+        font-weight: bold;
+        color: $brand1;
+    }
+    .in-stock {
+        font-weight: bold;
+        color: $success;
+    }
+}
+
+span.onsale {
+    position: absolute;
+    left: 0;
+    width: auto;
+    top: 12%;
+    padding: 0 1rem;
+    color: $light;
+    text-align: center;
+    height: 24px;
+    font-size: 0.8rem;
+    line-height: 24px;
+    background-color: $brand1;
+    @include border-radius(3);
+    @include breakpoint(xs) {
+        top: 10%;
+        padding: 0 0.5rem;
+    }
+}
+
+.woocommerce-shipping-destination {
+    display: none;
 }

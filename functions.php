@@ -1,6 +1,6 @@
 <?php
 
-define('NICART_SPEDIZIONE_GRATUITA', 35); 
+define('NICART_SPEDIZIONE_GRATUITA', 30); 
 define('NICART_CONTRASSEGNO', 5); 
 
 $manutenzione = get_field('manutenzione', 'option');

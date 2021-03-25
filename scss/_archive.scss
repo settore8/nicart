@@ -4,8 +4,13 @@
     overflow: hidden;
     position: relative;
     background-color: $brand1;
+    @include breakpoint(xs) {
+        min-height: 180px;
+        max-height: 240px;
+    }
     picture {
         position: absolute;
+        width: 100%;
         img {
             width: 100% !important;
         }
@@ -14,21 +19,24 @@
         text-align: center;
         position: absolute;
         width: 100%;
-        h1 {
+        .header-title {
             color: white;
-            @include text-shadow(3px, $brand2);
+            font-size: 2rem;
+            line-height: normal;
+            font-weight: bold;
+            @include text-shadow(0.15rem, $brand2);
         }
         p {
             margin: 10px auto;
             width: 100%;
             max-width: 1120px;
             background-color: rgba(250, 250, 250, 0.8);
-            padding: 1em;
-            font-size: 0.75em;
+            padding: 1rem;
+            font-size: 0.75rem;
         }
         @include breakpoint(sm) {
-            h1 {
-                font-size: 3.2em;
+            .header-title {
+                font-size: 3.2rem;
                 &:before {
                     content: '';
                     display: block;
@@ -39,7 +47,7 @@
                 }
             }
             p {
-                font-size: 1em;
+                font-size: 1rem;
             }
         }
         #breadcrumbs {

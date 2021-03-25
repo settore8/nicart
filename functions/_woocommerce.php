@@ -319,11 +319,28 @@ if ( ! is_checkout() ) {
 return $errors;
 }
 
+/* Moodifica dicitura prodotti esauriti */
+function so_42345940_esaurito_message( $text, $product ){
+	if ( !$product->is_in_stock()) {
+        $text = 'Prodotto al momento non disponibile';
+    }
+    return $text;
+}
+add_filter( 'woocommerce_get_availability_text', 'so_42345940_esaurito_message', 10, 2 );
+
+
+/* Moodifica dicitura prodotti disponibili */
+function so_42345940_disponibile_message( $text, $product ){
+	if ( $product->is_in_stock()) {
+        $text = 'Prodotto disponibile';
+    }
+    return $text;
+}
+add_filter( 'woocommerce_get_availability_text', 'so_42345940_disponibile_message', 10, 2 );
 
 /* Moodifica dicitura disponibile in N giorni */
 function so_42345940_backorder_message( $text, $product ){
-    //if ( $product->managing_stock() && $product->is_on_backorder( 1 ) ) {
-	if ( $product->is_on_backorder( 1 ) ) {
+	if ( $product->is_in_stock() && $product->is_on_backorder(1)) {
         $text = 'Prodotto disponibile in 7-10 giorni';
     }
     return $text;
@@ -383,3 +400,48 @@ function custom_checkout_jquery_script() {
     <?php
     endif;
 }
+
+
+/*
+** Nascondi altre spedizioni se disponbile la spedizione gratuita
+*/
+
+
+/**
+ * Hide shipping rates when free shipping is available, but keep "Local pickup" 
+ * Updated to support WooCommerce 2.6 Shipping Zones
+ */
+
+function hide_shipping_when_free_is_available( $rates, $package ) {
+	$new_rates = array();
+	foreach ( $rates as $rate_id => $rate ) {
+		// Only modify rates if free_shipping is present.
+		if ( 'free_shipping' === $rate->method_id ) {
+			$new_rates[ $rate_id ] = $rate;
+			break;
+		}
+	}
+
+	if ( ! empty( $new_rates ) ) {
+		//Save local pickup if it's present.
+		foreach ( $rates as $rate_id => $rate ) {
+			if ('local_pickup' === $rate->method_id ) {
+				$new_rates[ $rate_id ] = $rate;
+				break;
+			}
+		}
+		return $new_rates;
+	}
+
+	return $rates;
+}
+
+add_filter( 'woocommerce_package_rates', 'hide_shipping_when_free_is_available', 10, 2 );
+
+
+
+function shipping_estimate_html()
+{
+    return null;
+}
+add_filter('woocommerce_shipping_estimate_html', 'shipping_estimate_html');

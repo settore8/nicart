@@ -28,6 +28,9 @@ body {
     strong {
         font-weight: 700 !important;
     }
+    @include breakpoint(xs) {
+        font-size: $font-size-default - 2px;
+    }
 }
 
 #site {
@@ -337,7 +340,6 @@ small {
 }
 
 .new_product {
-    background-color: $warning;
     color: $dark;
     @include border-radius(50%);
     width: 70px;
@@ -351,7 +353,16 @@ small {
     top: -25px;
     z-index: 9;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.8rem;
+    @include breakpoint(xs) {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+}
+
+.new_product {
+    background-color: $warning;
 }
 
 .banner-container {
@@ -374,11 +385,23 @@ small {
 
 .made {
     position: absolute;
-    left: 1em;
+    left: 1rem;
     z-index: 2;
     top: -8px;
     width: 50px;
     height: 80px;
+    img {
+        width: 100%;
+        height: auto;
+    }
+    &:not(.single-product main &) {
+        @include breakpoint(xs) {
+            left: 0.5rem;
+            top: -5px;
+            width: 30px;
+            height: 48px;
+        }
+    }
 }
 
 @import "_animations";

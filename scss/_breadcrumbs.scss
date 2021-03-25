@@ -8,7 +8,6 @@
     text-align: center;
     margin-bottom: 10px;
     >* {
-        font-size: $font-size-small;
         font-weight: normal;
     }
     a {
@@ -16,14 +15,18 @@
         font-weight: bold;
     }
     @include breakpoint(xs) {
+        display: none;
+        /*
+        padding: 0;
         height: 30px;
         line-height: 30px;
         white-space: nowrap;
-        overflow-y: scroll;
+        overflow-x: hidden;
+        overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         .breadcrumb_last {
-            // display: none;
+            display: none;
         }
+        */
     }
-
 }

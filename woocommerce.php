@@ -35,7 +35,7 @@
             <?php if ( function_exists('yoast_breadcrumb') ) {
                     yoast_breadcrumb('<p id="breadcrumbs" class="row">','</p>');
             } ?>
-            <h1><?php echo $title; ?></h1>
+            <div class="header-title"><?php echo $title; ?></div>
             <?php if ( have_posts() ) { 
                 if(!empty($description)) :
                 // mostra la descrizione sotto al titolo solo se non sono presenti articoli.

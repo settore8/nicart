@@ -4,6 +4,8 @@
     .container {
         @include breakpoint(xs) {
             padding-top: 0px;
+            padding-right: 5px;
+            padding-left: 5px;
         }
     }
     article {
@@ -126,25 +128,25 @@
             }
         }
         h1 {
-            font-size: 2.6em;
+            font-size: 2.6rem;
             color: $brand1;
             .page & {
                 border-bottom: 1px dotted $brand3;
             }
         }
         .wp-post-image {
-            margin-top: 1em;
+            margin-top: 1rem;
         }
         h2 {
-            font-size: 1.4em;
-            margin-top: 2em;
+            font-size: 1.4rem;
+            margin-top: 2rem;
         }
         hr {
             clear: both;
             margin: 15px 0px;
         }
         .shortcode_box-right {
-            font-size: 2em;
+            font-size: 2rem;
             margin: 0px 0px 15px 15px;
             max-width: 300px;
             float: right;
@@ -159,7 +161,7 @@
             }
         }
         .shortcode_box-left {
-            font-size: 2em;
+            font-size: 2rem;
             margin: 0px 15px 15px 0px;
             max-width: 300px;
             float: left;
@@ -184,20 +186,20 @@
             font-weight: bold;
             background-color: lighten($brand3, 15%);
             color: $brand2;
-            font-size: 1em;
+            font-size: 1rem;
         }
         .shortcode_box-highlight {
             background-color: lighten($brand3, 15%);
             padding: 10px;
             h2 {
-                font-size: 1.3em;
+                font-size: 1.3rem;
                 margin: 0px;
                 &:after {
                     display: none;
                 }
             }
             h3 {
-                font-size: 1em;
+                font-size: 1rem;
                 color: $brand1;
                 margin-bottom: 0px;
                 &:after {
@@ -205,7 +207,7 @@
                 }
             }
             ul {
-                font-size: 0.85em;
+                font-size: 0.85rem;
                 margin: 3px 0px;
                 li {
                     margin-bottom: 0px;
@@ -214,14 +216,14 @@
         } // shortcode_box-highlight
         blockquote {
             margin: 30px 70px 30px 30px;
-            line-height: 1.7em;
+            line-height: 1.7rem;
             color: $brand3;
-            font-size: 1em;
+            font-size: 1rem;
             border-left: 0px;
             text-align: center;
             &:before {
                 content: '“';
-                font-size: 6em;
+                font-size: 6rem;
                 float: left;
                 position: relative;
                 top: 20px;
@@ -236,7 +238,7 @@
                 margin: 20px 0px 30px 0px;
                 &:before,
                 &:after {
-                    font-size: 4em;
+                    font-size: 4rem;
                 }
             }
         }
@@ -250,7 +252,7 @@
                     content: "\e801";
                     font-family: 'custom';
                     color: $brand2;
-                    font-size: 1.2em;
+                    font-size: 1.2rem;
                     margin-right: 5px;
                 }
                 ul {
@@ -281,7 +283,7 @@
                     content: counter(section);
                     color: lighten($brand1, 10%);
                     font-weight: bold;
-                    font-size: 1.4em;
+                    font-size: 1.4rem;
                     margin-right: 5px;
                 }
             }
@@ -299,11 +301,11 @@
         }
         .alignleft {
             float: left;
-            margin: 0.5em 0 0.5em 1em;
+            margin: 0.5rem 0 0.5rem 1rem;
         }
         .alignright {
             float: right;
-            margin: 0.5em 1em 0.5em 0;
+            margin: 0.5rem 1rem 0.5rem 0;
         }
         .aligncenter {
             display: block;
@@ -330,7 +332,7 @@
     margin: 0px 0px 20px 0px !important;
     padding: 20px;
     h2 {
-        font-size: 1.3em;
+        font-size: 1.3rem;
         text-decoration: uppercase;
         padding-bottom: 4px;
         margin-bottom: 10px;
@@ -353,7 +355,7 @@
         }
         h4 {
             min-height: 60px;
-            font-size: 1em;
+            font-size: 1rem;
             text-align: center;
             padding: 2px 58px;
             font-weight: normal;
@@ -377,14 +379,14 @@
             color: $brand2;
             font-weight: normal;
             text-align: left;
-            font-size: 1.2em;
+            font-size: 1.2rem;
             margin: 5px 0px;
             @include breakpoint(xs) {
                 text-align: center;
                 margin-left: -8%;
             }
             i {
-                font-size: 2.6em;
+                font-size: 2.6rem;
             }
         }
         .shortdesc {
@@ -407,7 +409,7 @@
 
 .single-prodotto {
     .price {
-        font-size: 3em;
+        font-size: 3rem;
         font-weight: bold;
         display: inline-block;
         margin-right: 20px;
@@ -446,7 +448,7 @@
         text-align: center;
         color: white !important;
         font-weight: 300 !important;
-        font-size: 2em;
+        font-size: 2rem;
         margin: 20px 0px;
     }
 }
@@ -484,23 +486,23 @@
             @include border-radius(0 0 0.25em 0.25em);
             height: 80px;
             h4 {
-                font-size: 1em;
+                font-size: 1rem;
                 padding: 10px 20px;
                 margin: 0px;
                 color: $light;
                 text-transform: uppercase;
                 @include breakpoint(xs) {
-                    font-size: 0.9em;
+                    font-size: 0.9rem;
                     padding: 10px 5px;
                 }
             }
             p {
                 text-align: center;
-                font-size: 0.9em;
+                font-size: 0.9rem;
                 font-style: italic;
                 color: $brand3;
                 @include breakpoint(xs) {
-                    font-size: 0.75em !important;
+                    font-size: 0.75rem !important;
                     padding: 0px 5px;
                 }
             }
@@ -516,7 +518,7 @@
         }
     }
     .btn {
-        margin-left: 0.5em;
+        margin-left: 0.5rem;
     }
 }
 

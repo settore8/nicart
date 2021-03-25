@@ -1,5 +1,8 @@
 <?php
 
+define('NICART_SPEDIZIONE_GRATUITA', 35); 
+define('NICART_CONTRASSEGNO', 5); 
+
 $manutenzione = get_field('manutenzione', 'option');
 $minify = get_field('minify', 'option');
 

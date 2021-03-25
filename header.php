@@ -72,7 +72,7 @@ exit;
 
 		<div id="topmenu">
 			<div class="contenitore">
-			<span class="topmessage"><span class="blink">Spedizione gratuita per tutti gli ordini sopra i 35€</span></span>
+			<span class="topmessage"><span class="blink">Spedizione gratuita per tutti gli ordini sopra i <?php echo NICART_SPEDIZIONE_GRATUITA; ?>€</span></span>
 			<a class="topcontact" href="tel:+393460902888"><svg><use xlink:href="#tel" width="24" height="24"/></svg> 346 0902888 <span class="assistenza">Assistenza gratuita</span></a>
 			<?php if ( is_user_logged_in() ) { ?>
 				<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="" class="user">Area Utente</a>

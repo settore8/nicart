@@ -125,13 +125,13 @@ function custom_action_after_single_product_title() {
 
 
 /**
- * Aggiungo messaggio spedizione gratuita su prodotti sopra o uguale a 35€
+ * Aggiungo messaggio spedizione gratuita su prodotti sopra o uguale a una certa cifra
 */
 add_action( 'woocommerce_after_shop_loop_item', 'label_spedizione_gratuita', 9 );
 function label_spedizione_gratuita() { 
     global $product; 
-
-	if( $product->get_price() >= 35.00 ): 
+	$limit = NICART_SPEDIZIONE_GRATUITA;
+	if( $product->get_price() >= NICART_SPEDIZIONE_GRATUITA ): 
 		echo '<span class="free_shipping_label">Spedizione gratuita!</span>';
 	endif;
    
@@ -140,13 +140,12 @@ function label_spedizione_gratuita() {
 add_action( 'woocommerce_single_product_summary', 'messaggio_spedizione_gratuita', 10 );
 function messaggio_spedizione_gratuita() { 
     global $product; 
-
-	if( $product->get_price() >= 35.00 ): 
+	$limit = NICART_SPEDIZIONE_GRATUITA;
+	if( $product->get_price() >= NICART_SPEDIZIONE_GRATUITA ): 
 		echo '<span class="free_shipping_text">Questo prodotto beneficia della spedizione gratuita!</span>';
 	endif;
    
 }
-
 
 
 /**
@@ -353,9 +352,10 @@ function custom_handling_fee ( $cart ) {
 
     $subtotal = $cart->subtotal;
 
+	$contrassegno = NICART_CONTRASSEGNO;
     // SETTINGS: Here set in the array the (payment Id) / (fee cost) pairs
     $targeted_payment_ids = array(
-        'cod' => 5, // Fixed fee
+        'cod' => $contrassegno, // Fixed fee
         //'paypal' => 5 * $subtotal / 100, // Percentage fee
     );
 

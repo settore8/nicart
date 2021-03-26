@@ -897,7 +897,8 @@ body.single-product {
     }
 }
 
-.woocommerce-variation-availability {
+.woocommerce-variation-availability,
+.entry-summary {
     padding: 0.25rem 0;
     margin-bottom: 1rem;
     .available-on-backorder {

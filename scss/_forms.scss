@@ -47,12 +47,23 @@
     }
     .wpcf7-response-output {
         padding: 10px;
+        display: block;
+        clear: both;
+        margin-top: 2rem;
         &.wpcf7-validation-errors {
             background-color: $error;
             color: white;
         }
         &.wpcf7-mail-sent-ok {
             background-color: $success;
+            color: white;
+        }
+        .sent & {
+            background-color: $success;
+            color: white;
+        }
+        .error & {
+            background-color: $error;
             color: white;
         }
     }

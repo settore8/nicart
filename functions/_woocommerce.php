@@ -363,25 +363,36 @@ function custom_handling_fee ( $cart ) {
         return;
 
     $chosen_payment_id = WC()->session->get('chosen_payment_method');
-
+	
     if ( empty( $chosen_payment_id ) )
         return;
 
-    $subtotal = $cart->subtotal;
+	$chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+	$chosen_shipping = $chosen_methods[0];
 
-	$contrassegno = NICART_CONTRASSEGNO;
-    // SETTINGS: Here set in the array the (payment Id) / (fee cost) pairs
-    $targeted_payment_ids = array(
-        'cod' => $contrassegno, // Fixed fee
-        //'paypal' => 5 * $subtotal / 100, // Percentage fee
-    );
+	if ( 0 !== strpos( $chosen_shipping, 'local_pickup:3' ) ) {
 
-    // Loop through defined payment Ids array
-    foreach ( $targeted_payment_ids as $payment_id => $fee_cost ) {
-        if ( $chosen_payment_id === $payment_id ) {
-            $cart->add_fee( __('Pagamento alla consegna ', 'woocommerce'), $fee_cost, true );
-        }
-    }
+		$subtotal = $cart->subtotal;
+
+		$contrassegno = NICART_CONTRASSEGNO;
+		// SETTINGS: Here set in the array the (payment Id) / (fee cost) pairs
+		$targeted_payment_ids = array(
+			'cod' => $contrassegno, // Fixed fee
+			//'paypal' => 5 * $subtotal / 100, // Percentage fee
+		);
+
+		// Loop through defined payment Ids array
+		foreach ( $targeted_payment_ids as $payment_id => $fee_cost ) {
+			if ( $chosen_payment_id === $payment_id ) {
+				$cart->add_fee( __('Pagamento alla consegna ', 'woocommerce'), $fee_cost, true );
+			}
+		}
+		
+	} else {
+
+		return;
+	}
+    
 }
 
 

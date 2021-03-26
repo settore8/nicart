@@ -799,7 +799,7 @@ body.single-product {
     padding-top: 1rem;
     border-top: 1px solid $neutro;
     .wc_payment_methods {
-        li {
+        >li {
             border: 1px solid $neutro;
             margin-top: 1rem;
             position: relative;

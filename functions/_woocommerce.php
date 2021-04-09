@@ -471,3 +471,17 @@ function shipping_estimate_html()
     return null;
 }
 add_filter('woocommerce_shipping_estimate_html', 'shipping_estimate_html');
+
+
+
+/**
+* Sort product search results by menu order
+*/
+
+add_action('pre_get_posts','sortby_menuorder_query');
+function sortby_menuorder_query($query) {
+	if ( isset($_REQUEST['s']) ) {
+	$query->set('orderby', 'menu_order');
+	$query->set('order', 'ASC');
+	}
+}

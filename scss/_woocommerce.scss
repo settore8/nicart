@@ -436,6 +436,9 @@ body.single-product {
             text-transform: uppercase;
             float: right;
         }
+        select {
+            width: 100% !important;
+        }
     }
     @include breakpoint(xs) {
         .label {
@@ -448,9 +451,6 @@ body.single-product {
         }
         .value {
             padding: 0;
-            select {
-                margin: 0.5rem;
-            }
         }
     }
 }

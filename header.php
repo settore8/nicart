@@ -85,24 +85,21 @@ exit;
 			</div>
 		</div>
 
-		<form id="searchform" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-			<div class="container">
-				<div class="row">
-				<input type="text" class="search-field" name="s" placeholder="Cerca" value="<?php echo get_search_query(); ?>">
-				<input type="submit" value="Cerca">
-				</div>
-			</div>
-		</form>
+		
 
 		<nav id="navigazione" class="navbar navbar-default">
 			<div class="container">
 
 				<div class="navbar-header">
 
+				
+
+				<!--
 				<button type="button" id="searchtoggle" aria-expanded="false">
 					<svg><use xlink:href="#cerca" width="26" height="26"/></svg>
 					<span>Ricerca</span>
-		     	</button>
+				 </button>
+				-->
 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu" aria-expanded="false">
 		        <span class="icon-bar"></span>
@@ -117,6 +114,9 @@ exit;
 
 			    <div class="collapse navbar-collapse" id="menu">
 			      <ul class="nav navbar-nav navbar-right">
+				  	<li class="menu-item">
+						<?php echo get_product_search_form(); ?>
+					</li>
 			        <?php
 			        $args = array(
 			        	'container' => '',
@@ -125,6 +125,7 @@ exit;
 			        );
 					wp_nav_menu($args);
 					?>
+					
 			      </ul>
 			    </div>
 

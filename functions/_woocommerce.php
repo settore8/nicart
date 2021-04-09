@@ -125,6 +125,21 @@ function custom_action_after_single_product_title() {
 
 
 /**
+ * Aggiungo il pulsante video nell'anteprima del prodotto
+*/
+add_action( 'woocommerce_after_shop_loop_item', 'pulsante_video_anteprima_prodotto', 6 );
+function pulsante_video_anteprima_prodotto() { 
+	global $product; 
+	$video = get_field('video', $product->get_id());
+	if( $video ): 
+		echo '<a href="'.get_permalink($product->ID).'" class="guarda_video_label">Guarda il video!</a>';
+	endif;
+   
+}
+
+
+
+/**
  * Aggiungo messaggio spedizione gratuita su prodotti sopra o uguale a una certa cifra
 */
 add_action( 'woocommerce_after_shop_loop_item', 'label_spedizione_gratuita', 9 );

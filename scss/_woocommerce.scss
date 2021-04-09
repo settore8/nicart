@@ -439,6 +439,37 @@ body.single-product {
     }
 }
 
+.guarda_video_label {
+    font-weight: bold;
+    color: $dark;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-radius: 4px;
+    margin: 0.25rem auto;
+    background-color: $warning;
+    padding: 0.15rem 0.5rem;
+    animation: blick_label 2s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+}
+
+@keyframes blick_label {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    25% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    75% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
 .free_shipping_label {
     font-weight: bold;
     font-size: 0.8rem;

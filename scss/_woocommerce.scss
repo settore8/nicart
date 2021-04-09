@@ -195,6 +195,16 @@ body.single-product {
                 }
                 .cart {
                     padding: 15px 0px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    .single_variation_wrap {
+                        flex: 1;
+                    }
+                    .woocommerce-variation-add-to-cart {
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
                     .quantity {
                         .qty {
                             font-size: 1.5rem;
@@ -204,10 +214,11 @@ body.single-product {
                         }
                     }
                     .quantity {
+                        flex: 1;
                         margin: 0px;
                         padding: 0px;
                         width: 20%;
-                        float: left;
+                        margin-right: auto;
                         input {
                             height: 50px;
                             line-height: 50px;
@@ -224,8 +235,8 @@ body.single-product {
                         }
                     }
                     .button {
-                        width: 75%;
-                        float: right;
+                        margin-left: auto;
+                        width: 70%;
                         height: 50px;
                         line-height: 50px;
                         font-size: 20px;

@@ -313,8 +313,9 @@ body.single-product {
             border-radius: 3px 3px 0 0;
         }
         h2.woocommerce-loop-product__title {
-            font-size: 1rem;
+            font-size: 1rem !important;
             text-transform: uppercase;
+            @include breakpoint(sm) {}
         }
         .price {}
     }
@@ -364,14 +365,18 @@ body.single-product {
         }
         .upsells {
             width: 100%;
-            background-color: $neutro;
             flex: 1;
-            padding: 20px;
             margin-top: 1.5rem;
+            background-color: white;
+            padding: 0;
             h2 {
                 text-align: center;
                 font-weight: normal;
                 font-size: 20px;
+            }
+            @include breakpoint(sm) {
+                background-color: $neutro;
+                padding: 20px;
             }
         }
         @media screen and(max-width: 768px) {

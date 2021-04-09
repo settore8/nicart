@@ -132,7 +132,7 @@ function pulsante_video_anteprima_prodotto() {
 	global $product; 
 	$video = get_field('video', $product->get_id());
 	if( $video ): 
-		echo '<a href="" class="guarda_video_label">Guarda il video!</a>';
+		echo '<a href="'.get_permalink($product->get_id()).'" class="guarda_video_label">Guarda il video!</a>';
 	endif;
    
 }

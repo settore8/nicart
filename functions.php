@@ -21,7 +21,7 @@ include ( get_stylesheet_directory() . '/functions/_images.php' );
 include ( get_stylesheet_directory() . '/functions/_wpHacks.php' );
 include ( get_stylesheet_directory() . '/functions/_menus.php' );
 include ( get_stylesheet_directory() . '/functions/_custom.php' );
-include ( get_stylesheet_directory() . '/functions/_login.php' );
+//include ( get_stylesheet_directory() . '/functions/_login.php' );
 include ( get_stylesheet_directory() . '/functions/_recensioni.php' );
 
 

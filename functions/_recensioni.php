@@ -60,17 +60,24 @@ function wcerbe_woocommerce_product_bulk_edit_save( $product ) {
  */
 
  function wpd_wc_add_product_reviews() {
-	global $product;
+  global $product;
+  
 	if ( ! comments_open() )
-		return;
+    return;
+  
+  if($product->review_count == 0) {
+    $class = 'noreview';
+  } else {
+    $class = '';
+  }
   ?>
-	<div class="product-reviews">
+	<div class="product-reviews <?php echo $class; ?>">
     <?php call_user_func( 'comments_template', 999 ); ?>
 	</div>
   <?php
   }
 
-  add_action('woocommerce_after_single_product', 'wpd_wc_add_product_reviews', 24);
+  add_action('woocommerce_after_single_product', 'wpd_wc_add_product_reviews', 30);
 
 
 /**
@@ -122,7 +129,22 @@ function ci_comment_rating_display_rating( $comment_text ){
 	}
 }
 
+add_action( 'comment_form_logged_in_after', 'ci_comment_rating_rating_field' );
 
+function ci_comment_rating_rating_field () {
+?>
+<div class="comment-form-rating-custom">
+<label for="rating">La tua valutazione<span class="required">*</span></label>
+<p class="stars">
+<span>
+<?php for( $i = 5; $i >= 1; $i-- ) { ?>
+  <a class="star-<?php echo $i; ?>" href="#"><?php echo $i; ?></a>
+<?php } ?>
+</span>
+</p>
+</div>
+<?php
+}
 
 
 add_action( 'woocommerce_single_product_summary', 'custom_rating_single_product_summary', 4 );
@@ -137,6 +159,41 @@ function custom_rating_single_product_summary() {
 }
 
 
+add_action( 'woocommerce_before_shop_loop_item', 'rating_anteprima_prodotto', 1);
+function rating_anteprima_prodotto() { 
+	global $product; 
+  if ( $product->get_rating_count() > 0 ) {
+    remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+    add_action( 'woocommerce_after_shop_loop_item_title', 'replace_product_rating_loop', 5 );
+  }
+   
+}
+
+
+// Content function
+function replace_product_rating_loop() {
+  global $product;
+
+  $rating_count = $product->get_rating_count();
+  $review_count = $product->get_review_count();
+  $average      = $product->get_average_rating();
+ 
+  $percent = 100 / 5 * $average;
+  if($review_count > 0) {
+
+  if($review_count == 1) {
+    $rec = 'recensione';
+  } else {
+    $rec = 'recensioni';
+  }
+  echo '<div class="reviews-average"><div class="star-ratings-css"><div class="star-ratings-css-top" style="width: '.$percent.'%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div><span class="reviews-counter"><span class="n">'.$review_count.'</span> '.$rec.'</span></div>';
+  }
+}
+
+
+
+
 // Content function
 function replace_product_rating() {
   global $product;
@@ -149,9 +206,9 @@ function replace_product_rating() {
   if($review_count > 0) {
 
   if($review_count == 1) {
-    $rec = 'commento';
+    $rec = 'recensione';
   } else {
-    $rec = 'commenti';
+    $rec = 'recensioni';
   }
   echo '<div class="reviews-average"><a href="#reviews"><div class="star-ratings-css"><div class="star-ratings-css-top" style="width: '.$percent.'%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
 <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div><span class="reviews-counter"><span class="n">'.$review_count.'</span> '.$rec.'</span></a></div>';

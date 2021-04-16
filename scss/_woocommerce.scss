@@ -249,9 +249,6 @@ body.single-product {
             }
         }
     }
-    .woocommerce-tabs {
-        display: none;
-    }
 }
 
 .woocommerce {
@@ -1224,6 +1221,233 @@ span.onsale {
             border-bottom: 1px solid $neutro;
             td {
                 padding: 0.25rem;
+            }
+        }
+    }
+}
+
+
+/* RECENSIONI */
+
+.product-reviews {
+    clear: both;
+    margin-top: 1rem;
+    background-color: $neutro;
+}
+
+#reviews {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 300px;
+    #comments {
+        width: 100%;
+        padding: 1rem;
+        .woocommerce-Reviews-title {
+            text-align: center;
+            font-weight: normal;
+            font-size: 20px;
+            max-width: 80%;
+            margin: 0 auto;
+            line-height: 1;
+            span {
+                &:before {
+                    content: '';
+                    display: block;
+                }
+                max-width: 80%;
+                font-size: 1rem;
+                font-weight: bold;
+            }
+        }
+        .woocommerce-noreviews {
+            display: none;
+        }
+        ol.commentlist {
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            .review,
+            .comment {
+                list-style-type: none !important;
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 1rem;
+                .comment_container {
+                    .comment-text {
+                        .star-rating {
+                            display: none;
+                        }
+                        .meta {
+                            font-size: 0.9rem;
+                            .woocommerce-review__author {
+                                font-weight: bold;
+                            }
+                            .woocommerce-review__dash {
+                                display: none;
+                            }
+                            time {
+                                font-size: 0.8rem;
+                            }
+                        }
+                        .description {
+                            border-radius: 8px;
+                            background-color: $info;
+                            padding: 0.5rem;
+                            position: relative;
+                            &:before {
+                                content: '';
+                                top: -7px;
+                                left: 20px;
+                                position: absolute;
+                                width: 16px;
+                                height: 16px;
+                                background-color: $info;
+                                transform: rotate(45deg);
+                            }
+                            p {
+                                margin: 0px;
+                            }
+                        }
+                        .stars {
+                            unicode-bidi: bidi-override;
+                            text-align: right;
+                            span {
+                                &:before {
+                                    content: "\2605";
+                                    color: $warning;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.even {
+                    margin-right: auto;
+                }
+                &.odd {
+                    margin-left: auto;
+                    .meta {
+                        text-align: right;
+                    }
+                    .description {
+                        &:before {
+                            left: auto !important;
+                            right: 20px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .must-log-in {
+        text-align: center;
+        padding: 2rem;
+        a {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+    #review_form_wrapper {
+        padding: 1rem;
+        width: 100%;
+        @include breakpoint(md) {
+            width: 60%;
+            margin: 0 auto;
+        }
+        #reply-title {
+            text-align: center;
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 300;
+        }
+        #commentform {
+            padding: 2rem 0 0 0;
+            text-align: center;
+            .comment-form-rating {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                label {
+                    font-weight: normal;
+                    .required {
+                        color: $error;
+                    }
+                }
+                .stars {
+                    span {
+                        direction: rtl;
+                        unicode-bidi: bidi-override;
+                        >a {
+                            position: relative;
+                            display: inline-block;
+                            padding: 0px;
+                            width: 25px;
+                            height: 25px;
+                            overflow: hidden;
+                            visibility: hidden;
+                            &:after {
+                                font-size: 1.6rem;
+                                visibility: visible;
+                                color: darken($info, 30%);
+                                content: "\2605";
+                                top: 0;
+                                left: 0;
+                                position: absolute;
+                                width: 25px;
+                                height: 25px;
+                                line-height: 25px;
+                                text-align: center;
+                            }
+                            &.active {
+                                &:after {
+                                    color: $warning;
+                                }
+                                &~a {
+                                    &:after {
+                                        color: $warning;
+                                    }
+                                }
+                            }
+                            &:hover,
+                            &:hover~a {
+                                &:after {
+                                    color: $warning;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .comment-form-comment {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                label {
+                    font-weight: normal;
+                    .required {
+                        color: $error;
+                    }
+                }
+                #comment {
+                    max-height: 150px;
+                    border-radius: 5px;
+                    border: 0px;
+                    border: 1px solid $brand2;
+                    padding: 0.5rem
+                }
+            }
+            .review-legal-info {
+                text-align: left;
+            }
+            .form-submit {
+                text-align: right;
+                #submit {
+                    border: 0px;
+                    border-radius: 5px;
+                    @extend .btn;
+                    @extend .btn-danger;
+                }
             }
         }
     }

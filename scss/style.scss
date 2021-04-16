@@ -517,3 +517,10 @@ small {
         background-color: lighten($warning, 1%) !important;
     }
 }
+
+.iubenda-cs-banner {
+    background-color: lime !important;
+    .iubenda-cs-close-btn {
+        color: $light !important;
+    }
+}

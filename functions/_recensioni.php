@@ -1,6 +1,21 @@
 <?php 
 
 
+/*
+** Disabilita i tabs nella pagina del prodotto
+*/
+add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
+
+function woo_remove_product_tabs( $tabs ) {
+
+    unset( $tabs['description'] );      	// Remove the description tab
+    unset( $tabs['reviews'] ); 			// Remove the reviews tab
+    unset( $tabs['additional_information'] );  	// Remove the additional information tab
+
+    return $tabs;
+}
+   
+
 /* RECENSIONI */
 
 /** 
@@ -23,6 +38,8 @@ function wcerbe_woocommerce_product_bulk_edit_end() {
     $output .= '</select></span></label>';
     echo $output;
 }
+
+
 add_action( 'woocommerce_product_bulk_edit_save', 'wcerbe_woocommerce_product_bulk_edit_save', 10, 1 );
 function wcerbe_woocommerce_product_bulk_edit_save( $product ) {
     // Enable reviews
@@ -46,21 +63,23 @@ function wcerbe_woocommerce_product_bulk_edit_save( $product ) {
 	global $product;
 	if ( ! comments_open() )
 		return;
-?>
+  ?>
 	<div class="product-reviews">
     <?php call_user_func( 'comments_template', 999 ); ?>
 	</div>
-<?php
-}
+  <?php
+  }
+
+  add_action('woocommerce_after_single_product', 'wpd_wc_add_product_reviews', 24);
 
 
 /**
- * COmments fields
+ * Comments fields
  */
 
 function sv_add_wc_review_notes( $review_form ) {
   $review_form['comment_notes_before'] = '';
-  $review_form['comment_notes_after'] = '<p class="review-legal-info"><span>Confermo di aver letto e compreso la <a href="https://www.iubenda.com/privacy-policy/98887750" class="iubenda-nostyle no-brand iubenda-embed " title="Privacy Policy">Privacy Policy</a> <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script> ed autorizzo al trattamento dei miei dati</span></p>';
+  $review_form['comment_notes_after'] = '<p class="review-legal-info"><span>Confermo di aver letto e compreso la <a href="https://www.iubenda.com/privacy-policy/87233560" class="iubenda-nostyle no-brand iubenda-embed " title="Privacy Policy">Privacy Policy</a> <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script> ed autorizzo al trattamento dei miei dati</span></p>';
   return $review_form;
 }
 add_filter( 'woocommerce_product_review_comment_form_args', 'sv_add_wc_review_notes' );
@@ -104,7 +123,8 @@ function ci_comment_rating_display_rating( $comment_text ){
 }
 
 
-// For single product pages
+
+
 add_action( 'woocommerce_single_product_summary', 'custom_rating_single_product_summary', 4 );
 function custom_rating_single_product_summary() {
     global $product;
@@ -137,3 +157,20 @@ function replace_product_rating() {
 <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div><span class="reviews-counter"><span class="n">'.$review_count.'</span> '.$rec.'</span></a></div>';
   }
 }
+
+
+add_action( 'woocommerce_review_order_before_submit', 'bbloomer_add_checkout_privacy_policy', 9 );
+    
+function bbloomer_add_checkout_privacy_policy() {
+   
+woocommerce_form_field( 'privacy_policy', array(
+   'type'          => 'checkbox',
+   'class'         => array('form-row privacy'),
+   'label_class'   => array('woocommerce-form__label woocommerce-form__label-for-checkbox checkbox'),
+   'input_class'   => array('woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'),
+   'required'      => true,
+   'label'         => 'Ho letto e accetto l\'<a href="#">informativa sulla Privacy</a>',
+)); 
+   
+}
+   

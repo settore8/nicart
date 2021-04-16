@@ -8,7 +8,7 @@ exit;
 	<title><?php wp_title();?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="google-site-verification" content="IdUVse-Tm5fOqyzsCEe1ROpAvHN6PT0N7q7z9GaTUjk" />
-	<link href="<?php bloginfo('stylesheet_url'); ?>?v=1.1" rel = "stylesheet">
+	<link href="<?php bloginfo('stylesheet_url'); ?>?v=1.2" rel = "stylesheet">
 	<link href="<?php bloginfo('template_directory'); ?>/hover.css" rel = "stylesheet">
 	<link rel="apple-touch-icon" sizes="180x180" href="<?php bloginfo('template_directory'); ?>/images/favicons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo('template_directory'); ?>/images/favicons/favicon-32x32.png">
@@ -85,24 +85,21 @@ exit;
 			</div>
 		</div>
 
-		<form id="searchform" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-			<div class="container">
-				<div class="row">
-				<input type="text" class="search-field" name="s" placeholder="Cerca" value="<?php echo get_search_query(); ?>">
-				<input type="submit" value="Cerca">
-				</div>
-			</div>
-		</form>
+		
 
 		<nav id="navigazione" class="navbar navbar-default">
 			<div class="container">
 
 				<div class="navbar-header">
 
+				
+
+				<!--
 				<button type="button" id="searchtoggle" aria-expanded="false">
 					<svg><use xlink:href="#cerca" width="26" height="26"/></svg>
 					<span>Ricerca</span>
-		     	</button>
+				 </button>
+				-->
 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu" aria-expanded="false">
 		        <span class="icon-bar"></span>
@@ -117,6 +114,9 @@ exit;
 
 			    <div class="collapse navbar-collapse" id="menu">
 			      <ul class="nav navbar-nav navbar-right">
+				  	<li class="menu-item">
+						<?php echo get_product_search_form(); ?>
+					</li>
 			        <?php
 			        $args = array(
 			        	'container' => '',
@@ -125,6 +125,7 @@ exit;
 			        );
 					wp_nav_menu($args);
 					?>
+					
 			      </ul>
 			    </div>
 

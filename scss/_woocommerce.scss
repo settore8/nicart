@@ -195,6 +195,16 @@ body.single-product {
                 }
                 .cart {
                     padding: 15px 0px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    .single_variation_wrap {
+                        flex: 1;
+                    }
+                    .woocommerce-variation-add-to-cart {
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
                     .quantity {
                         .qty {
                             font-size: 1.5rem;
@@ -204,10 +214,11 @@ body.single-product {
                         }
                     }
                     .quantity {
+                        flex: 1;
                         margin: 0px;
                         padding: 0px;
                         width: 20%;
-                        float: left;
+                        margin-right: auto;
                         input {
                             height: 50px;
                             line-height: 50px;
@@ -224,8 +235,8 @@ body.single-product {
                         }
                     }
                     .button {
-                        width: 75%;
-                        float: right;
+                        margin-left: auto;
+                        width: 70%;
                         height: 50px;
                         line-height: 50px;
                         font-size: 20px;
@@ -310,8 +321,9 @@ body.single-product {
             border-radius: 3px 3px 0 0;
         }
         h2.woocommerce-loop-product__title {
-            font-size: 1rem;
+            font-size: 1rem !important;
             text-transform: uppercase;
+            @include breakpoint(sm) {}
         }
         .price {}
     }
@@ -361,14 +373,18 @@ body.single-product {
         }
         .upsells {
             width: 100%;
-            background-color: $neutro;
             flex: 1;
-            padding: 20px;
             margin-top: 1.5rem;
+            background-color: white;
+            padding: 0;
             h2 {
                 text-align: center;
                 font-weight: normal;
                 font-size: 20px;
+            }
+            @include breakpoint(sm) {
+                background-color: $neutro;
+                padding: 20px;
             }
         }
         @media screen and(max-width: 768px) {
@@ -417,6 +433,9 @@ body.single-product {
             text-transform: uppercase;
             float: right;
         }
+        select {
+            width: 100% !important;
+        }
     }
     @include breakpoint(xs) {
         .label {
@@ -429,10 +448,38 @@ body.single-product {
         }
         .value {
             padding: 0;
-            select {
-                margin: 0.5rem;
-            }
         }
+    }
+}
+
+.guarda_video_label {
+    font-weight: bold;
+    color: $dark;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-radius: 4px;
+    margin: 0.25rem auto;
+    background-color: $warning;
+    padding: 0.15rem 0.5rem;
+    animation: blick_label 2s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+}
+
+@keyframes blick_label {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    25% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    75% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
     }
 }
 

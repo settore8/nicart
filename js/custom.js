@@ -11,10 +11,6 @@ $(document).ready(function() {
         }, 500);
     });
 
-    $('#searchtoggle').click(function() {
-        $('#searchform').toggleClass('open');
-    });
-
 
     $('.slide').slick({
         autoplay: true,

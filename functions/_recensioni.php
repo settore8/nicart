@@ -64,8 +64,7 @@ function wcerbe_woocommerce_product_bulk_edit_save( $product ) {
   
 	if ( ! comments_open() )
     return;
-  
-  if($product->review_count == 0) {
+  if($product->get_rating_count() == 0) {
     $class = 'noreview';
   } else {
     $class = '';

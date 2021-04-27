@@ -95,7 +95,7 @@ add_filter( 'woocommerce_product_review_comment_form_args', 'sv_add_wc_review_no
 add_filter('get_comment_author', 'my_comment_author', 10, 1);
   function my_comment_author( $author = '' ) {
   // Get the comment ID from WP_Query
-  $comment = get_comment( $comment_ID );
+  $comment = get_comment();
   if (!empty($comment->comment_author) ) {
   if($comment->user_id > 0){
   $user=get_userdata($comment->user_id);

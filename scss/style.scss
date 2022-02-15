@@ -423,7 +423,6 @@ small {
 @import "_button";
 @import "_woocommerce";
 @import "_breadcrumbs";
-@import "_socialize";
 @import "_cookie";
 .blocco-icon {
     display: flex;
@@ -519,7 +518,6 @@ small {
 }
 
 .iubenda-cs-banner {
-    background-color: lime !important;
     .iubenda-cs-close-btn {
         color: $light !important;
     }

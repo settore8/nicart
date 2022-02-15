@@ -3,7 +3,7 @@
     <?php
        $terms = get_terms( array(
         'taxonomy' => 'product_cat',
-        'hide_empty' => false,
+        'hide_empty' =>  true,
         'parent' => 0
         ));
     ?>

@@ -82,7 +82,7 @@
 										echo '<hr/>';
 										echo '<h2>'.get_the_title().'</h2>';
 										echo '<div class="embed-container">';
-										the_field('video_youtube');
+										echo get_field('video_youtube');
 										echo '</div>';
 									} 
 								wp_reset_postdata();

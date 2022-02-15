@@ -26,7 +26,7 @@ if ( have_posts() ) {
 	<?php if( $video ): ?>
 			<?php
 			echo '<div class="embed-container">';
-			the_field('video_youtube');
+			echo get_field('video_youtube');
 			echo '</div>';
 	?>
 	<?php endif; ?>

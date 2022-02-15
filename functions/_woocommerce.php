@@ -356,7 +356,7 @@ add_filter( 'woocommerce_get_availability_text', 'so_42345940_disponibile_messag
 /* Moodifica dicitura disponibile in N giorni */
 function so_42345940_backorder_message( $text, $product ){
 	if ( $product->is_in_stock() && $product->is_on_backorder(1)) {
-        $text = 'Prodotto disponibile in 7-10 giorni';
+        $text = 'Disponibile con consegna in 5-10 giorni';
     }
     return $text;
 }

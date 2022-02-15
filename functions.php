@@ -3,16 +3,22 @@
 define('NICART_SPEDIZIONE_GRATUITA', 30); 
 define('NICART_CONTRASSEGNO', 5); 
 
-$manutenzione = get_field('manutenzione', 'option');
-$minify = get_field('minify', 'option');
+add_action('acf/init', 'my_acf_init');
+function my_acf_init() {
 
-if ($minify === true) :
-  //include ( get_stylesheet_directory() . '/functions/_minify.php' );
-endif;
+  $manutenzione = get_field('manutenzione', 'option');
+  $minify = get_field('minify', 'option');
+  
+  if ($minify === true) :
+    //include ( get_stylesheet_directory() . '/functions/_minify.php' );
+  endif;
+  
+  if ($manutenzione === true) :
+    include ( get_stylesheet_directory() . '/functions/_maintenance.php' );
+  endif;
+  
+}
 
-if ($manutenzione === true) :
-  include ( get_stylesheet_directory() . '/functions/_maintenance.php' );
-endif;
 
 include ( get_stylesheet_directory() . '/functions/_woocommerce.php' );
 include ( get_stylesheet_directory() . '/functions/_posttypes.php' );

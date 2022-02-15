@@ -25,7 +25,7 @@
 			<div class="col-xs-12 col-sm-6">
 			<?php
 			echo '<div class="embed-container">';
-				the_field('video_youtube');
+				echo get_field('video_youtube');
 			echo '</div>'; ?>
 
 			</div>

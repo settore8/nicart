@@ -225,7 +225,7 @@ woocommerce_form_field( 'privacy_policy', array(
    'label_class'   => array('woocommerce-form__label woocommerce-form__label-for-checkbox checkbox'),
    'input_class'   => array('woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'),
    'required'      => true,
-   'label'         => 'Ho letto e accetto l\'<a href="#">informativa sulla Privacy</a>',
+   'label'         => 'Ho letto e accetto l\'<a href="'.get_privacy_policy_url().'" target="_blank">informativa sulla Privacy</a>',
 )); 
    
 }

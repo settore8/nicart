@@ -346,9 +346,12 @@ add_filter( 'woocommerce_get_availability_text', 'so_42345940_esaurito_message',
 
 /* Moodifica dicitura prodotti disponibili */
 function so_42345940_disponibile_message( $text, $product ){
+
+	$limit = wc_get_low_stock_amount($product);
+
 	if($product->managing_stock() && $product->is_in_stock() && $product->get_stock_quantity() === 1) {
 		$text = 'Solo '. $product->get_stock_quantity() .' pezzo disponibile';
-	} elseif($product->managing_stock() && $product->is_in_stock() && $product->get_stock_quantity() <= 3) {
+	} elseif($product->managing_stock() && $product->is_in_stock() && $product->get_stock_quantity() <= $limit) {
 		$text = 'Ultimi '. $product->get_stock_quantity() .' pezzi disponibili';
 	} elseif ( $product->is_in_stock()) {
 		$text = 'Prodotto disponibile';
@@ -359,6 +362,7 @@ add_filter( 'woocommerce_get_availability_text', 'so_42345940_disponibile_messag
 
 /* Moodifica dicitura disponibile in N giorni */
 function so_42345940_backorder_message( $text, $product ){
+
 	if ( $product->is_in_stock() && $product->is_on_backorder(1)) {
         $text = 'Disponibile con consegna in 5-10 giorni';
     }
@@ -370,7 +374,7 @@ add_filter( 'woocommerce_get_availability_text', 'so_42345940_backorder_message'
 add_filter( 'woocommerce_get_stock_html', 'filter_get_stock_html', 10, 2 );
 function filter_get_stock_html( $html, $product ) {
     // Low stock quantity amount
-    $low_stock_qty = 3;
+    $low_stock_qty = wc_get_low_stock_amount($product);
 
     $availability = $product->get_availability();
 

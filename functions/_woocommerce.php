@@ -346,9 +346,13 @@ add_filter( 'woocommerce_get_availability_text', 'so_42345940_esaurito_message',
 
 /* Moodifica dicitura prodotti disponibili */
 function so_42345940_disponibile_message( $text, $product ){
-	if ( $product->is_in_stock()) {
-        $text = 'Prodotto disponibile';
-    }
+	if($product->managing_stock() && $product->is_in_stock() && $product->get_stock_quantity() === 1) {
+		$text = 'Solo '. $product->get_stock_quantity() .' pezzo disponibile';
+	} elseif($product->managing_stock() && $product->is_in_stock() && $product->get_stock_quantity() < 4) {
+		$text = 'Ultimi '. $product->get_stock_quantity() .' pezzi disponibili';
+	} elseif ( $product->is_in_stock()) {
+		$text = 'Prodotto disponibile';
+	}
     return $text;
 }
 add_filter( 'woocommerce_get_availability_text', 'so_42345940_disponibile_message', 10, 2 );
@@ -361,6 +365,32 @@ function so_42345940_backorder_message( $text, $product ){
     return $text;
 }
 add_filter( 'woocommerce_get_availability_text', 'so_42345940_backorder_message', 10, 2 );
+
+
+add_filter( 'woocommerce_get_stock_html', 'filter_get_stock_html', 10, 2 );
+function filter_get_stock_html( $html, $product ) {
+    // Low stock quantity amount
+    $low_stock_qty = 3;
+
+    $availability = $product->get_availability();
+
+    if ( ! empty( $availability['availability'] ) ) {
+        $class = esc_attr( $availability['class'] );
+        $avail_text = wp_kses_post( $availability['availability'] );
+        $stock_qty = $product->get_stock_quantity();
+
+        if( $stock_qty <= $low_stock_qty ){
+            $class .= ' few-in-stock';
+        }
+        ob_start();
+        ?>
+        <p class="stock <?php echo $class; ?>"><?php echo $avail_text; ?></p>
+        <?php
+
+        $html = ob_get_clean();
+    }
+    return $html;
+}
 
 
 

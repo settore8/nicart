@@ -348,7 +348,7 @@ add_filter( 'woocommerce_get_availability_text', 'so_42345940_esaurito_message',
 function so_42345940_disponibile_message( $text, $product ){
 	if($product->managing_stock() && $product->is_in_stock() && $product->get_stock_quantity() === 1) {
 		$text = 'Solo '. $product->get_stock_quantity() .' pezzo disponibile';
-	} elseif($product->managing_stock() && $product->is_in_stock() && $product->get_stock_quantity() < 4) {
+	} elseif($product->managing_stock() && $product->is_in_stock() && $product->get_stock_quantity() <= 3) {
 		$text = 'Ultimi '. $product->get_stock_quantity() .' pezzi disponibili';
 	} elseif ( $product->is_in_stock()) {
 		$text = 'Prodotto disponibile';
@@ -374,7 +374,8 @@ function filter_get_stock_html( $html, $product ) {
 
     $availability = $product->get_availability();
 
-    if ( ! empty( $availability['availability'] ) ) {
+
+    if ( ! empty( $availability['availability'] ) && $product->get_stock_quantity() ) {
         $class = esc_attr( $availability['class'] );
         $avail_text = wp_kses_post( $availability['availability'] );
         $stock_qty = $product->get_stock_quantity();

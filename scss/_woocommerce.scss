@@ -1674,3 +1674,14 @@ span.onsale {
         }
     }
 }
+
+.cart_spedizione_gratuita {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    background: rgba($warning, 0.6);
+    border-radius: 4px;
+
+    & + .cart_spedizione_gratuita {
+        display: none;
+    }
+}

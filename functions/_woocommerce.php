@@ -15,7 +15,6 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
 remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
 
 
-
 /**
  * Disabilita pulsante add to cart
  */
@@ -519,4 +518,25 @@ function sortby_menuorder_query($query) {
 	$query->set('orderby', 'menu_order');
 	$query->set('order', 'ASC');
 	}
+}
+
+add_action( 'woocommerce_review_order_before_shipping', 'woocommerce_messaggio_spedizione_grtuita', 10, 0 );
+add_action( 'woocommerce_cart_totals_before_shipping', 'woocommerce_messaggio_spedizione_grtuita', 10, 0 );
+function woocommerce_messaggio_spedizione_grtuita() {
+	global $woocommerce;
+
+	$subtotal = $woocommerce->cart->cart_contents_total; // cart_contents_total prende il subtotal comprensivo di eventuali codici promozionali
+
+	$spedizione_gratuita = NICART_SPEDIZIONE_GRATUITA;
+	if(!NICART_SPEDIZIONE_GRATUITA || !$subtotal) {
+		return;
+	}
+
+	if($spedizione_gratuita < $subtotal) {
+		return;
+	}
+
+	$mancante = $spedizione_gratuita - $subtotal;
+
+	echo '<tr><td colspan="2"><div class="cart_spedizione_gratuita"><strong>Ti mancano solo '. $mancante . '€ per la spedizione gratuita!</strong></div></td><td></td></tr>';
 }

@@ -538,5 +538,5 @@ function woocommerce_messaggio_spedizione_grtuita() {
 
 	$mancante = $spedizione_gratuita - $subtotal;
 
-	echo '<tr><td colspan="2"><div class="cart_spedizione_gratuita"><strong>Ti mancano solo '. $mancante . '€ per la spedizione gratuita!</strong></div></td><td></td></tr>';
+	echo '<tr><td colspan="2"><div class="cart_spedizione_gratuita"><strong>Ti mancano solo '. $number=str_replace('.',',',$mancante) . '€ per la spedizione gratuita!</strong></div></td><td></td></tr>';
 }

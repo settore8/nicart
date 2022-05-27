@@ -856,33 +856,33 @@ body.single-product {
             &:hover {
                 border-color: $brand2;
             }
-            label {
+            > label {
                 padding: 0.5em 1rem 0;
                 opacity: 1;
                 display: flex;
                 align-items: center;
 
-                img {
-                    margin-left: auto;
-                    margin-right: 0.2rem;
-                }
-                &:before {
-                    content: '';
-                    width: 16px;
-                    height: 16px;
-                    margin-right: 5px;
-                    border-radius: 50%;
-                    border: 1px solid $brand2;
-                    text-align: center;
-                    font-size: 20px;
-                    line-height: 16px;
-                }
+                    img {
+                        margin-left: auto;
+                        margin-right: 0.2rem;
+                    }
+                    &:before {
+                        content: '';
+                        width: 16px;
+                        height: 16px;
+                        margin-right: 5px;
+                        border-radius: 50%;
+                        border: 1px solid $brand2;
+                        text-align: center;
+                        font-size: 20px;
+                        line-height: 16px;
+                    }
             }
             .payment_box {
                 padding: 0 0.5rem 0 40px;
                 opacity: 1;
             }
-            input {
+            > input {
                 position: absolute;
                 left: -99999px;
                 &:checked {
@@ -898,13 +898,13 @@ body.single-product {
                 }
             }
 
-            input:checked + label, 
-            input:checked + label + div {
+            > input:checked + label, 
+            > input:checked + label + div {
                 background: rgba($success, 0.2);
                 margin: 0;
             }
 
-            input:checked + label + div p {
+            > input:checked + label + div p {
                 margin: 0
             }
 

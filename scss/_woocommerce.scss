@@ -846,14 +846,26 @@ body.single-product {
     .wc_payment_methods {
         >li {
             border: 1px solid $neutro;
+            border-radius: 5px;
             margin-top: 1rem;
             position: relative;
             overflow: hidden;
+            display: block;
             cursor: pointer;
+
+            &:hover {
+                border-color: $brand2;
+            }
             label {
-                padding: 0.5rem 0.5rem 0;
-                opacity: 0.4;
+                padding: 0.5em 1rem 0;
+                opacity: 1;
                 display: flex;
+                align-items: center;
+
+                img {
+                    margin-left: auto;
+                    margin-right: 0.2rem;
+                }
                 &:before {
                     content: '';
                     width: 16px;
@@ -868,7 +880,7 @@ body.single-product {
             }
             .payment_box {
                 padding: 0 0.5rem 0 40px;
-                opacity: 0.4;
+                opacity: 1;
             }
             input {
                 position: absolute;
@@ -877,7 +889,7 @@ body.single-product {
                     &+label {
                         opacity: 1;
                         &:before {
-                            border: 6px solid $brand2;
+                            border: 6px solid $success;
                         }
                         &+.payment_box {
                             opacity: 1;
@@ -885,6 +897,17 @@ body.single-product {
                     }
                 }
             }
+
+            input:checked + label, 
+            input:checked + label + div {
+                background: rgba($success, 0.2);
+                margin: 0;
+            }
+
+            input:checked + label + div p {
+                margin: 0
+            }
+
             .about_paypal {
                 font-size: 0.8rem;
                 font-weight: normal;
@@ -929,15 +952,22 @@ body.single-product {
         }
     }
     .place-order {
-        padding: 1rem;
+        padding: 0 1rem 1rem 1rem;
         text-align: right;
         #place_order {
             font-size: 1.75rem;
             border-radius: 5px;
+            margin-top: 1rem;
             border-color: $brand1;
         }
         .validate-required {
-            text-align: center;
+            text-align: left;
+            padding: 0 1rem;
+
+            label {
+                font-weight: normal;
+            }
+            
         }
     }
 }

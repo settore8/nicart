@@ -25,7 +25,7 @@ if ( have_posts() ) {
 										<h4>Nicart</h4>
 										<p class="address">Via G. La Pira, 11<br/>
 										52024 Loro Ciuffenna (AR)<br/>
-										Cell. 3460902888 – Tel/Fax 055 9172783<br/>
+										Cell. <?php echo NICART_TEL; ?> – Tel/Fax 055 9172783<br/>
 										info@nicart.it 
 										</p>
 										</div>

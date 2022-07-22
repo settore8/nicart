@@ -15,7 +15,7 @@
     <hr/>
     <address><strong>Nicart di Artini Aldo</strong>
     <small>Via G. La Pira, 11 - 52024 Loro Ciuffenna (AR)<br/>
-    Cell. 3460902888 - Tel/Fax 055 9172783 - info@nicart.it</small></address>
+    Cell. <?php echo NICART_TEL; ?> - Tel/Fax 055 9172783 - info@nicart.it</small></address>
 </section>
 </body>
 </html>

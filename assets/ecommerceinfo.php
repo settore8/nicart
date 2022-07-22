@@ -8,9 +8,9 @@
     <h3>Spedizioni gratuite</h3>
     <p>Per tutti gli ordini <br/><strong>sopra i <?php echo NICART_SPEDIZIONE_GRATUITA; ?>€</strong></p>
 </a>
-<a href="tel:+393460902888" class="col-xs-12 col-sm-4 blocco-icon">
+<a href="tel:+39<?php echo NICART_TEL; ?>" class="col-xs-12 col-sm-4 blocco-icon">
     <svg><use xlink:href="#supporto" width="70" height="70"/></svg>
     <h3>Supporto all'acquisto</h3>
-    <p>Contattaci al <strong>346 0902888</strong><br/>
+    <p>Contattaci al <strong><?php echo NICART_TEL; ?></strong><br/>
     per qualsiasi informazione. </p>
 </a>

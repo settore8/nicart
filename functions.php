@@ -60,7 +60,6 @@ function hwl_home_pagesize( $query ) {
       return;
 
   if ( is_post_type_archive( 'retailer' ) ) {
-      // Display 50 posts for a custom post type called 'movie'
       $query->set( 'posts_per_page', -1 );
       return;
   }
@@ -68,6 +67,17 @@ function hwl_home_pagesize( $query ) {
 add_action( 'pre_get_posts', 'hwl_home_pagesize', 1 );
 
 
+/* infiniti video */
+function preget_video_archive( $query ) {
+  if ( is_admin() || ! $query->is_main_query() )
+      return;
+
+  if ( is_post_type_archive( 'video' ) ) {
+      $query->set( 'posts_per_page', -1 );
+      return;
+  }
+}
+add_action( 'pre_get_posts', 'preget_video_archive', 1 );
 
 function so23698827_filter_post_type_link( $link, $post ) {
   if ( $post->post_type == 'prodotto' ) {

@@ -54,30 +54,37 @@ function my_class_names($classes) {
     return $classes;
 }
 
-/* infiniti riventitori */
-function hwl_home_pagesize( $query ) {
-  if ( is_admin() || ! $query->is_main_query() )
-      return;
-
-  if ( is_post_type_archive( 'retailer' ) ) {
-      $query->set( 'posts_per_page', -1 );
-      return;
+/*
+function custom_order( $query ) {
+  if ( $query->is_archive() && $query->is_main_query() ) {
+      $query->set( 'orderby', 'menu_order' );
+      $query->set( 'order', 'ASC' );
   }
 }
-add_action( 'pre_get_posts', 'hwl_home_pagesize', 1 );
+add_action( 'pre_get_posts', 'custom_order' );
+*/
 
-
-/* infiniti video */
-function preget_video_archive( $query ) {
+/* preget */
+function preget_archive( $query ) {
   if ( is_admin() || ! $query->is_main_query() )
       return;
 
   if ( is_post_type_archive( 'video' ) ) {
+      $query->set('posts_per_page', -1 );
+      $query->set('orderby', 'date');
+      $query->set('order', 'DESC');
+      return;
+  }
+  else if ( is_post_type_archive( 'retailer' ) ) {
       $query->set( 'posts_per_page', -1 );
       return;
   }
+  else if( is_archive()) {
+    $query->set( 'orderby', 'menu_order' );
+    $query->set( 'order', 'ASC' );
+  }
 }
-add_action( 'pre_get_posts', 'preget_video_archive', 1 );
+add_action( 'pre_get_posts', 'preget_archive', 1 );
 
 function so23698827_filter_post_type_link( $link, $post ) {
   if ( $post->post_type == 'prodotto' ) {
@@ -130,11 +137,5 @@ function imagesPath() {
 }
 
 
-function custom_order( $query ) {
-  if ( $query->is_archive() && $query->is_main_query() ) {
-      $query->set( 'orderby', 'menu_order' );
-      $query->set( 'order', 'ASC' );
-  }
-}
-add_action( 'pre_get_posts', 'custom_order' );
+
 

@@ -495,6 +495,23 @@ body.single-product {
     color: $dark;
 }
 
+.guida_alle_taglie {
+    font-weight: bold;
+    font-size: 0.85rem;
+    display: block;
+    margin: 1rem 0 0 0;
+    background-color: lighten($warning, 20%);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    color: $dark;
+
+    &:hover {
+        color: $dark;
+    }
+}
+
 .free_shipping_text {
     font-weight: bold;
     display: block;

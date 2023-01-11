@@ -158,7 +158,16 @@ function messaggio_spedizione_gratuita() {
 	if( $product->get_price() >= NICART_SPEDIZIONE_GRATUITA ): 
 		echo '<span class="free_shipping_text">Questo prodotto beneficia della spedizione gratuita!</span>';
 	endif;
-   
+}
+
+add_action( 'woocommerce_single_product_summary', 'schema_taglie', 20 );
+function schema_taglie() { 
+    global $product; 
+	$taglie = get_field('schema_taglie', $product->get_id());
+
+	if($taglie && $taglie['url']) {
+		echo '<a href="'.$taglie['url'].'" target="_blank" class="guida_alle_taglie">Guida alle Taglie</a>';
+	}
 }
 
 

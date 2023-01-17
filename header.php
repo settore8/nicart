@@ -1,5 +1,5 @@
 <?php if( isset($_GET['token']) && isset($_GET['token']) == 'V80CKJUJyefhWcjkU8qlpxpDzU0SOLZBpeWRVZvFv01g0G6PdPuP9k4nR8AA7zrVTvhpqv7fGYxPWbOy0xqz6KgQ1T0uyeipFEo3ljwVGfIwakMRVbpq3ixFbbmYQ0gBnRhzgjLxw' ) {
-header('Location: /NICART_generale_2022_v2.pdf');
+header('Location: /NICART_generale_2023_v1.pdf');
 exit;
 } ?>
 <!DOCTYPE html>

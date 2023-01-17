@@ -15,7 +15,7 @@
 			<h2>Accessori e ricambi per il giardinaggio</h2>
 			<p class="wow animated fadeInDown">Nicart, un’azienda giovane e dinamica nata dalla passione e dall’approfondita conoscenza degli accessori per decespugliatori sempre più selezionati e professionali, in linea con la nostra idea di azienda che sta sempre più allargando la gamma di articoli a catalogo, ma con un occhio sempre più attento alla qualità degli stessi.</p>
 				<a href="<?php echo get_permalink(2); ?>" class="btn btn-primary hvr-grow wow animated fadeInLeft"><i class="icon-information"></i> Chi siamo</a>
-				<a href="<?php echo get_permalink(25); ?>" class="btn btn-default hvr-grow wow animated fadeInRight" title="Catalogo Nicart 2022"><i class="icon-file-pdf"></i> Catalogo 2022</a>
+				<a href="<?php echo get_permalink(25); ?>" class="btn btn-default hvr-grow wow animated fadeInRight" title="Catalogo Nicart 2023"><i class="icon-file-pdf"></i> Catalogo 2023</a>
 				<a href="https://www.youtube.com/channel/UCgu1RU2allBYhX5mfeuXCfQ?view_as=subscriber" target="_blank" class="btn btn-default hvr-grow wow animated fadeInRight"><i class="icon-youtube-play"></i> Canale YouTube</a>
 			</div>
 			<div class="col-sm-5 col-sm-offset-1 text-center">

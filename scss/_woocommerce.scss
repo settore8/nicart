@@ -864,10 +864,23 @@ body.single-product {
 #payment {
     margin: 0 !important;
     padding: 0 !important;
+    
     li {
         &:before {
             display: none;
         }
+
+        &:only-child .shipping_method {
+
+            &+ {
+                label {
+                    opacity: 1;
+                    color: $success;
+                    border-color: $success;
+                }
+            }
+        }
+
         .shipping_method {
             display: none;
             &+ {
@@ -893,9 +906,13 @@ body.single-product {
                 }
             }
         }
+
+
         .wc_payment_method {
             background: $neutro;
         }
+
+
     }
 }
 

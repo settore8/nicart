@@ -1,6 +1,6 @@
 <?php
 
-define('NICART_SPEDIZIONE_GRATUITA', 30); 
+define('NICART_SPEDIZIONE_GRATUITA', 60); 
 define('NICART_CONTRASSEGNO', 5); 
 
 add_action('acf/init', 'my_acf_init');

@@ -274,6 +274,7 @@ body.single-product {
     .woocommerce-info,
     .woocommerce-message {
         border-top: 0px;
+        text-align: center;
     }
     .woocommerce-message {
         background-color: $success;
@@ -582,6 +583,7 @@ body.single-product {
         }
     }
     .woocommerce-cart-form__cart-item {
+        border-bottom: 1px solid $info;
         .product-remove {
             .remove {
                 color: $brand1;
@@ -597,6 +599,12 @@ body.single-product {
         }
         .product-name {
             font-weight: bold;
+
+            .item-shipping-class {
+                color: gray;
+                font-size: 0.8rem;
+            }
+
         }
         .product-price,
         .product-quantity,
@@ -605,26 +613,60 @@ body.single-product {
             padding: 0.25rem;
             text-align: center !important;
         }
+
+      
     }
     .actions {
         background-color: $light;
         border-top: 1px solid $neutro;
         padding: 1rem;
+
         .coupon {
+            width: 60%;
+            display: inline-flex;
+
+            label {
+                display: none;
+            }
+
+            #coupon_code {
+                margin: 0px;
+                margin-right: 10px;
+                padding: 0.25rem 0.5rem;
+                border-radius: 5px;
+                width: 50%;
+                background-color: $light;
+                border: 1px solid $dark;
+            }
+
             .button {
                 background-color: $light;
                 border: 1px solid $dark;
                 border-radius: 5px;
+                padding: 0.25rem 0.5rem;
+                width: 50%;
             }
         }
+
         >.button {
-            float: right;
             background-color: $brand2;
             color: $light;
             border: 1px solid $brand2;
             border-radius: 5px;
+            float: right;
+            padding: 0.25rem 0.5rem;
+
             &:disabled {
-                opacity: 0.3;
+                opacity: 0.4;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .coupon {
+                width: 100%;
+            }
+            >.button {
+                float: none;
+                clear: both;
             }
         }
     }
@@ -812,6 +854,7 @@ body.single-product {
 }
 
 .woocommerce-notices-wrapper {
+    margin-bottom: 1rem;
     .woocommerce-message {
         padding: 0.5rem;
     }
@@ -939,6 +982,11 @@ body.single-product {
         .cart_item {
             .product-name {
                 padding: 0.5rem;
+
+                .item-shipping-class {
+                    color: grey;
+                    font-size: 0.8rem;
+                }
             }
             .product-total {
                 padding: 0.5rem;
@@ -1735,5 +1783,11 @@ span.onsale {
 
     & + .cart_spedizione_gratuita {
         display: none;
+    }
+
+    h5 {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
     }
 }

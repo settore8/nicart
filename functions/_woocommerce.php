@@ -529,9 +529,110 @@ function sortby_menuorder_query($query) {
 	}
 }
 
-add_action( 'woocommerce_review_order_before_shipping', 'woocommerce_messaggio_spedizione_grtuita', 10, 0 );
-add_action( 'woocommerce_cart_totals_before_shipping', 'woocommerce_messaggio_spedizione_grtuita', 10, 0 );
-function woocommerce_messaggio_spedizione_grtuita() {
+
+add_filter( 'woocommerce_shipping_free_shipping_is_available', 'free_shipping_for_x_cart_items', 10, 3 );
+function free_shipping_for_x_cart_items() {
+
+	$cartitems = WC()->cart->get_cart();
+	$validitems = 0;
+	$exclude_shipping_class = array("ferramenta");
+	$total = WC()->cart->total;
+
+	if($cartitems) {
+		foreach($cartitems as $product) {
+			$quantity = $product['quantity'];
+			$product = wc_get_product( $product['product_id'] );
+			$shipping_class = $product->get_shipping_class();
+			if(!$shipping_class || !in_array($product->get_shipping_class(), $exclude_shipping_class)) {
+				$validitems = $validitems + $quantity;
+			}
+		}
+		
+	}
+
+    if ($validitems == 1 && NICART_SPEDIZIONE_GRATUITA > $total) {
+		$diff =  NICART_SPEDIZIONE_GRATUITA - $total;
+        $is_available = false;
+    } elseif ($validitems == 2 && NICART_SPEDIZIONE_GRATUITA > $total) {
+		$diff =  NICART_SPEDIZIONE_GRATUITA - $total;
+        $is_available = false;
+    } elseif ($validitems < 3 || NICART_SPEDIZIONE_GRATUITA > $total) {
+        $is_available = true;
+    } elseif ($validitems >= 3 || NICART_SPEDIZIONE_GRATUITA < $total) {
+        $is_available = true;
+    } 
+
+    return $is_available;
+}
+
+
+add_action( 'woocommerce_review_order_before_shipping', 'create_notice_free_shipping', 10, 0 );
+add_action( 'woocommerce_cart_totals_before_shipping', 'create_notice_free_shipping', 10, 0 );
+
+function create_notice_free_shipping() {
+	$cartitems = WC()->cart->get_cart();
+	$validitems = 0;
+	$exclude_shipping_class = array("ferramenta");
+	$total = WC()->cart->total;
+
+	if($cartitems) {
+		foreach($cartitems as $product) {
+			$quantity = $product['quantity'];
+			$product = wc_get_product( $product['product_id'] );
+			$shipping_class = $product->get_shipping_class();
+			if(!$shipping_class || !in_array($product->get_shipping_class(), $exclude_shipping_class)) {
+				$validitems = $validitems + $quantity;
+			}
+		}
+		
+	}
+
+    if ($validitems == 1 && NICART_SPEDIZIONE_GRATUITA > $total) {
+		$diff =  str_replace('.', ',',NICART_SPEDIZIONE_GRATUITA - $total);
+      	$notice = __("Aggiungi <strong>2 articoli</strong> al carrello <br/>oppure articoli di importo superiore a <strong>". $diff . ' euro</strong>');
+    } elseif ($validitems == 2 && NICART_SPEDIZIONE_GRATUITA > $total) {
+		$diff =   str_replace('.', ',', NICART_SPEDIZIONE_GRATUITA - $total);
+        $notice = __("Aggiungi <strong>1 articolo</strong> al carrello <br/>oppure 1 articolo di importo superiore a <strong>". $diff . ' euro</strong>');
+    } elseif ($validitems < 3 || NICART_SPEDIZIONE_GRATUITA > $total) {
+        //$notice = __("Hai diritto alla spedizione gratuita");
+    } elseif ($validitems >= 3 || NICART_SPEDIZIONE_GRATUITA < $total) {
+      	//$notice = __("Hai diritto alla spedizione gratuita");
+    } 
+	if(isset($notice)) {
+		echo '<tr><td colspan="2"><div class="cart_spedizione_gratuita"><h5>'.__('Vuoi beneficiare della spedizione gratuita?', 'wp-theme').'</h5>'.$notice.'</div></td><td></td></tr>';
+	}
+	
+}
+
+
+// AGGIUNGE LA CLASSE DI SPEDIZIONE
+add_filter( 'woocommerce_cart_item_name', 'custom_text_cart_item_name', 10, 3 );
+function custom_text_cart_item_name( $item_name, $cart_item, $cart_item_key ) {
+    $shipping_class = 'ferramenta';
+
+    if( is_cart() && $cart_item['data']->get_shipping_class() === $shipping_class ) {
+        $item_name .= '<br /><div class="item-shipping-class">' . __("Questo prodotto non concorre al conteggio per la spedizione gratuita", "woocommerce") . '</div>';
+    }
+    return $item_name;
+}
+
+// Display a custom text under cart item name in checkout
+add_filter( 'woocommerce_checkout_cart_item_quantity', 'custom_checkout_text_cart_item_name', 10, 3 );
+function custom_checkout_text_cart_item_name( $item_qty, $cart_item, $cart_item_key ) {
+    // Here below define your shipping class slug
+    $shipping_class = 'ferramenta';
+
+    if( $cart_item['data']->get_shipping_class() === $shipping_class ) {
+        $item_qty .= '<br /><div class="item-shipping-class">' . __("Questo prodotto non concorre al conteggio per la spedizione gratuita", "woocommerce") . '</div>';
+    }
+    return $item_qty;
+}
+
+
+
+/*
+function woocommerce_messaggio_spedizione_gratuita() {
+	
 	global $woocommerce;
 
 	$subtotal = $woocommerce->cart->cart_contents_total; // cart_contents_total prende il subtotal comprensivo di eventuali codici promozionali
@@ -548,4 +649,7 @@ function woocommerce_messaggio_spedizione_grtuita() {
 	$mancante = $spedizione_gratuita - $subtotal;
 
 	echo '<tr><td colspan="2"><div class="cart_spedizione_gratuita"><strong>Ti mancano solo '. $number=str_replace('.',',',$mancante) . '€ per la spedizione gratuita!</strong></div></td><td></td></tr>';
+
+	
 }
+*/

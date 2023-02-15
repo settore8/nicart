@@ -529,14 +529,13 @@ function sortby_menuorder_query($query) {
 	}
 }
 
-
 add_filter( 'woocommerce_shipping_free_shipping_is_available', 'free_shipping_for_x_cart_items', 10, 3 );
 function free_shipping_for_x_cart_items() {
 
 	$cartitems = WC()->cart->get_cart();
 	$validitems = 0;
 	$exclude_shipping_class = array("ferramenta");
-	$total = WC()->cart->total;
+	$total = WC()->cart->subtotal;
 
 	if($cartitems) {
 		foreach($cartitems as $product) {
@@ -547,10 +546,11 @@ function free_shipping_for_x_cart_items() {
 				$validitems = $validitems + $quantity;
 			}
 		}
-		
 	}
 
-    if ($validitems == 1 && NICART_SPEDIZIONE_GRATUITA > $total) {
+	if( NICART_SPEDIZIONE_GRATUITA < $total) {
+		$is_available = true;
+	} elseif ($validitems == 1 && NICART_SPEDIZIONE_GRATUITA > $total) {
 		$diff =  NICART_SPEDIZIONE_GRATUITA - $total;
         $is_available = false;
     } elseif ($validitems == 2 && NICART_SPEDIZIONE_GRATUITA > $total) {

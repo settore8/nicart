@@ -94,3 +94,68 @@ $('.woocommerce-product-gallery__wrapper a').swipebox({
     afterClose: function() {}, // called after closing
     loopAtEnd: false // true will return to the first image after the last image is reached
 });
+
+
+$(document).on('click','#chiudimodal', function() {
+    $('#modalspedizione').hide();
+    setCookie('nicart_modal_dismissed', 'true', 1);
+});
+
+
+$(document).on('click','#modalspedizione', function() {
+    $('#modalspedizione').hide();
+});
+
+// Set a cookie to remember if the user has dismissed the modal
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+// Check if the cookie exists
+function checkCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function is_cookie_expired(cookieName, expirationDays) {
+    var cookieValue = checkCookie(cookieName);
+    if (cookieValue) {
+        var expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + expirationDays);
+        var currentTimestamp = new Date().getTime();
+        var expirationTimestamp = expirationDate.getTime();
+        if (currentTimestamp > expirationTimestamp) {
+            // Cookie has expired
+            return true;
+        } else {
+            // Cookie is still valid
+            return false;
+        }
+    } else {
+        // Cookie is not set
+        return true;
+    }
+}
+
+console.log(is_cookie_expired('nicart_modal_dismissed'));
+
+setTimeout(function(){
+    if (!checkCookie('nicart_modal_dismissed') || is_cookie_expired('nicart_modal_dismissed', 1)) {
+        $('#modalspedizione').show();
+    }
+}, 20000);
+

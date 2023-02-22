@@ -108,7 +108,7 @@
 <script src="<?php bloginfo('template_directory'); ?>/js/slick.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/js/swipebox.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/js/wow.min.js"></script>
-<script src="<?php bloginfo('template_directory'); ?>/js/custom.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/js/custom.js?v=1.2.7"></script>
 
 <script>
 new WOW().init();
@@ -128,6 +128,16 @@ new WOW().init();
  }?>
 
  <?php get_template_part('images/icone'); ?>
+
+
+ <div id="modalspedizione">
+  <div class="modal-container">
+  		<button id="chiudimodal"> 
+          <span aria-hidden="true">&times;</span>
+        </button>
+		<img src="<?php bloginfo('template_directory'); ?>/images/spedizioni-nicart.svg" alt="Spedizioni Nicart">
+  </div>
+</div>
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->

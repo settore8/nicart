@@ -756,6 +756,61 @@ body.single-product {
         flex: 1;
         padding: 1rem;
     }
+
+    // fatturazione
+
+
+    #show_if_invoice_fields {
+        background: $neutro;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        margin: 0 0.5rem 0 0.5rem;
+         &:after {
+            content: '';
+            display: block;
+            clear: both;
+         }
+    }
+
+    #ragione_sociale_field,
+    #partita_iva_field,
+    #codice_fiscale_field,
+    #codice_univoco_field {
+        display: none;
+        width: 50%;
+        float: left;
+
+         label {
+            font-weight: normal;
+
+            .optional {
+                display: none;
+            }
+         }
+    }
+
+    #show_invoice_fields_field {
+        padding: 0 1rem 0 1rem;
+        text-align: center;
+
+        .checkbox {
+            margin-left: 20px;
+        }
+    }
+
+    .woocommerce-account-fields {
+        padding: 0.5rem 1rem;
+        border: 1px solid $neutro;
+        margin-top: 1rem;
+        .create-account {
+            text-align: center;
+            margin-bottom: 0;
+        }
+        .checkbox {
+            margin-left: 20px;
+        }
+
+    }
 }
 
 .woocommerce-NoticeGroup-checkout {
@@ -815,6 +870,20 @@ body.single-product {
         }
         .input-text {
             width: 100%;
+        }
+
+        .required {
+            color: $error;
+        }
+
+        .optional {
+            font-weight: normal;
+        }
+
+        &.woocommerce-invalid {
+            input {
+                border: 1px solid $error;
+            }
         }
     }
 }

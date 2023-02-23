@@ -19,7 +19,7 @@ function my_acf_init() {
   
 }
 
-
+/* Woocommerce */
 include ( get_stylesheet_directory() . '/functions/_woocommerce.php' );
 include ( get_stylesheet_directory() . '/functions/_posttypes.php' );
 include ( get_stylesheet_directory() . '/functions/_taxonomy.php' );

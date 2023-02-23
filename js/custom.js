@@ -151,11 +151,10 @@ function is_cookie_expired(cookieName, expirationDays) {
     }
 }
 
-console.log(is_cookie_expired('nicart_modal_dismissed'));
-
 setTimeout(function(){
     if (!checkCookie('nicart_modal_dismissed') || is_cookie_expired('nicart_modal_dismissed', 1)) {
         $('#modalspedizione').show();
     }
 }, 20000);
 
+ 

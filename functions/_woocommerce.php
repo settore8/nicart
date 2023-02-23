@@ -604,7 +604,6 @@ function create_notice_free_shipping() {
 	
 }
 
-
 // AGGIUNGE LA CLASSE DI SPEDIZIONE
 add_filter( 'woocommerce_cart_item_name', 'custom_text_cart_item_name', 10, 3 );
 function custom_text_cart_item_name( $item_name, $cart_item, $cart_item_key ) {
@@ -629,27 +628,4 @@ function custom_checkout_text_cart_item_name( $item_qty, $cart_item, $cart_item_
 }
 
 
-
-/*
-function woocommerce_messaggio_spedizione_gratuita() {
-	
-	global $woocommerce;
-
-	$subtotal = $woocommerce->cart->cart_contents_total; // cart_contents_total prende il subtotal comprensivo di eventuali codici promozionali
-
-	$spedizione_gratuita = NICART_SPEDIZIONE_GRATUITA;
-	if(!NICART_SPEDIZIONE_GRATUITA || !$subtotal) {
-		return;
-	}
-
-	if($spedizione_gratuita < $subtotal) {
-		return;
-	}
-
-	$mancante = $spedizione_gratuita - $subtotal;
-
-	echo '<tr><td colspan="2"><div class="cart_spedizione_gratuita"><strong>Ti mancano solo '. $number=str_replace('.',',',$mancante) . '€ per la spedizione gratuita!</strong></div></td><td></td></tr>';
-
-	
-}
-*/
+include ( get_stylesheet_directory() . '/functions/_woocommerce-invoice-fields.php' );

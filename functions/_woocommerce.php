@@ -413,7 +413,6 @@ function unrequire_address_2_checkout_fields( $fields ) {
 	return $fields;
 }
 
-
 // Add a custom fee (fixed or based cart subtotal percentage) by payment
 add_action( 'woocommerce_cart_calculate_fees', 'custom_handling_fee' );
 function custom_handling_fee ( $cart ) {

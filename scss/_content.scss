@@ -189,7 +189,7 @@
             font-size: 1rem;
         }
         .shortcode_box-highlight {
-            background-color: lighten($brand3, 15%);
+            background-color: $warning;
             padding: 10px;
             h2 {
                 font-size: 1.3rem;
@@ -540,3 +540,36 @@
     width: 100%;
     height: 100%;
 }
+
+/**
+ * shortcodes
+ */
+
+
+ .shortcode_box-highlight {
+    background-color: $warning;
+    padding: 10px;
+    border-radius: 3px;
+    h2 {
+        font-size: 1.3rem;
+        margin: 0px;
+        &:after {
+            display: none;
+        }
+    }
+    h3 {
+        font-size: 1rem;
+        color: $brand1;
+        margin-bottom: 0px;
+        &:after {
+            border-bottom-style: dotted;
+        }
+    }
+    ul {
+        font-size: 0.85rem;
+        margin: 3px 0px;
+        li {
+            margin-bottom: 0px;
+        }
+    }
+} // shortcode_box-highlight

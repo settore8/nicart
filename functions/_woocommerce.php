@@ -535,6 +535,7 @@ function free_shipping_for_x_cart_items() {
 	$validitems = 0;
 	$exclude_shipping_class = array("ferramenta");
 	$total = WC()->cart->subtotal;
+	$is_available = false;
 	
 	if($cartitems) {
 		foreach($cartitems as $product) {

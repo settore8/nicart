@@ -87,10 +87,25 @@ add_action('woocommerce_after_single_product', 'video_prodotto', 28);
 function video_prodotto() {
 	global $product;
 	$video = get_field('video', $product->get_id());
+	$video_title = get_field('titolo_video', $product->get_id());
+	$video_text = get_field('testo_video', $product->get_id());
+
 
 	if( $video ): 
 		echo '<div id="video">';
 		foreach( $video as $post ) {
+				if( $video_title || $video_title): 
+					echo '<div class="video_intro">';
+					if( $video_title ): 
+						echo '<h3>'.$video_title.'</h3>';
+					endif;
+					if( $video_text ): 
+						echo $video_text;
+					endif;
+					echo '</div>';
+				
+				endif;
+
 				setup_postdata( $post);
 				echo '<div class="video_prodotto">';
 				//$vid = get_field('video_youtube', $post->ID);
@@ -179,7 +194,9 @@ function scheda_prodotto() {
 	global $product;
 	$scheda = get_field('scheda_pdf', $product->get_id());
 	if(!empty($scheda)) :
-		echo '<a href="'.$scheda['url'].'" class="btn btn-danger pull-right" target="_blank"><i class="icon-file-pdf"></i>'.$scheda['title'].'</a>';
+		echo '<div class="scheda_tecnica">';
+		echo '<a href="'.$scheda['url'].'" class="btn btn-danger" target="_blank"><i class="icon-file-pdf"></i>'.$scheda['title'].'</a>';
+		echo '</div>';
 	endif;
 }
 

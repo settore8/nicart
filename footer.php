@@ -140,14 +140,15 @@ new WOW().init();
 </div>
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
 <!--IUB_COOKIE_POLICY_START-->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115003654-1"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JTHJENDY5G"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-115003654-1', { 'anonymize_ip': true });
+
+  gtag('config', 'G-JTHJENDY5G');
 </script>
 <!--IUB_COOKIE_POLICY_END-->
 

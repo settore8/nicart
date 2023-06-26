@@ -21,12 +21,10 @@ remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' 
 //remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart');
 
 
-
 add_filter( 'woocommerce_loop_add_to_cart_link', 'replace_default_button' );
 function replace_default_button(){
     return '<a href="'.get_the_permalink().'" class="button product_type_variable add_to_cart_button" title="Acquista"><span>Vedi</span> <svg><use xlink:href="#arrowcart" width="37" height="24"/></svg></a>';
 }
-
 
 /**
  * Sposto i prodotti correlati
@@ -121,6 +119,25 @@ function video_prodotto() {
 			} 
 		echo '</div>';
 	endif;
+}
+
+
+
+/**
+* Aggiungo immagine 
+*/
+add_action( 'woocommerce_single_product_summary', 'product_banner_after_single_product_title', 6 );
+function product_banner_after_single_product_title() { 
+    global $product; 
+	$banner_product = get_field('banner_product', $product->get_id());
+	$banner_product_float = get_field('banner_product_float', $product->get_id()) ? 'float' : 'block';
+
+	if( $banner_product ): 
+		echo '<div id="product-banner" class="'.$banner_product_float.'">';
+			echo '<img src="'.$banner_product['url'].'"  />';
+		echo '</div>';
+	endif;
+   
 }
 
 

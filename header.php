@@ -14,7 +14,7 @@ exit;
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="google-site-verification" content="IdUVse-Tm5fOqyzsCEe1ROpAvHN6PT0N7q7z9GaTUjk" />
 	<meta name="google-site-verification" content="zEhtJGuZ3dPvEKIvf_S0K7XfZWrdByeHA0nEqTQn3OM" />
-	<link href="<?php bloginfo('stylesheet_url'); ?>?v=1.2.10" rel = "stylesheet">
+	<link href="<?php bloginfo('stylesheet_url'); ?>?v=1.2.11" rel = "stylesheet">
 	<link href="<?php bloginfo('template_directory'); ?>/hover.css" rel = "stylesheet">
 	<link rel="apple-touch-icon" sizes="180x180" href="<?php bloginfo('template_directory'); ?>/images/favicons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo('template_directory'); ?>/images/favicons/favicon-32x32.png">
@@ -79,7 +79,25 @@ exit;
 		<div id="topmenu">
 			<div class="contenitore">
 			<a class="topmessage" href="<?php echo get_permalink(wc_terms_and_conditions_page_id()); ?>"><span class="blink">Spedizione gratuita per gli ordini con minimo 3 articoli* <br/>o con carrello sopra i <?php echo NICART_SPEDIZIONE_GRATUITA; ?>€</span></a>
-			<a class="topcontact" href="tel:+39<?php echo NICART_TEL; ?>"><svg><use xlink:href="#tel" width="24" height="24"/></svg> <?php echo NICART_TEL; ?> <span class="assistenza">Assistenza gratuita</span></a>
+			<div class="topcontact">
+
+				<svg><use xlink:href="#tel" width="24" height="24"/></svg> 
+
+				<a href="tel:+39<?php echo NICART_TEL; ?>" class="">
+				<span class="contact-label">
+					<span class="text">Supporto tecnico</span>
+					<span class="number"><?php echo NICART_TEL; ?></span>
+				</span>
+				</a>
+				
+				<a href="tel:+39<?php echo NICART_TEL_DANIELA; ?>" class="">
+					<span class="contact-label">
+						<span class="text">Spedizioni e contabilità</span>
+						<span class="number"><?php echo NICART_TEL_DANIELA; ?> </span>
+					</span>
+					
+				</a>
+			</div>
 			<?php if ( is_user_logged_in() ) { ?>
 				<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="" class="user">Area Utente</a>
 			<?php } 

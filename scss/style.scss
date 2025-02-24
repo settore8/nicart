@@ -6,6 +6,7 @@ Version: 1.0
 @import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
 @import "_googlefonts";
 @import "_settings";
+
 html,
 body {
     background-color: $light;
@@ -32,6 +33,12 @@ body {
         font-size: $font-size-default - 2px;
     }
 }
+
+@media (min-width: 1200px) {
+    .container {
+      width: 1240px;
+    }
+  }
 
 #site {
     padding-top: 0px;

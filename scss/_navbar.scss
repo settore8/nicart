@@ -78,15 +78,17 @@
         }
 
         @include breakpoint(xs) {
+
+            margin-right: 0.25rem;
             svg {
                 display: none;
             }
 
             a {
-                padding: 0 0.25rem;
+                padding: 0 0.2rem;
 
                 .txt {
-                    font-size: 0.6em;
+                    font-size: 0.45em;
                 }
             }
         }

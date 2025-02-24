@@ -63,6 +63,7 @@
                     text-transform: uppercase;
                     font-size: 0.7em;
                 }
+
                 .number {
                     font-weight: bold;
                 }
@@ -73,18 +74,28 @@
         }
 
         @include breakpoint(maxmd) {
+            margin-left: 0.25rem;
             margin-right: 0.25rem;
-            margin-right: 0.25rem;
+
             svg {
                 display: none;
             }
 
             a {
-                padding: 0 0.2rem;
+                padding: 0 0.1rem;
 
                 .txt {
-                    font-size: 0.4em;
+                    font-size: 0.35em;
                 }
+
+                .number {
+                    font-size: 0.85em;
+                }
+
+                &:last-child {
+                    padding-left: 0.2rem;
+                }
+                
             }
         }
     

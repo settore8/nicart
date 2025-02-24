@@ -11,7 +11,10 @@
     <h2>Sito <strong><?php echo get_bloginfo( 'name' ); ?></strong> in manutenzione</h2>
     <p>Stiamo migliorando il nostro sito internet.<br/>Ritorna a visitarci più tardi.</p>
     <hr/>
-    <a class="btn" href="https://www.nicart.it/NICART_generale_2023_v1.pdf" target="_blank">Scarica il catalogo 2023</a>
+    <?php 
+    $file = get_field('pdf_catalogo', 'options');
+    ?>
+    <a class="btn" href="<?php echo $file['url']; ?>" target="_blank">Scarica il <?php echo get_field('titolo_catalogo', 'options'); ?></a>
     <hr/>
     <address><strong>Nicart di Artini Aldo</strong>
     <small>Via G. La Pira, 11 - 52024 Loro Ciuffenna (AR)<br/>
@@ -19,4 +22,3 @@
 </section>
 </body>
 </html>
-

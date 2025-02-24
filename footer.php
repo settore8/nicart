@@ -32,7 +32,6 @@
 					<address>
 					Piazza Pertini, 11<br/>
 					52024 Loro Ciuffenna (AR)<br/>
-					Cell. <?php echo NICART_TEL; ?><br/>
 					Tel/Fax 055 9172783<br/>
 					P. Iva 02300830516
 				</address>

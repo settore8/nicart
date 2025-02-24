@@ -1,5 +1,10 @@
 <?php if( isset($_GET['token']) && isset($_GET['token']) == 'V80CKJUJyefhWcjkU8qlpxpDzU0SOLZBpeWRVZvFv01g0G6PdPuP9k4nR8AA7zrVTvhpqv7fGYxPWbOy0xqz6KgQ1T0uyeipFEo3ljwVGfIwakMRVbpq3ixFbbmYQ0gBnRhzgjLxw' ) {
-header('Location: /NICART_generale_2023_v1.pdf');
+$file = get_field('pdf_catalogo', 'options');
+if(!$file) {
+	header('Location: https://www.nicart.it');
+	exit;
+}
+header('Location: '.$file['url']);
 exit;
 } ?>
 <!DOCTYPE html>

@@ -85,11 +85,11 @@
                 padding: 0 0.1rem;
 
                 .txt {
-                    font-size: 0.35em;
+                    font-size: 0.3rem;
                 }
 
                 .number {
-                    font-size: 0.85em;
+                    font-size: 1em;
                 }
 
                 &:last-child {
@@ -112,13 +112,17 @@
         }
     }
     .cart {
+
         display: flex;
         align-items: center;
         position: relative;
         margin-left: 0.5rem;
+
         @include breakpoint(maxmd) {
-            margin-right: 0.5rem;
+            margin-right: 0.25rem;
+            margin-left: 0.25rem;
         }
+
         .cart--counter {
             position: absolute;
             left: -8px;
@@ -133,6 +137,13 @@
             color: $light;
             font-size: 0.7rem;
         }
+
+        .cart--total {
+            @include breakpoint(maxmd) {
+                display: none;
+            }
+        }
+
         svg {
             transform: scale(-1, 1);
         }

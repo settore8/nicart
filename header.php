@@ -75,7 +75,7 @@ exit;
 				
 				<a href="tel:+39<?php echo NICART_TEL_DANIELA; ?>" class="">
 					<span class="contact-label">
-						<span class="text">Spedizioni e contabilità</span>
+						<span class="text">Spedizioni / contabilità</span>
 						<span class="number"><?php echo NICART_TEL_DANIELA; ?> </span>
 					</span>
 					
@@ -85,10 +85,16 @@ exit;
 				<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="" class="user">Area Utente</a>
 			<?php } 
 			else { ?>
-				<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title=""  class="user">Login / Registrati</a>
+				<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title=""  class="user">Login/Registrati</a>
 			<?php } ?>
 			<a class="cart" href="<?php echo wc_get_cart_url(); ?>" title="">
-			<svg><use xlink:href="#cart" width="24" height="24"/></svg><span class="cart--counter"><?php echo WC()->cart->get_cart_contents_count(); ?></span><?php echo WC()->cart->get_cart_total(); ?></a>
+				<svg><use xlink:href="#cart" width="24" height="24"/></svg>
+					<span class="cart--counter">
+					<?php echo WC()->cart->get_cart_contents_count(); ?>
+					</span>
+					<span class="cart--total">
+					<?php echo WC()->cart->get_cart_total(); ?></a>
+					</span>
 			</div>
 		</div>
 

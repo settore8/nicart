@@ -429,6 +429,7 @@ small {
 @import "_animate";
 @import "_button";
 @import "_woocommerce";
+@import "_video";
 @import "_breadcrumbs";
 @import "_cookie";
 
@@ -546,6 +547,7 @@ small {
 /* Set the modal position and background color */
 #modalspedizione {
     position: fixed;
+    z-index: 99 !important;
     bottom: 0;
     right: 0;
     left: 0;
@@ -554,6 +556,7 @@ small {
     padding: 0;
     background: rgba(0,0,0, 0.4);
     display: none;
+    
       
     .modal-container {
         position: fixed;

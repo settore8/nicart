@@ -97,18 +97,20 @@ function so23698827_filter_post_type_link( $link, $post ) {
 add_filter( 'post_type_link', 'so23698827_filter_post_type_link', 10, 2 );
 
 
+add_action('acf/init', function() {
 
-if( function_exists('acf_add_options_page') ) {
+  if( function_exists('acf_add_options_page') ) {
 	
-	acf_add_options_page(array(
-		'page_title' 	=> 'Impostazioni Tema',
-		'menu_title'	=> 'Impostazioni Tema',
-		'menu_slug' 	=> 'theme-settings',
-		'capability'	=> 'activate_plugins',
-		'redirect'		=> false
-	));
-	
-}
+    acf_add_options_page(array(
+      'page_title' 	=> 'Impostazioni Tema',
+      'menu_title'	=> 'Impostazioni Tema',
+      'menu_slug' 	=> 'theme-settings',
+      'capability'	=> 'activate_plugins',
+      'redirect'		=> false
+    ));
+    
+  }
+});
 
 // Function to change email address
 function wpb_sender_email( $original_email_address ) {

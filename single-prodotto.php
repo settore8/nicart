@@ -84,20 +84,19 @@ if ($italy) { ?>
 
 	<?php endif; ?>
 	<div id="contactButton" class="btn btn-primary"><i class="icon-information"></i>Vuoi saperne di più?</div>
-
 	<footer>
-	<hr/>
-	<?php if( $video ): ?>
-			<?php foreach( $video as $post ) {
-					setup_postdata( $post); 
-					echo '<h2>'.get_the_title().'</h2>';
-					echo '<div class="embed-container">';
-					echo get_field('video_youtube');
-					echo '</div>';
-				} 
-			wp_reset_postdata();
-			?>
-	<?php endif; ?>
+		<hr/>
+		<?php if( $video ): ?>
+				<?php foreach( $video as $post ) {
+						setup_postdata( $post); 
+						echo '<h2>'.get_the_title().'</h2>';
+						echo '<div class="embed-container">';
+						echo get_field('video_youtube');
+						echo '</div>';
+					} 
+				wp_reset_postdata();
+				?>
+		<?php endif; ?>
 	</footer>
 	</div>
 </article>

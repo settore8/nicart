@@ -1,3 +1,9 @@
+<?php 
+if(is_product_category()) {
+	// get_template_part('assets/categoryFaqs'); 
+}
+?>
+
 <section id="newsSection" class="row largepadding">
 	<div class="container">
 		<?php get_template_part('assets/productBestSellers'); ?>

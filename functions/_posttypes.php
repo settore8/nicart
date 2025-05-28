@@ -63,7 +63,7 @@ function codex_retailer_init() {
 
 	$args = array(
 		'labels'             => $labels,
-    'description'        => __( 'Description.', 'your-plugin-textdomain' ),
+        'description'        => __( 'Description.', 'your-plugin-textdomain' ),
 		'public'             => true,
 		'publicly_queryable' => true,
 		'show_ui'            => true,
@@ -134,6 +134,9 @@ function codex_faq_init() {
 
 
 function format_duration_iso8601($seconds) {
+    if(!$seconds) {
+        return ''; // Se non c'è durata, ritorna 0 secondi
+    }
     $minutes = floor($seconds / 60);
     $secs = $seconds % 60;
 
@@ -176,7 +179,7 @@ function inject_videoobject_jsonld() {
 
 	$video_url  = 'https://www.youtube.com/watch?v=' . $video_id;
 	$embed_url  = 'https://www.youtube.com/embed/' . $video_id;
-	$thumb_url  = $poster['url'] ? $poster['url'] : "https://img.youtube.com/vi/{$video_id}/hqdefault.jpg";
+	$thumb_url  =  $poster ? $poster['url'] : "https://img.youtube.com/vi/{$video_id}/hqdefault.jpg";
 	$duration_iso = format_duration_iso8601($duration);
 
 	// Output JSON-LD

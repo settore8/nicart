@@ -132,6 +132,45 @@ function codex_faq_init() {
 	register_post_type( 'faq', $args );
 }
 
+// Custom taxonomy FAQ Category
+add_action( 'init', 'codex_faq_cat', 0 );
+
+function codex_faq_cat() {
+
+	$labels = array(
+		'name'              => _x( 'Categorie FAQ', 'taxonomy general name', 'your-plugin-textdomain' ),
+		'singular_name'     => _x( 'Categoria FAQ', 'taxonomy singular name', 'your-plugin-textdomain' ),
+		'search_items'      => __( 'Cerca categorie FAQ', 'your-plugin-textdomain' ),
+		'all_items'         => __( 'Tutte le categorie FAQ', 'your-plugin-textdomain' ),
+		'parent_item'       => __( 'Categoria padre', 'your-plugin-textdomain' ),
+		'parent_item_colon' => __( 'Categoria padre:', 'your-plugin-textdomain' ),
+		'edit_item'         => __( 'Modifica categoria FAQ', 'your-plugin-textdomain' ),
+		'update_item'       => __( 'Aggiorna categoria FAQ', 'your-plugin-textdomain' ),
+		'add_new_item'      => __( 'Aggiungi nuova categoria FAQ', 'your-plugin-textdomain' ),
+		'new_item_name'     => __( 'Nome nuova categoria FAQ', 'your-plugin-textdomain' ),
+		'menu_name'         => __( 'Categorie FAQ', 'your-plugin-textdomain' ),
+	);
+
+	$args = array(
+		'labels'            => $labels,
+		'hierarchical'      => true, // true = tipo categorie | false = tipo tag
+		'public'            => true,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'show_in_nav_menus' => true,
+		'show_tagcloud'     => false,
+		'query_var'         => true,
+		'rewrite'           => array(
+			'slug'         => 'faq-categoria',
+			'with_front'   => true,
+			'hierarchical' => true,
+		),
+	);
+
+	register_taxonomy( 'faq_cat', array( 'faq' ), $args );
+}
+
+
 
 function format_duration_iso8601($seconds) {
     if(!$seconds) {

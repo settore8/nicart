@@ -54,5 +54,12 @@
     
 <main class="container">
 <?php woocommerce_content(); ?>
+
+<?php 
+if(is_product_category()) {
+	get_template_part('assets/categoryFaqs'); 
+}
+?>
+
 </main>
 <?php get_footer(); ?>

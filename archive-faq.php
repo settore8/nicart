@@ -7,54 +7,76 @@
 		} ?>
 		<h1>Domande Frequenti Nicart</h1>
 		<p>Domande frequenti su accessori e ricambi per decespugliatori</p>
+
+		<?php 
+		// filtro per cat_faqegory
+		$faq_cats = get_terms( array(
+			'taxonomy' => 'faq_cat',
+			'hide_empty' => true,
+		) );	
+		?>
 	</div>
 </div>
 
 <main class="container">
-	<div class="row">
 
-		<section class="col-12">
-		<?php if ( have_posts() ) : ?>
+		<section class="faqs-archive">
+		<?php 
+			
+			// ciclo per ogni categoria FAQ
+			if ( ! empty( $faq_cats ) && ! is_wp_error( $faq_cats ) ) {
+				foreach ( $faq_cats as $cat ) {
+					echo '<h2 class="faqs-section-title">' . esc_html( $cat->name ) . '</h2>';
 
-			<div class="faqs list-group list-group-flush">
+					// Query per le FAQ nella categoria corrente
+					$args = array(
+						'post_type' => 'faq',
+						'posts_per_page' => -1,
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'faq_cat',
+								'field'    => 'term_id',
+								'terms'    => $cat->term_id,
+							),
+						),
+					);	
 
-			<?php while ( have_posts() ) : the_post();
+					$the_query = new WP_Query( $args );
+					if ( $the_query->have_posts() ) {
+						echo '<ul class="faqs">';
 
-				// Tassonomia FAQ
-				$faq_cats = get_the_terms( get_the_ID(), 'faq_cat' );
-				$cat_names = [];
+						while ( $the_query->have_posts() ) {
+							$the_query->the_post(); 
+							$risposta = get_field('risposta');
+							?>
+								<li class="faq">
+									
+									<h2 class="h5 mb-1">
+										<?php the_title(); ?>
+									</h2>
+									
+									<?php 
+										echo $risposta;
+									?>
 
-				if ( ! empty( $faq_cats ) && ! is_wp_error( $faq_cats ) ) {
-					foreach ( $faq_cats as $cat ) {
-						$cat_names[] = esc_html( $cat->name );
+									<a href="<?php echo get_the_permalink(); ?>" class="read-more">Apri</a>
+
+								</li>
+							<?php
+						}
+
+						echo '</ul>';
+					} else {
+						echo '<p>Nessuna FAQ trovata in questa categoria.</p>';
 					}
+					wp_reset_postdata();
 				}
+			}
 			?>
 
-				<a href="<?php the_permalink(); ?>" class="list-group-item list-group-item-action faq-item">
-					
-					<h2 class="h5 mb-1">
-						<?php the_title(); ?>
-					</h2>
 
-					<?php if ( ! empty( $cat_names ) ) : ?>
-						<small class="text-muted">
-							<?php echo implode( ' · ', $cat_names ); ?>
-						</small>
-					<?php endif; ?>
-
-				</a>
-
-			<?php endwhile; ?>
-
-			</div>
-
-		<?php else : ?>
-			<p>Nessuna FAQ trovata.</p>
-		<?php endif; ?>
 		</section>
 
-	</div>
 </main>
 
 <?php get_footer(); ?>

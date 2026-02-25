@@ -57,7 +57,10 @@
 
 <?php 
 if(is_product_category()) {
-	get_template_part('assets/categoryFaqs'); 
+	//get_template_part('assets/categoryFaqs'); 
+}
+if(is_product()) {
+    //get_template_part('assets/categorySingle'); 
 }
 ?>
 

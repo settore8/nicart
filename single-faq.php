@@ -11,29 +11,23 @@ if ( have_posts() ) {
 
 		<main class="container">
 				<article class="row">
-					<header class="col-xs-12 col-sm-5">
+					<header class="col-xs-12 col-sm-5 col-offset-1">
 						<?php
-						$video = get_field('video_youtube');
-						$description = get_field('description');
-						$poster = get_field('poster');
+						$risposta = get_field('risposta');
+						$prodotti = get_field('prodotti');
+						$categorie = get_field('categorie');
+						// recupera la tassonomia faq_cat
+						$faq_cat = get_the_terms( get_the_ID(), 'faq_cat' );
 						?>
 						<h1><?php the_title(); ?></h1>
-						<p><?php if ($description) { echo $description; } ?></p>
+						<?php if ($risposta) { echo $risposta; } ?>
 					</header>
-					<div class="col-xs-12 col-sm-7">
-					<?php if( $video ): ?>
-							<?php
-							echo '<div class="embed-container">';
-							echo get_field('video_youtube');
-							echo '</div>';
-					?>
-					<?php endif; ?>
-					</div>
+				
 				</article>
 		</main>
 
 		<?php
-				$current_video_id = get_the_ID();
+				$current_faq_id = get_the_ID();
 
 				$args = [
 					'post_type'      => 'product',
@@ -41,8 +35,8 @@ if ( have_posts() ) {
 					'post_status'    => 'publish',
 					'meta_query'     => [
 						[
-							'key'     => 'video',
-							'value'   => '"' . $current_video_id . '"',
+							'key'     => 'faq',
+							'value'   => '"' . $current_faq_id . '"',
 							'compare' => 'LIKE'
 						]
 					]
@@ -55,12 +49,23 @@ if ( have_posts() ) {
 				<?php if ($related_products->have_posts()) : ?>
 					<div class="container prodotti-video">
 					<section class="row customsection group">
-							<h3 class="text-center">Prodotti nel video</h3>  
+							<h3 class="text-center">Prodotti</h3>  
 							<ul class="products columns-4">          
-							<?php while ( $related_products->have_posts() ) {
-									$related_products->the_post(); 
-									wc_get_template_part( 'content', 'product' ); ?>
-							<?php } ?>
+								<?php while ($related_products->have_posts()) : $related_products->the_post(); ?>
+											<li <?php wc_product_class('', $product); ?>>
+												<a href="<?php the_permalink(); ?>">
+													<?php
+													if (has_post_thumbnail()) {
+														the_post_thumbnail('medium');
+													} else {
+														echo '<img src="' . wc_placeholder_img_src() . '" alt="Placeholder" />';
+													}
+													?>
+													<h2 class="woocommerce-loop-product__title"><?php the_title(); ?></h2>
+													<span class="price"><?php echo $product->get_price_html(); ?></span>
+												</a>
+											</li>
+								<?php endwhile; ?>
 							</ul>
 					</section>
 					</div>

@@ -1,27 +1,30 @@
 
+
+
 <?php
-    
-    $currenCat = get_queried_object();
+
+     $currenProduct = get_the_ID();
 
     // verifico se ci sono faq per questa categoria tramite acf field object post multiplo
-    $args = array(
+     $args = array(
       'post_type' => 'faq',
       'posts_per_page' => -1,
       'meta_query' => array(
             array(
-                'key' => 'categorie', // nome del campo ACF
-                'value' => '"' . $currenCat->term_id . '"', // valore da cercare
+                'key' => 'prodotti', // nome del campo ACF
+                'value' => '"' . $currenProduct . '"', // valore da cercare
                 'compare' => 'LIKE'
             )
       )
     );
 
+    
     $the_query = new WP_Query( $args );
 
     if ( $the_query->have_posts() ) { ?>
       
         <div class="faqs-section">
-            <h2 class="faqs-section-title">Domande frequenti su <?php echo $currenCat->name; ?></h2>  
+            <h2 class="faqs-section-title">Domande frequenti su <?php echo get_the_title($currenProduct); ?></h2>  
             <ul class="faqs">          
             <?php while ( $the_query->have_posts() ) {
                 $the_query->the_post(); 
@@ -35,7 +38,7 @@
                                 <?php 
                                     echo wp_trim_words($risposta, 50, '...');
                                 ?>
-                                <a href="<?php echo get_the_permalink(); ?>" class="read-more">Apri</a>
+                                <a href="<?php echo get_the_permalink(); ?>" class="read-more">leggi</a>
                             </div>
                         </div>
                     </li>
@@ -43,3 +46,4 @@
             </ul>
         </div>
 <?php } wp_reset_query(); ?>
+

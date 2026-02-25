@@ -121,10 +121,10 @@ function codex_faq_init() {
 		'show_in_menu'       => true,
 		'query_var'          => true,
 		'rewrite' => array(
-	    'slug' => 'faq',
+	    'slug' => 'faqs',
 	    	'with_front' => true
 	  	),
-		'has_archive'        => 'domande-frequenti',
+		'has_archive'        => 'faqs',
 		'capability_type'    => 'post',
 		'hierarchical'       => false,
 		'supports'           => array( 'title', 'page-attributes' ),
@@ -170,7 +170,92 @@ function codex_faq_cat() {
 	register_taxonomy( 'faq_cat', array( 'faq' ), $args );
 }
 
+// inject JSON-LD per FAQS presenti dentro la categoria.
 
+function inject_faqs_jsonld_in_cat() {
+	// verifico se siamo la tax "product_cat".
+	if (!is_tax('product_cat')) return;
+
+	// recupero le faq associate alla product_cat corrente tramite acf field object post multiplo
+	$currenCat = get_queried_object();
+    // verifico se ci sono faq per questa categoria tramite acf field object post multiplo
+    $args = array(
+      'post_type' => 'faq',
+      'posts_per_page' => -1,
+      'meta_query' => array(
+            array(
+                'key' => 'categorie', // nome del campo ACF
+                'value' => '"' . $currenCat->term_id . '"', // valore da cercare
+                'compare' => 'LIKE'
+            )
+      )
+    );
+	
+	$faqs = get_posts($args);
+	if (!$faqs) return;
+
+	$mainEntity = [];
+
+	foreach ($faqs as $faq) {
+		$mainEntity[] = [
+			"@type" => "Question",
+			"name" => get_the_title($faq),
+			"acceptedAnswer" => [
+				"@type" => "Answer",
+				"text" => get_field('risposta', $faq->ID)
+			]
+		];	
+	}
+
+	// Output JSON-LD
+	?>
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "QAPage",
+	  "name": <?= json_encode(single_term_title('', false)) ?>,
+	  "mainEntity": <?= json_encode($mainEntity) ?>	
+	}
+	</script>
+<?php
+}
+
+/*
+function inject_faqs_jsonld() {
+	if (!is_singular('faq')) return;
+
+	if (!have_posts()) return;
+
+	global $post;
+	setup_postdata($post);
+
+	$risposta   = get_field('risposta', $post->ID);	
+
+	// Output JSON-LD
+	?>
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "QAPage",
+	  "name": <?= json_encode(get_the_title($post)) ?>,
+	  "mainEntity": [
+	    {
+	      "@type": "Question",
+	      "name": <?= json_encode(get_the_title($post)) ?>,
+	      "acceptedAnswer": {
+	        "@type": "Answer",
+	        "text": <?= json_encode($risposta) ?>
+	      }
+	    }
+	  ]
+	}
+	</script>
+	<?php
+
+	wp_reset_postdata();
+}
+add_action('wp_head', 'inject_faqs_jsonld');
+*/
 
 function format_duration_iso8601($seconds) {
     if(!$seconds) {

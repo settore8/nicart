@@ -158,3 +158,27 @@ setTimeout(function(){
 }, 20000);
 
  
+document.addEventListener('DOMContentLoaded', () => {
+  const faqs = document.querySelectorAll('.faq');
+
+  faqs.forEach(faq => {
+    const title = faq.querySelector('h3');
+    const content = faq.querySelector('.entry-content');
+
+    title.addEventListener('click', () => {
+      const isOpen = faq.classList.contains('is-open');
+
+      // 🔒 chiude le altre (rimuovi questo blocco se vuoi più FAQ aperte)
+      faqs.forEach(item => {
+        item.classList.remove('is-open');
+        const c = item.querySelector('.entry-content');
+        c.style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        faq.classList.add('is-open');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  });
+});

@@ -170,6 +170,15 @@ function codex_faq_cat() {
 	register_taxonomy( 'faq_cat', array( 'faq' ), $args );
 }
 
+
+// disable single faq
+add_action( 'template_redirect', function() {
+	if ( is_singular('faq') ) {
+		wp_redirect( home_url('/faqs/'), 302 );
+		exit;
+	}
+});
+
 // inject JSON-LD per FAQS presenti dentro la categoria.
 
 function inject_faqs_jsonld_in_cat() {
@@ -178,6 +187,7 @@ function inject_faqs_jsonld_in_cat() {
 
 	// recupero le faq associate alla product_cat corrente tramite acf field object post multiplo
 	$currenCat = get_queried_object();
+
     // verifico se ci sono faq per questa categoria tramite acf field object post multiplo
     $args = array(
       'post_type' => 'faq',
@@ -192,6 +202,7 @@ function inject_faqs_jsonld_in_cat() {
     );
 	
 	$faqs = get_posts($args);
+
 	if (!$faqs) return;
 
 	$mainEntity = [];
@@ -219,6 +230,7 @@ function inject_faqs_jsonld_in_cat() {
 	</script>
 <?php
 }
+add_action('wp_head', 'inject_faqs_jsonld_in_cat');
 
 /*
 function inject_faqs_jsonld() {

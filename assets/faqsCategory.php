@@ -7,6 +7,8 @@
     $args = array(
       'post_type' => 'faq',
       'posts_per_page' => -1,
+      'orderby' => 'menu_order',
+      'order' => 'ASC',
       'meta_query' => array(
             array(
                 'key' => 'categorie', // nome del campo ACF
@@ -35,7 +37,6 @@
                                 <?php 
                                     echo wp_trim_words($risposta, 50, '...');
                                 ?>
-                                <a href="<?php echo get_the_permalink(); ?>" class="read-more">Apri</a>
                             </div>
                         </div>
                     </li>

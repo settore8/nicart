@@ -21,61 +21,61 @@
 <main class="container">
 
 		<section class="faqs-archive">
-		<?php 
-			
-			// ciclo per ogni categoria FAQ
-			if ( ! empty( $faq_cats ) && ! is_wp_error( $faq_cats ) ) {
-				foreach ( $faq_cats as $cat ) {
-					echo '<h2 class="faqs-section-title">' . esc_html( $cat->name ) . '</h2>';
+<?php 
+if ( ! empty( $faq_cats ) && ! is_wp_error( $faq_cats ) ) {
+  foreach ( $faq_cats as $cat ) {
 
-					// Query per le FAQ nella categoria corrente
-					$args = array(
-						'post_type' => 'faq',
-						'posts_per_page' => -1,
-						'tax_query' => array(
-							array(
-								'taxonomy' => 'faq_cat',
-								'field'    => 'term_id',
-								'terms'    => $cat->term_id,
-							),
-						),
-					);	
+    echo '<h2 class="faqs-section-title">' . esc_html( $cat->name ) . '</h2>';
 
-					$the_query = new WP_Query( $args );
-					if ( $the_query->have_posts() ) {
-						echo '<ul class="faqs">';
+    $args = array(
+      'post_type'      => 'faq',
+      'posts_per_page' => -1,
+	  'orderby' => 'menu_order',
+	  'order' => 'ASC',
+      'tax_query'      => array(
+        array(
+          'taxonomy' => 'faq_cat',
+          'field'    => 'term_id',
+          'terms'    => $cat->term_id,
+        ),
+      ),
+    );
 
-						while ( $the_query->have_posts() ) {
-							$the_query->the_post(); 
-							$risposta = get_field('risposta');
-							?>
-								<li class="faq">
-									
-									<h2 class="h5 mb-1">
-										<?php the_title(); ?>
-									</h2>
-									
-									<?php 
-										echo $risposta;
-									?>
+    $the_query = new WP_Query( $args );
 
-									<a href="<?php echo get_the_permalink(); ?>" class="read-more">Apri</a>
+    if ( $the_query->have_posts() ) {
+      echo '<ul class="faqs">';
 
-								</li>
-							<?php
-						}
+      while ( $the_query->have_posts() ) {
+        $the_query->the_post(); 
+        $risposta = get_field('risposta');
+        ?>
+        <li class="faq">
+          <div class="faq-inner">
 
-						echo '</ul>';
-					} else {
-						echo '<p>Nessuna FAQ trovata in questa categoria.</p>';
-					}
-					wp_reset_postdata();
-				}
-			}
-			?>
+            <h3 class="faq-title">
+              <?php the_title(); ?>
+            </h3>
 
+            <div class="entry-content">
+              <?php echo wp_kses_post( $risposta ); ?>
+            </div>
 
-		</section>
+          </div>
+        </li>
+        <?php
+      }
+
+      echo '</ul>';
+    } else {
+      echo '<p>Nessuna FAQ trovata in questa categoria.</p>';
+    }
+
+    wp_reset_postdata();
+  }
+}
+?>
+</section>
 
 </main>
 

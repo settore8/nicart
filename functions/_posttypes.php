@@ -124,7 +124,7 @@ function codex_faq_init() {
 	    'slug' => 'faqs',
 	    	'with_front' => true
 	  	),
-		'has_archive'        => 'faqs',
+		'has_archive'        => 'faq',
 		'capability_type'    => 'post',
 		'hierarchical'       => false,
 		'supports'           => array( 'title', 'page-attributes' ),

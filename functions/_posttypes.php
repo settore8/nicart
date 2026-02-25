@@ -174,7 +174,7 @@ function codex_faq_cat() {
 // disable single faq
 add_action( 'template_redirect', function() {
 	if ( is_singular('faq') ) {
-		wp_redirect( home_url('/faqs/'), 302 );
+		wp_redirect( home_url('/faq/'), 302 );
 		exit;
 	}
 });

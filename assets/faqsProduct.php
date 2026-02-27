@@ -34,7 +34,7 @@
                     <li class="faq">
                         <div class="faq-inner">
                             <h3><?php the_title(); ?></h3>
-                            <div class="entry-content">
+                            <div class="entry-faq-content">
                                <?php echo wp_kses_post( $risposta ); ?>
                             </div>
                         </div>

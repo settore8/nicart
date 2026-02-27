@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   faqs.forEach(faq => {
     const title = faq.querySelector('h3');
-    const content = faq.querySelector('.entry-content');
+    const content = faq.querySelector('.entry-faq-content');
 
     title.addEventListener('click', () => {
       const isOpen = faq.classList.contains('is-open');
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 🔒 chiude le altre (rimuovi questo blocco se vuoi più FAQ aperte)
       faqs.forEach(item => {
         item.classList.remove('is-open');
-        const c = item.querySelector('.entry-content');
+        const c = item.querySelector('.entry-faq-content');
         c.style.maxHeight = null;
       });
 

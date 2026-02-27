@@ -57,7 +57,7 @@ if ( ! empty( $faq_cats ) && ! is_wp_error( $faq_cats ) ) {
               <?php the_title(); ?>
             </h3>
 
-            <div class="entry-content">
+            <div class="entry-faq-content">
               <?php echo wp_kses_post( $risposta ); ?>
             </div>
 

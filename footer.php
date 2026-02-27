@@ -108,7 +108,7 @@
 <script src="<?php bloginfo('template_directory'); ?>/js/slick.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/js/swipebox.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/js/wow.min.js"></script>
-<script src="<?php bloginfo('template_directory'); ?>/js/custom.js?v=1.2.7"></script>
+<script src="<?php bloginfo('template_directory'); ?>/js/custom.js?v=1.2.8"></script>
 
 <script>
 new WOW().init();

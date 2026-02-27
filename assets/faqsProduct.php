@@ -35,10 +35,7 @@
                         <div class="faq-inner">
                             <h3><?php the_title(); ?></h3>
                             <div class="entry-content">
-                                <?php 
-                                    echo wp_trim_words($risposta, 50, '...');
-                                ?>
-                                <a href="<?php echo get_the_permalink(); ?>" class="read-more">leggi</a>
+                               <?php echo wp_kses_post( $risposta ); ?>
                             </div>
                         </div>
                     </li>

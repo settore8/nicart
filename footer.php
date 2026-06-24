@@ -83,10 +83,8 @@
 							);
 					wp_nav_menu($args);
 				?>
-					</ul>
+				</ul>
 		 </div>
-
-
 
 	</div>
 
@@ -96,7 +94,8 @@
 
 	<a href="https://www.iubenda.com/privacy-policy/87233560" class="iubenda-nostyle no-brand iubenda-embed " title="Privacy Policy">Privacy Policy</a> - 
 	<a href="https://www.iubenda.com/privacy-policy/87233560/cookie-policy" class="iubenda-nostyle no-brand iubenda-embed " title="Cookie Policy">Cookie Policy</a> - <a href="#" class="iubenda-cs-preferences-link">Preferenze Cookie</a> <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script> - Credits <a href="http://www.settore8.it" target="_blank">Settore8</a>
-	</div>
+	- <?php echo do_shortcode('[woo_recessi_button]'); ?>
+</div>
 
 </footer>
 
